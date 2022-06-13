@@ -1,4 +1,4 @@
-/* $Id: UIProgressTaskReadCloudMachineList.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIProgressTaskReadCloudMachineList.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIProgressTaskReadCloudMachineList class declaration.
  */
@@ -54,9 +54,9 @@ public:
 protected:
 
     /** Creates and returns started progress-wrapper required to init UIProgressObject. */
-    virtual CProgress createProgress() /* override */;
+    virtual CProgress createProgress() RT_OVERRIDE;
     /** Handles finished @a comProgress wrapper. */
-    virtual void handleProgressFinished(CProgress &comProgress) /* override */;
+    virtual void handleProgressFinished(CProgress &comProgress) RT_OVERRIDE;
 
 private:
 

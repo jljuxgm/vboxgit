@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDVariantPage.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIWizardCloneVDVariantPage.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDVariantPage class declaration.
  */
@@ -45,14 +45,14 @@ private slots:
 private:
 
     /** Handles translation event. */
-    virtual void retranslateUi() /* override */;
+    virtual void retranslateUi() RT_OVERRIDE;
     void prepare();
 
     /** Prepares the page. */
-    virtual void initializePage() /* override */;
+    virtual void initializePage() RT_OVERRIDE;
 
     /** Returns whether the page is complete. */
-    virtual bool isComplete() const /* override */;
+    virtual bool isComplete() const RT_OVERRIDE;
     void setWidgetVisibility(const CMediumFormat &mediumFormat);
 
     /** Holds the description label instance. */

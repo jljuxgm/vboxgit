@@ -1,4 +1,4 @@
-/* $Id: UICloudMachineSettingsDialog.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UICloudMachineSettingsDialog.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICloudMachineSettingsDialog class declaration.
  */
@@ -56,15 +56,15 @@ public:
 public slots:
 
     /** Shows the dialog as a modal dialog, blocking until the user closes it. */
-    virtual int exec() /* override */;
+    virtual int exec() RT_OVERRIDE;
 
     /** Hides the modal dialog and sets the result code to Accepted. */
-    virtual void accept() /* override */;
+    virtual void accept() RT_OVERRIDE;
 
 protected:
 
     /** Handles translation event. */
-    virtual void retranslateUi() /* override */;
+    virtual void retranslateUi() RT_OVERRIDE;
 
 private slots:
 

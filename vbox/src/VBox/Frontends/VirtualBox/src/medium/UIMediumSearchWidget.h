@@ -1,4 +1,4 @@
-/* $Id: UIMediumSearchWidget.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIMediumSearchWidget.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumSearchWidget class declaration.
  */
@@ -61,8 +61,8 @@ public:
 
 protected:
 
-    void retranslateUi() /* override */;
-    virtual void showEvent(QShowEvent *pEvent) /* override */;
+    void retranslateUi() RT_OVERRIDE;
+    virtual void showEvent(QShowEvent *pEvent) RT_OVERRIDE;
 
 private slots:
 

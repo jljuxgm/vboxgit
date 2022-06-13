@@ -1,4 +1,4 @@
-/* $Id: UIMediumItem.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIMediumItem.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumItem class declaration.
  */
@@ -115,7 +115,7 @@ protected:
     virtual bool releaseFrom(CMachine comMachine) = 0;
 
     /** Returns default text. */
-    virtual QString defaultText() const /* override */;
+    virtual QString defaultText() const RT_OVERRIDE;
 
 protected slots:
 
@@ -180,9 +180,9 @@ public:
 protected:
 
     /** Removes UIMedium wrapped by <i>this</i> item. */
-    virtual bool remove() /* override */;
+    virtual bool remove() RT_OVERRIDE;
     /** Releases UIMedium wrapped by <i>this</i> item from virtual @a comMachine. */
-    virtual bool releaseFrom(CMachine comMachine) /* override */;
+    virtual bool releaseFrom(CMachine comMachine) RT_OVERRIDE;
 
 private:
 
@@ -207,9 +207,9 @@ public:
 protected:
 
     /** Removes UIMedium wrapped by <i>this</i> item. */
-    virtual bool remove() /* override */;
+    virtual bool remove() RT_OVERRIDE;
     /** Releases UIMedium wrapped by <i>this</i> item from virtual @a comMachine. */
-    virtual bool releaseFrom(CMachine comMachine) /* override */;
+    virtual bool releaseFrom(CMachine comMachine) RT_OVERRIDE;
 };
 
 /** UIMediumItem extension representing floppy-disk item. */
@@ -229,9 +229,9 @@ public:
 protected:
 
     /** Removes UIMedium wrapped by <i>this</i> item. */
-    virtual bool remove() /* override */;
+    virtual bool remove() RT_OVERRIDE;
     /** Releases UIMedium wrapped by <i>this</i> item from virtual @a comMachine. */
-    virtual bool releaseFrom(CMachine comMachine) /* override */;
+    virtual bool releaseFrom(CMachine comMachine) RT_OVERRIDE;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_medium_UIMediumItem_h */

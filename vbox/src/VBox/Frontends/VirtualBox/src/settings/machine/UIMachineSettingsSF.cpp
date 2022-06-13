@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSF.cpp 93829 2022-02-17 13:30:31Z vboxsync $ */
+/* $Id: UIMachineSettingsSF.cpp 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSF class implementation.
  */
@@ -183,7 +183,7 @@ public:
 protected:
 
     /** Returns default text. */
-    virtual QString defaultText() const /* override */
+    virtual QString defaultText() const RT_OVERRIDE
     {
         return parentItem()
              ? tr("%1, %2: %3, %4: %5, %6: %7, %8: %9",

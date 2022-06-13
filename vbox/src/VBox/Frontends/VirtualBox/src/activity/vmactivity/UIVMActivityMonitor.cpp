@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityMonitor.cpp 93982 2022-02-28 14:15:03Z vboxsync $ */
+/* $Id: UIVMActivityMonitor.cpp 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMActivityMonitor class implementation.
  */
@@ -101,12 +101,12 @@ public:
 
 protected:
 
-    virtual void resizeEvent(QResizeEvent *pEvent) /* override */;
-    virtual void mouseMoveEvent(QMouseEvent *pEvent) /* override */;
-    virtual void paintEvent(QPaintEvent *pEvent) /* override */;
-    virtual QSize minimumSizeHint() const /* override */;
-    virtual QSize sizeHint() const  /* override */;
-    virtual void retranslateUi()  /* override */;
+    virtual void resizeEvent(QResizeEvent *pEvent) RT_OVERRIDE;
+    virtual void mouseMoveEvent(QMouseEvent *pEvent) RT_OVERRIDE;
+    virtual void paintEvent(QPaintEvent *pEvent) RT_OVERRIDE;
+    virtual QSize minimumSizeHint() const RT_OVERRIDE;
+    virtual QSize sizeHint() const  RT_OVERRIDE;
+    virtual void retranslateUi()  RT_OVERRIDE;
 
 private slots:
 

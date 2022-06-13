@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityOverviewWidget.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIVMActivityOverviewWidget.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMActivityOverviewWidget class declaration.
  */
@@ -71,8 +71,8 @@ protected:
 
     /** @name Event-handling stuff.
       * @{ */
-        virtual void retranslateUi() /* override */;
-        virtual void showEvent(QShowEvent *pEvent) /* override */;
+        virtual void retranslateUi() RT_OVERRIDE;
+        virtual void showEvent(QShowEvent *pEvent) RT_OVERRIDE;
     /** @} */
 
 private slots:

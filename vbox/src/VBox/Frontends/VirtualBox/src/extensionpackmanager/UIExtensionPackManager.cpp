@@ -1,4 +1,4 @@
-/* $Id: UIExtensionPackManager.cpp 93868 2022-02-21 12:56:10Z vboxsync $ */
+/* $Id: UIExtensionPackManager.cpp 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtensionPackManager class implementation.
  */
@@ -112,7 +112,7 @@ public:
 protected:
 
     /** Returns default text. */
-    virtual QString defaultText() const /* override */;
+    virtual QString defaultText() const RT_OVERRIDE;
 };
 
 

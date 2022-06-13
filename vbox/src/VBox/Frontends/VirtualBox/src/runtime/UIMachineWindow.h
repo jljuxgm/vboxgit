@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.h 93366 2022-01-20 17:13:31Z vboxsync $ */
+/* $Id: UIMachineWindow.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class declaration.
  */
@@ -136,12 +136,12 @@ protected:
     void retranslateUi();
 
     /** Handles any Qt @a pEvent. */
-    virtual bool event(QEvent *pEvent) /* override */;
+    virtual bool event(QEvent *pEvent) RT_OVERRIDE;
 
     /** Handles show @a pEvent. */
-    virtual void showEvent(QShowEvent *pEvent) /* override */;
+    virtual void showEvent(QShowEvent *pEvent) RT_OVERRIDE;
     /** Handles hide @a pEvent. */
-    virtual void hideEvent(QHideEvent *pEvent) /* override */;
+    virtual void hideEvent(QHideEvent *pEvent) RT_OVERRIDE;
 
     /** Close event handler. */
     void closeEvent(QCloseEvent *pCloseEvent);

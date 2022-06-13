@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerOperationsPanel.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIFileManagerOperationsPanel.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -53,20 +53,20 @@ signals:
 public:
 
     UIFileManagerOperationsPanel(QWidget *pParent = 0);
-    virtual QString panelName() const /* override */;
+    virtual QString panelName() const RT_OVERRIDE;
     void addNewProgress(const CProgress &comProgress, const QString &strSourceTableName);
 
 protected:
 
     /** @name Preparation specific functions.
       * @{ */
-        virtual void prepareWidgets() /* override */;
-        virtual void prepareConnections() /* override */;
+        virtual void prepareWidgets() RT_OVERRIDE;
+        virtual void prepareConnections() RT_OVERRIDE;
     /** @} */
 
     /** Handles the translation event. */
-    virtual void retranslateUi() /* override */;
-    virtual void contextMenuEvent(QContextMenuEvent *pEvent) /* override */;
+    virtual void retranslateUi() RT_OVERRIDE;
+    virtual void contextMenuEvent(QContextMenuEvent *pEvent) RT_OVERRIDE;
 
 private slots:
 

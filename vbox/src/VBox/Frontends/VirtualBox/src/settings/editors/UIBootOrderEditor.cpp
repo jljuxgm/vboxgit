@@ -1,4 +1,4 @@
-/* $Id: UIBootOrderEditor.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIBootOrderEditor.cpp 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIBootListWidget class implementation.
  */
@@ -85,15 +85,15 @@ public slots:
 protected:
 
     /** Handles translation event. */
-    virtual void retranslateUi() /* override */;
+    virtual void retranslateUi() RT_OVERRIDE;
 
     /** Handles drop @a pEvent. */
-    virtual void dropEvent(QDropEvent *pEvent) /* override */;
+    virtual void dropEvent(QDropEvent *pEvent) RT_OVERRIDE;
 
     /** Returns a QModelIndex object pointing to the next object in the view,
       * based on the given @a cursorAction and keyboard @a fModifiers. */
     virtual QModelIndex moveCursor(QAbstractItemView::CursorAction cursorAction,
-                                   Qt::KeyboardModifiers fModifiers) /* override */;
+                                   Qt::KeyboardModifiers fModifiers) RT_OVERRIDE;
 
 private:
 

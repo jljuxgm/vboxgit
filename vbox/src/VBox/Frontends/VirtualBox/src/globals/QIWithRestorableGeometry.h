@@ -1,4 +1,4 @@
-/* $Id: QIWithRestorableGeometry.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: QIWithRestorableGeometry.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIWithRestorableGeometry class declaration.
  */
@@ -55,7 +55,7 @@ public:
 protected:
 
     /** Handles move @a pEvent. */
-    virtual void moveEvent(QMoveEvent *pEvent) /* override */
+    virtual void moveEvent(QMoveEvent *pEvent) RT_OVERRIDE
     {
         /* Call to base-class: */
         QMainWindow::moveEvent(pEvent);
@@ -80,7 +80,7 @@ protected:
     }
 
     /** Handles resize @a pEvent. */
-    virtual void resizeEvent(QResizeEvent *pEvent) /* override */
+    virtual void resizeEvent(QResizeEvent *pEvent) RT_OVERRIDE
     {
         /* Call to base-class: */
         QMainWindow::resizeEvent(pEvent);

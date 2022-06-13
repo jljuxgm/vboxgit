@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerFilterPanel.cpp 93950 2022-02-25 14:01:40Z vboxsync $ */
+/* $Id: UIVMLogViewerFilterPanel.cpp 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -67,12 +67,12 @@ public:
 protected:
 
     /* Delete mouseDoubleClick and mouseMoveEvent implementations of the base class */
-    virtual void        mouseDoubleClickEvent(QMouseEvent *) /* override */{}
-    virtual void        mouseMoveEvent(QMouseEvent *) /* override */{}
+    virtual void        mouseDoubleClickEvent(QMouseEvent *) RT_OVERRIDE {}
+    virtual void        mouseMoveEvent(QMouseEvent *) RT_OVERRIDE {}
     /* Override the mousePressEvent to control how selection is done: */
-    virtual void        mousePressEvent(QMouseEvent * event) /* override */;
+    virtual void        mousePressEvent(QMouseEvent * event) RT_OVERRIDE;
     virtual void        mouseReleaseEvent(QMouseEvent *){}
-    virtual void        paintEvent(QPaintEvent *event) /* override */;
+    virtual void        paintEvent(QPaintEvent *event) RT_OVERRIDE;
 
 private slots:
 

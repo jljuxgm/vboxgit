@@ -1,4 +1,4 @@
-/* $Id: UIVirtualMachineItem.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIVirtualMachineItem.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualMachineItem class declarations.
  */
@@ -208,7 +208,7 @@ public:
     UIVirtualMachineItem *item() const { return m_pItem; }
 
     /** Returns supported format list. */
-    virtual QStringList formats() const /* override */;
+    virtual QStringList formats() const RT_OVERRIDE;
 
     /** Returns UIVirtualMachineItem mime data type. */
     static QString type() { return m_type; }

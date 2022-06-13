@@ -1,4 +1,4 @@
-/* $Id: UIToolPaneGlobal.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIToolPaneGlobal.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolPaneGlobal class declaration.
  */
@@ -57,7 +57,7 @@ public:
     /** Constructs tools pane passing @a pParent to the base-class. */
     UIToolPaneGlobal(UIActionPool *pActionPool, QWidget *pParent = 0);
     /** Destructs tools pane. */
-    virtual ~UIToolPaneGlobal() /* override */;
+    virtual ~UIToolPaneGlobal() RT_OVERRIDE;
 
     /** Defines whether this pane is @a fActive. */
     void setActive(bool fActive);

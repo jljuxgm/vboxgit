@@ -1,4 +1,4 @@
-/* $Id: UINetworkCustomer.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UINetworkCustomer.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkCustomer class declaration.
  */
@@ -48,7 +48,7 @@ public:
     /** Constructs network customer passing @a pParent to the base-class. */
     UINetworkCustomer();
     /** Destructs network customer. */
-    virtual ~UINetworkCustomer() /* override */;
+    virtual ~UINetworkCustomer() RT_OVERRIDE;
 
     /** Returns description of the current network operation. */
     virtual QString description() const { return QString(); }

@@ -1,4 +1,4 @@
-/* $Id: UIVisoCreatorOptionsPanel.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIVisoCreatorOptionsPanel.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoCreatorOptionsPanel class declaration.
  */
@@ -40,12 +40,12 @@ public:
 
     UIVisoCreatorOptionsPanel(QWidget *pParent = 0);
     ~UIVisoCreatorOptionsPanel();
-    virtual QString panelName() const /* override */;
+    virtual QString panelName() const RT_OVERRIDE;
     void setShowHiddenbjects(bool fShow);
 
 protected:
 
-    void retranslateUi() /* override */;
+    void retranslateUi() RT_OVERRIDE;
 
 
 private slots:

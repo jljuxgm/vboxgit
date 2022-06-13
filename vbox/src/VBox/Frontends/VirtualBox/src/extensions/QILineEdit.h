@@ -1,4 +1,4 @@
-/* $Id: QILineEdit.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: QILineEdit.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QILineEdit class declaration.
  */
@@ -57,10 +57,10 @@ public:
 protected:
 
     /** Handles any Qt @a pEvent. */
-    virtual bool event(QEvent *pEvent) /* override */;
+    virtual bool event(QEvent *pEvent) RT_OVERRIDE;
 
     /** Handles resize @a pEvent. */
-    virtual void resizeEvent(QResizeEvent *pResizeEvent) /* override */;
+    virtual void resizeEvent(QResizeEvent *pResizeEvent) RT_OVERRIDE;
 
 private slots:
 

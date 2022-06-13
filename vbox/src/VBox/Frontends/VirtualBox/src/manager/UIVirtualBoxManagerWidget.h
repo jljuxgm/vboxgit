@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManagerWidget.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIVirtualBoxManagerWidget.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManagerWidget class declaration.
  */
@@ -107,7 +107,7 @@ public:
     /** Constructs VirtualBox Manager widget. */
     UIVirtualBoxManagerWidget(UIVirtualBoxManager *pParent);
     /** Destructs VirtualBox Manager widget. */
-    virtual ~UIVirtualBoxManagerWidget() /* override */;
+    virtual ~UIVirtualBoxManagerWidget() RT_OVERRIDE;
 
     /** @name Common stuff.
       * @{ */
@@ -230,7 +230,7 @@ protected:
     /** @name Event handling stuff.
       * @{ */
         /** Handles translation event. */
-        virtual void retranslateUi() /* override */;
+        virtual void retranslateUi() RT_OVERRIDE;
     /** @} */
 
 private slots:

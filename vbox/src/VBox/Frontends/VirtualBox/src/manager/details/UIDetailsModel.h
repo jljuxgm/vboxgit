@@ -1,4 +1,4 @@
-/* $Id: UIDetailsModel.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIDetailsModel.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDetailsModel class declaration.
  */
@@ -70,7 +70,7 @@ public:
       * @param  pParent  Brings the details container to embed into. */
     UIDetailsModel(UIDetails *pParent);
     /** Destructs a details model. */
-    virtual ~UIDetailsModel() /* override */;
+    virtual ~UIDetailsModel() RT_OVERRIDE;
 
     /** Inits model. */
     void init();
@@ -178,7 +178,7 @@ public slots:
 protected:
 
     /** Preprocesses any Qt @a pEvent for passed @a pObject. */
-    virtual bool eventFilter(QObject *pObject, QEvent *pEvent) /* override */;
+    virtual bool eventFilter(QObject *pObject, QEvent *pEvent) RT_OVERRIDE;
 
 private slots:
 

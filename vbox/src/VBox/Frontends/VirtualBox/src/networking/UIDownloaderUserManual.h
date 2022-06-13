@@ -1,4 +1,4 @@
-/* $Id: UIDownloaderUserManual.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIDownloaderUserManual.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDownloaderUserManual class declaration.
  */
@@ -43,12 +43,12 @@ public:
 private:
 
     /** Returns description of the current network operation. */
-    virtual QString description() const /* override */;
+    virtual QString description() const RT_OVERRIDE;
 
     /** Asks user for downloading confirmation for passed @a pReply. */
-    virtual bool askForDownloadingConfirmation(UINetworkReply *pReply) /* override */;
+    virtual bool askForDownloadingConfirmation(UINetworkReply *pReply) RT_OVERRIDE;
     /** Handles downloaded object for passed @a pReply. */
-    virtual void handleDownloadedObject(UINetworkReply *pReply) /* override */;
+    virtual void handleDownloadedObject(UINetworkReply *pReply) RT_OVERRIDE;
 };
 
 #endif /* !FEQT_INCLUDED_SRC_networking_UIDownloaderUserManual_h */

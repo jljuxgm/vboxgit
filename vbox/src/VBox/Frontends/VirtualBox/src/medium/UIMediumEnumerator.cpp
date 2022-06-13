@@ -1,4 +1,4 @@
-/* $Id: UIMediumEnumerator.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIMediumEnumerator.cpp 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumEnumerator class implementation.
  */
@@ -78,7 +78,7 @@ public:
 private:
 
     /** Contains medium-enumeration task body. */
-    virtual void run() /* override */
+    virtual void run() RT_OVERRIDE
     {
         /* Enumerate under a proper lock: */
         m_mutex.lock();

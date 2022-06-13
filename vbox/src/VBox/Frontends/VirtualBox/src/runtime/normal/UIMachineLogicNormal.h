@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicNormal.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIMachineLogicNormal.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicNormal class declaration.
  */
@@ -67,12 +67,12 @@ private slots:
     void sltToggleStatusBar();
 
     /** Handles host-screen available-area change. */
-    virtual void sltHostScreenAvailableAreaChange() /* override */;
+    virtual void sltHostScreenAvailableAreaChange() RT_OVERRIDE;
 
 private:
 
     /* Prepare helpers: */
-    virtual void prepareActionGroups() /* override */;
+    virtual void prepareActionGroups() RT_OVERRIDE;
     void prepareActionConnections();
     void prepareMachineWindows();
 #ifndef VBOX_WS_MAC

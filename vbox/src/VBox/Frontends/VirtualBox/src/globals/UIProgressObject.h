@@ -1,4 +1,4 @@
-/* $Id: UIProgressObject.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIProgressObject.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIProgressObject class declaration.
  */
@@ -68,7 +68,7 @@ public:
       * @param  comProgress   Brings the progress reference. */
     UIProgressObject(CProgress &comProgress, QObject *pParent = 0);
     /** Destructs progress handler. */
-    virtual ~UIProgressObject() /* override */;
+    virtual ~UIProgressObject() RT_OVERRIDE;
 
     /** Returns whether progress is cancelable. */
     bool isCancelable() const { return m_fCancelable; }

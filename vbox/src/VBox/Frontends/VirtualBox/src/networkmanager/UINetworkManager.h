@@ -1,4 +1,4 @@
-/* $Id: UINetworkManager.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UINetworkManager.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkManager class declaration.
  */
@@ -94,13 +94,13 @@ protected:
     /** @name Event-handling stuff.
       * @{ */
         /** Handles translation event. */
-        virtual void retranslateUi() /* override */;
+        virtual void retranslateUi() RT_OVERRIDE;
 
         /** Handles resize @a pEvent. */
-        virtual void resizeEvent(QResizeEvent *pEvent) /* override */;
+        virtual void resizeEvent(QResizeEvent *pEvent) RT_OVERRIDE;
 
         /** Handles show @a pEvent. */
-        virtual void showEvent(QShowEvent *pEvent) /* override */;
+        virtual void showEvent(QShowEvent *pEvent) RT_OVERRIDE;
     /** @} */
 
 public slots:
@@ -334,7 +334,7 @@ protected:
 
     /** Creates derived @a pDialog instance.
       * @param  pCenterWidget  Brings the widget reference to center according to. */
-    virtual void create(QIManagerDialog *&pDialog, QWidget *pCenterWidget) /* override */;
+    virtual void create(QIManagerDialog *&pDialog, QWidget *pCenterWidget) RT_OVERRIDE;
 
     /** Holds the action-pool reference. */
     UIActionPool *m_pActionPool;
@@ -371,25 +371,25 @@ private:
     /** @name Event-handling stuff.
       * @{ */
         /** Handles translation event. */
-        virtual void retranslateUi() /* override */;
+        virtual void retranslateUi() RT_OVERRIDE;
     /** @} */
 
     /** @name Prepare/cleanup cascade.
       * @{ */
         /** Configures all. */
-        virtual void configure() /* override */;
+        virtual void configure() RT_OVERRIDE;
         /** Configures central-widget. */
-        virtual void configureCentralWidget() /* override */;
+        virtual void configureCentralWidget() RT_OVERRIDE;
         /** Configures button-box. */
-        virtual void configureButtonBox() /* override */;
+        virtual void configureButtonBox() RT_OVERRIDE;
         /** Perform final preparations. */
-        virtual void finalize() /* override */;
+        virtual void finalize() RT_OVERRIDE;
     /** @} */
 
     /** @name Widget stuff.
       * @{ */
         /** Returns the widget. */
-        virtual UINetworkManagerWidget *widget() /* override */;
+        virtual UINetworkManagerWidget *widget() RT_OVERRIDE;
     /** @} */
 
     /** @name Action related variables.

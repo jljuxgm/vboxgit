@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 93638 2022-02-07 13:02:17Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -123,7 +123,7 @@ private slots:
 protected:
 
     /** Handles translation event. */
-    virtual void retranslateUi() /* override */;
+    virtual void retranslateUi() RT_OVERRIDE;
 
 private:
 

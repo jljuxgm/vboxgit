@@ -1,4 +1,4 @@
-/* $Id: UIProgressEventHandler.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIProgressEventHandler.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIProgressEventHandler class declaration.
  */
@@ -50,7 +50,7 @@ public:
     /** Constructs event proxy object on the basis of passed @a pParent. */
     UIProgressEventHandler(QObject *pParent, const CProgress &comProgress);
     /** Destructs event proxy object. */
-    virtual ~UIProgressEventHandler() /* override */;
+    virtual ~UIProgressEventHandler() RT_OVERRIDE;
 
 protected:
 

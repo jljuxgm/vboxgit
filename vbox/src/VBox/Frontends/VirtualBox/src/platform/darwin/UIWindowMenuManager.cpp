@@ -1,4 +1,4 @@
-/* $Id: UIWindowMenuManager.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIWindowMenuManager.cpp 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWindowMenuManager class implementation.
  */
@@ -37,7 +37,7 @@ public:
     /** Constructs menu-helper on the basis of passed @a windows. */
     UIMenuHelper(const QList<QWidget*> &windows);
     /** Destructs menu-helper. */
-    virtual ~UIMenuHelper() /* override */;
+    virtual ~UIMenuHelper() RT_OVERRIDE;
 
     /** Returns 'Window' menu. */
     QMenu *menu() const { return m_pWindowMenu; }

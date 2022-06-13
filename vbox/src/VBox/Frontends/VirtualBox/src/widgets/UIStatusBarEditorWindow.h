@@ -1,4 +1,4 @@
-/* $Id: UIStatusBarEditorWindow.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIStatusBarEditorWindow.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIStatusBarEditorWindow class declaration.
  */
@@ -100,19 +100,19 @@ public:
 protected:
 
     /** Handles translation event. */
-    virtual void retranslateUi() /* override */;
+    virtual void retranslateUi() RT_OVERRIDE;
 
     /** Handles paint @a pEvent. */
-    virtual void paintEvent(QPaintEvent *pEvent) /* override */;
+    virtual void paintEvent(QPaintEvent *pEvent) RT_OVERRIDE;
 
     /** Handles drag-enter @a pEvent. */
-    virtual void dragEnterEvent(QDragEnterEvent *pEvent) /* override */;
+    virtual void dragEnterEvent(QDragEnterEvent *pEvent) RT_OVERRIDE;
     /** Handles drag-move @a pEvent. */
-    virtual void dragMoveEvent(QDragMoveEvent *pEvent) /* override */;
+    virtual void dragMoveEvent(QDragMoveEvent *pEvent) RT_OVERRIDE;
     /** Handles drag-leave @a pEvent. */
-    virtual void dragLeaveEvent(QDragLeaveEvent *pEvent) /* override */;
+    virtual void dragLeaveEvent(QDragLeaveEvent *pEvent) RT_OVERRIDE;
     /** Handles drop @a pEvent. */
-    virtual void dropEvent(QDropEvent *pEvent) /* override */;
+    virtual void dropEvent(QDropEvent *pEvent) RT_OVERRIDE;
 
 private slots:
 

@@ -1,4 +1,4 @@
-/* $Id: UIToolBox.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIToolBox.cpp 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolBox class implementation.
  */
@@ -49,8 +49,8 @@ public:
 
 protected:
 
-    virtual void paintEvent(QPaintEvent *pEvent) /* override */;
-    virtual QSize sizeHint() const /* override */;
+    virtual void paintEvent(QPaintEvent *pEvent) RT_OVERRIDE;
+    virtual QSize sizeHint() const RT_OVERRIDE;
 
 private:
 
@@ -90,7 +90,7 @@ public:
 
 protected:
 
-    virtual bool eventFilter(QObject *pWatched, QEvent *pEvent) /* override */;
+    virtual bool eventFilter(QObject *pWatched, QEvent *pEvent) RT_OVERRIDE;
     virtual void retranslateUi() /* override final */;
 
 private slots:

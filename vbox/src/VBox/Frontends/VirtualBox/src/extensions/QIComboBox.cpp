@@ -1,4 +1,4 @@
-/* $Id: QIComboBox.cpp 93986 2022-02-28 14:42:07Z vboxsync $ */
+/* $Id: QIComboBox.cpp 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIComboBox class implementation.
  */
@@ -50,11 +50,11 @@ public:
     {}
 
     /** Returns the number of children. */
-    virtual int childCount() const /* override */;
+    virtual int childCount() const RT_OVERRIDE;
     /** Returns the child with the passed @a iIndex. */
-    virtual QAccessibleInterface *child(int iIndex) const /* override */;
+    virtual QAccessibleInterface *child(int iIndex) const RT_OVERRIDE;
     /** Returns the index of the passed @a pChild. */
-    virtual int indexOfChild(const QAccessibleInterface *pChild) const /* override */;
+    virtual int indexOfChild(const QAccessibleInterface *pChild) const RT_OVERRIDE;
 
 private:
 

@@ -1,4 +1,4 @@
-/* $Id: UIUpdateManager.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIUpdateManager.cpp 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUpdateManager class implementation.
  */
@@ -47,7 +47,7 @@ public:
     UIUpdateStepVirtualBox(bool fForcedCall);
 
     /** Executes the step. */
-    virtual void exec() /* override */;
+    virtual void exec() RT_OVERRIDE;
 
 private:
 
@@ -67,7 +67,7 @@ public:
     UIUpdateStepVirtualBoxExtensionPack();
 
     /** Executes the step. */
-    virtual void exec() /* override */;
+    virtual void exec() RT_OVERRIDE;
 
 private slots:
 

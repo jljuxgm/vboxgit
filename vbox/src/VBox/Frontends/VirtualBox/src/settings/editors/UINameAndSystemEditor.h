@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.h 93606 2022-02-04 14:48:36Z vboxsync $ */
+/* $Id: UINameAndSystemEditor.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class declaration.
  */
@@ -145,7 +145,7 @@ public:
 protected:
 
     /** Handles translation event. */
-    virtual void retranslateUi() /* override */;
+    virtual void retranslateUi() RT_OVERRIDE;
 
 private slots:
 

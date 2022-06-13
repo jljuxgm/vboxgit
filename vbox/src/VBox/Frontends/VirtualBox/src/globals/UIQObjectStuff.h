@@ -1,4 +1,4 @@
-/* $Id: UIQObjectStuff.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIQObjectStuff.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIQObjectStuff class declaration.
  */
@@ -50,7 +50,7 @@ public:
     UIQObjectPropertySetter(const QList<QObject*> &objects, const QString &strPropertyName, const QVariant &value);
 
     /** Destructs guard block clearing previously set property for good. */
-    virtual ~UIQObjectPropertySetter() /* override */;
+    virtual ~UIQObjectPropertySetter() RT_OVERRIDE;
 
 private:
 

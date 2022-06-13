@@ -1,4 +1,4 @@
-/* $Id: UIVisoConfigurationPanel.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIVisoConfigurationPanel.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoConfigurationPanel class declaration.
  */
@@ -42,13 +42,13 @@ signals:
 public:
     UIVisoConfigurationPanel(QWidget *pParent = 0);
     ~UIVisoConfigurationPanel();
-    virtual QString panelName() const /* override */;
+    virtual QString panelName() const RT_OVERRIDE;
     void setVisoName(const QString& strVisoName);
     void setVisoCustomOptions(const QStringList& visoCustomOptions);
 
 protected:
 
-    void retranslateUi() /* override */;
+    void retranslateUi() RT_OVERRIDE;
 
 private slots:
 

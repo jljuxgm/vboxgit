@@ -1,4 +1,4 @@
-/* $Id: UIInformationRuntime.cpp 93901 2022-02-23 15:35:26Z vboxsync $ */
+/* $Id: UIInformationRuntime.cpp 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationRuntime class implementation.
  */
@@ -76,7 +76,7 @@ public:
 
 protected:
 
-    virtual void retranslateUi() /* override */;
+    virtual void retranslateUi() RT_OVERRIDE;
 
 private slots:
 

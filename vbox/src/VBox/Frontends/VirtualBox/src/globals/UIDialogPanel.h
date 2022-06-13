@@ -1,4 +1,4 @@
-/* $Id: UIDialogPanel.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIDialogPanel.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -58,12 +58,12 @@ protected:
     QHBoxLayout*               mainLayout();
 
     /** Handles the translation event. */
-    void retranslateUi() /* override */;
+    void retranslateUi() RT_OVERRIDE;
 
     /** Handles the Qt show @a pEvent. */
-    void showEvent(QShowEvent *pEvent) /* override */;
+    void showEvent(QShowEvent *pEvent) RT_OVERRIDE;
     /** Handles the Qt hide @a pEvent. */
-    void hideEvent(QHideEvent *pEvent) /* override */;
+    void hideEvent(QHideEvent *pEvent) RT_OVERRIDE;
     void addVerticalSeparator();
 
 private:

@@ -1,4 +1,4 @@
-/* $Id: UISettingsPage.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UISettingsPage.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsPage class declaration.
  */
@@ -220,13 +220,13 @@ protected:
     GlobalSettingsPageType internalID() const;
 
     /** Returns page internal name. */
-    virtual QString internalName() const /* override */;
+    virtual QString internalName() const RT_OVERRIDE;
 
     /** Returns page warning pixmap. */
-    virtual QPixmap warningPixmap() const /* override */;
+    virtual QPixmap warningPixmap() const RT_OVERRIDE;
 
     /** Returns whether the page content was changed. */
-    virtual bool changed() const /* override */ { return false; }
+    virtual bool changed() const RT_OVERRIDE { return false; }
 
     /** Fetches data to m_properties & m_settings. */
     void fetchData(const QVariant &data);
@@ -252,10 +252,10 @@ protected:
     MachineSettingsPageType internalID() const;
 
     /** Returns page internal name. */
-    virtual QString internalName() const /* override */;
+    virtual QString internalName() const RT_OVERRIDE;
 
     /** Returns page warning pixmap. */
-    virtual QPixmap warningPixmap() const /* override */;
+    virtual QPixmap warningPixmap() const RT_OVERRIDE;
 
     /** Fetches data to m_machine & m_console. */
     void fetchData(const QVariant &data);

@@ -1,4 +1,4 @@
-/* $Id: UIWindowMenuManager.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIWindowMenuManager.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWindowMenuManager class declaration.
  */
@@ -58,7 +58,7 @@ public:
     void removeWindow(QWidget *pWindow);
 
     /** Handles translation event. */
-    virtual void retranslateUi() /* override */;
+    virtual void retranslateUi() RT_OVERRIDE;
 
 protected:
 
@@ -68,7 +68,7 @@ protected:
     ~UIWindowMenuManager();
 
     /** Preprocesses any Qt @a pEvent for passed @a pObject. */
-    virtual bool eventFilter(QObject *pObject, QEvent *pEvent) /* override */;
+    virtual bool eventFilter(QObject *pObject, QEvent *pEvent) RT_OVERRIDE;
 
 private:
 

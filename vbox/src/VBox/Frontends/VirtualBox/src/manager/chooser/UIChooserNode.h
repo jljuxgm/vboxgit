@@ -1,4 +1,4 @@
-/* $Id: UIChooserNode.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIChooserNode.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserNode class declaration.
  */
@@ -51,7 +51,7 @@ public:
       * @param  fFavorite  Brings whether the node is favorite. */
     UIChooserNode(UIChooserNode *pParent = 0, bool fFavorite = false);
     /** Destructs chooser node. */
-    virtual ~UIChooserNode() /* override */;
+    virtual ~UIChooserNode() RT_OVERRIDE;
 
     /** Returns RTTI node type. */
     virtual UIChooserNodeType type() const = 0;

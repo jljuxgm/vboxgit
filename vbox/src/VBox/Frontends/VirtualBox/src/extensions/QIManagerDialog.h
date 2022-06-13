@@ -1,4 +1,4 @@
-/* $Id: QIManagerDialog.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: QIManagerDialog.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIManagerDialog class declaration.
  */
@@ -151,7 +151,7 @@ protected:
     /** @name Event-handling stuff.
       * @{ */
         /** Handles close @a pEvent. */
-        virtual void closeEvent(QCloseEvent *pEvent) /* override */;
+        virtual void closeEvent(QCloseEvent *pEvent) RT_OVERRIDE;
 
         /** Returns whether the manager had emitted command to be closed. */
         bool closeEmitted() const { return m_fCloseEmitted; }

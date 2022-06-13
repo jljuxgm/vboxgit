@@ -1,4 +1,4 @@
-/* $Id: UISettingsSelector.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UISettingsSelector.cpp 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsSelector class implementation.
  */
@@ -56,7 +56,7 @@ public:
     {}
 
     /** Returns the role. */
-    virtual QAccessible::Role role() const /* override */
+    virtual QAccessible::Role role() const RT_OVERRIDE
     {
         /* Make sure button still alive: */
         AssertPtrReturn(button(), QAccessible::NoRole);
@@ -70,7 +70,7 @@ public:
     }
 
     /** Returns the state. */
-    virtual QAccessible::State state() const /* override */
+    virtual QAccessible::State state() const RT_OVERRIDE
     {
         /* Prepare the button state: */
         QAccessible::State state;

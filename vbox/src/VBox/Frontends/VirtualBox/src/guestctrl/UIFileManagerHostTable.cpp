@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerHostTable.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIFileManagerHostTable.cpp 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerHostTable class implementation.
  */
@@ -45,7 +45,7 @@ public:
 
 protected:
 
-    virtual void directoryStatisticsRecursive(const QString &path, UIDirectoryStatistics &statistics) /* override */;
+    virtual void directoryStatisticsRecursive(const QString &path, UIDirectoryStatistics &statistics) RT_OVERRIDE;
 };
 
 

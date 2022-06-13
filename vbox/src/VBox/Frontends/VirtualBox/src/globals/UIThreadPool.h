@@ -1,4 +1,4 @@
-/* $Id: UIThreadPool.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIThreadPool.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIThreadPool class declaration.
  */
@@ -55,7 +55,7 @@ public:
       *                               pool will wait for the worker-thread on cleanup. */
     UIThreadPool(ulong cMaxWorkers = 3, ulong cMsWorkerIdleTimeout = 5000);
     /** Destructs worker-thread pool. */
-    virtual ~UIThreadPool() /* override */;
+    virtual ~UIThreadPool() RT_OVERRIDE;
 
     /** Returns whether the 'termination sequence' is started. */
     bool isTerminating() const;

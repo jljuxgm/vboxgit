@@ -1,4 +1,4 @@
-/* $Id: UIDownloaderExtensionPack.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIDownloaderExtensionPack.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDownloaderExtensionPack class declaration.
  */
@@ -48,14 +48,14 @@ public:
 private:
 
     /** Returns description of the current network operation. */
-    virtual QString description() const /* override */;
+    virtual QString description() const RT_OVERRIDE;
 
     /** Asks user for downloading confirmation for passed @a pReply. */
-    virtual bool askForDownloadingConfirmation(UINetworkReply *pReply) /* override */;
+    virtual bool askForDownloadingConfirmation(UINetworkReply *pReply) RT_OVERRIDE;
     /** Handles downloaded object for passed @a pReply. */
-    virtual void handleDownloadedObject(UINetworkReply *pReply) /* override */;
+    virtual void handleDownloadedObject(UINetworkReply *pReply) RT_OVERRIDE;
     /** Handles verified object for passed @a pReply. */
-    virtual void handleVerifiedObject(UINetworkReply *pReply) /* override */;
+    virtual void handleVerifiedObject(UINetworkReply *pReply) RT_OVERRIDE;
 
     /** Holds the cached received data awaiting for verification. */
     QByteArray m_receivedData;

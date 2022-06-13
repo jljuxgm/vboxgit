@@ -1,4 +1,4 @@
-/* $Id: QIGraphicsView.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: QIGraphicsView.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIGraphicsView class declaration.
  */
@@ -44,7 +44,7 @@ public:
 protected:
 
     /** Handles any Qt @a pEvent. */
-    virtual bool event(QEvent *pEvent) /* override */;
+    virtual bool event(QEvent *pEvent) RT_OVERRIDE;
 
 private:
 

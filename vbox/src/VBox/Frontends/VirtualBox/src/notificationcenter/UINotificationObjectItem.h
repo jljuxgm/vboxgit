@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjectItem.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UINotificationObjectItem.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINotificationObjectItem class declaration.
  */
@@ -23,6 +23,9 @@
 
 /* Qt includes: */
 #include <QWidget>
+
+/* VBox includes: */
+#include <iprt/cdefs.h>
 
 /* Forward declarations: */
 class QHBoxLayout;
@@ -52,10 +55,10 @@ public:
 protected:
 
     /** Handles any Qt @a pEvent. */
-    virtual bool event(QEvent *pEvent) /* override */;
+    virtual bool event(QEvent *pEvent) RT_OVERRIDE;
 
     /** Handles paint @a pEvent. */
-    virtual void paintEvent(QPaintEvent *pEvent) /* override */;
+    virtual void paintEvent(QPaintEvent *pEvent) RT_OVERRIDE;
 
     /** Holds the notification-object this item created for. */
     UINotificationObject *m_pObject;

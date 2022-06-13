@@ -1,4 +1,4 @@
-/* $Id: UIVMActivityOverviewWidget.cpp 93202 2022-01-12 16:15:02Z vboxsync $ */
+/* $Id: UIVMActivityOverviewWidget.cpp 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMActivityOverviewWidget class implementation.
  */
@@ -85,7 +85,7 @@ public:
 
 protected:
 
-    virtual void paintEvent(QPaintEvent *pEvent) /* override */;
+    virtual void paintEvent(QPaintEvent *pEvent) RT_OVERRIDE;
 
 private:
 
@@ -140,7 +140,7 @@ public:
 
 protected:
 
-    virtual void retranslateUi() /* override */;
+    virtual void retranslateUi() RT_OVERRIDE;
 
 private:
 
@@ -193,9 +193,9 @@ public:
 
 protected:
 
-    virtual void resizeEvent(QResizeEvent *pEvent) /* override */;
-    virtual void selectionChanged(const QItemSelection &selected, const QItemSelection &deselected) /* override */;
-    virtual void mousePressEvent(QMouseEvent *pEvent) /* override */;
+    virtual void resizeEvent(QResizeEvent *pEvent) RT_OVERRIDE;
+    virtual void selectionChanged(const QItemSelection &selected, const QItemSelection &deselected) RT_OVERRIDE;
+    virtual void mousePressEvent(QMouseEvent *pEvent) RT_OVERRIDE;
 
 private slots:
 
@@ -307,9 +307,9 @@ signals:
 public:
 
     UIActivityOverviewModel(QObject *parent = 0);
-    int      rowCount(const QModelIndex &parent = QModelIndex()) const /* override */;
-    int      columnCount(const QModelIndex &parent = QModelIndex()) const /* override */;
-    QVariant data(const QModelIndex &index, int role) const /* override */;
+    int      rowCount(const QModelIndex &parent = QModelIndex()) const RT_OVERRIDE;
+    int      columnCount(const QModelIndex &parent = QModelIndex()) const RT_OVERRIDE;
+    QVariant data(const QModelIndex &index, int role) const RT_OVERRIDE;
     void clearData();
     QVariant headerData(int section, Qt::Orientation orientation, int role) const;
     void setColumnCaptions(const QMap<int, QString>& captions);

@@ -1,4 +1,4 @@
-/* $Id: UIProgressDialog.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIProgressDialog.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIProgressDialog class declaration.
  */
@@ -64,7 +64,7 @@ public:
     UIProgressDialog(CProgress &comProgress, const QString &strTitle,
                      QPixmap *pImage = 0, int cMinDuration = 2000, QWidget *pParent = 0);
     /** Destructs progress-dialog. */
-    virtual ~UIProgressDialog() /* override */;
+    virtual ~UIProgressDialog() RT_OVERRIDE;
 
     /** Executes the progress-dialog within its loop with passed @a iRefreshInterval. */
     int run(int iRefreshInterval);
@@ -77,15 +77,15 @@ public slots:
 protected:
 
     /** Handles translation event. */
-    virtual void retranslateUi() /* override */;
+    virtual void retranslateUi() RT_OVERRIDE;
 
     /** Rejects dialog. */
-    virtual void reject() /* override */;
+    virtual void reject() RT_OVERRIDE;
 
     /** Handles timer @a pEvent. */
-    virtual void timerEvent(QTimerEvent *pEvent) /* override */;
+    virtual void timerEvent(QTimerEvent *pEvent) RT_OVERRIDE;
     /** Handles close @a pEvent. */
-    virtual void closeEvent(QCloseEvent *pEvent) /* override */;
+    virtual void closeEvent(QCloseEvent *pEvent) RT_OVERRIDE;
 
 private slots:
 

@@ -1,4 +1,4 @@
-/* $Id: QIArrowButtonPress.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: QIArrowButtonPress.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIArrowButtonPress class declaration.
  */
@@ -45,10 +45,10 @@ public:
 protected:
 
     /** Handles translation event. */
-    virtual void retranslateUi() /* override */;
+    virtual void retranslateUi() RT_OVERRIDE;
 
     /** Handles key-press @a pEvent. */
-    virtual void keyPressEvent(QKeyEvent *pEvent) /* override */;
+    virtual void keyPressEvent(QKeyEvent *pEvent) RT_OVERRIDE;
 
 private:
 

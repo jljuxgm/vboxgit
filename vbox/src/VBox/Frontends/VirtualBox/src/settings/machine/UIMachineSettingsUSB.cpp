@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSB.cpp 93829 2022-02-17 13:30:31Z vboxsync $ */
+/* $Id: UIMachineSettingsUSB.cpp 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsUSB class implementation.
  */
@@ -275,7 +275,7 @@ public:
 protected:
 
     /** Returns default text. */
-    virtual QString defaultText() const /* override */
+    virtual QString defaultText() const RT_OVERRIDE
     {
         return checkState(0) == Qt::Checked ?
                tr("%1, Active", "col.1 text, col.1 state").arg(text(0)) :

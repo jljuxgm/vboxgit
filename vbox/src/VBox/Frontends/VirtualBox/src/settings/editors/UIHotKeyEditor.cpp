@@ -1,4 +1,4 @@
-/* $Id: UIHotKeyEditor.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIHotKeyEditor.cpp 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHotKeyEditor class implementation.
  */
@@ -47,9 +47,9 @@ protected slots:
 protected:
 
     /** Handles key-press @a pEvent. */
-    virtual void keyPressEvent(QKeyEvent *pEvent) /* override */;
+    virtual void keyPressEvent(QKeyEvent *pEvent) RT_OVERRIDE;
     /** Handles key-release @a pEvent. */
-    virtual void keyReleaseEvent(QKeyEvent *pEvent) /* override */;
+    virtual void keyReleaseEvent(QKeyEvent *pEvent) RT_OVERRIDE;
 
 private:
 

@@ -1,4 +1,4 @@
-/* $Id: UIChooserAbstractModel.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIChooserAbstractModel.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserAbstractModel class declaration.
  */
@@ -73,7 +73,7 @@ public:
     /** Constructs abstract Chooser-model passing @a pParent to the base-class. */
     UIChooserAbstractModel(UIChooser *pParent);
     /** Destructs abstract Chooser-model. */
-    virtual ~UIChooserAbstractModel() /* override */;
+    virtual ~UIChooserAbstractModel() RT_OVERRIDE;
 
     /** @name General stuff.
       * @{ */

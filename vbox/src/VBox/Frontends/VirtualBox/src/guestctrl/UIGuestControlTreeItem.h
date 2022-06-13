@@ -1,4 +1,4 @@
-/* $Id: UIGuestControlTreeItem.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIGuestControlTreeItem.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGuestControlTreeItem class declaration.
  */
@@ -90,7 +90,7 @@ public:
     const CGuestSession& guestSession() const;
     void errorString(QString strError);
     KGuestSessionStatus status() const;
-    virtual QString propertyString() const /* override */;
+    virtual QString propertyString() const RT_OVERRIDE;
 
 protected:
 
@@ -106,10 +106,10 @@ private slots:
 
 private:
 
-    virtual void prepareListener() /* override */;
-    virtual void prepareConnections() /* override */;
-    virtual void cleanupListener()  /* override */;
-    virtual void setColumnText()  /* override */;
+    virtual void prepareListener() RT_OVERRIDE;
+    virtual void prepareConnections() RT_OVERRIDE;
+    virtual void cleanupListener()  RT_OVERRIDE;
+    virtual void setColumnText()  RT_OVERRIDE;
     void addGuestProcess(CGuestProcess guestProcess);
     void initProcessSubTree();
     CGuestSession m_comGuestSession;
@@ -132,7 +132,7 @@ public:
     const CGuestProcess& guestProcess() const;
     virtual ~UIGuestProcessTreeItem();
     KProcessStatus status() const;
-    virtual QString propertyString() const /* override */;
+    virtual QString propertyString() const RT_OVERRIDE;
 
 protected:
 
@@ -145,10 +145,10 @@ private slots:
 
 private:
 
-    virtual void prepareListener() /* override */;
-    virtual void prepareConnections() /* override */;
-    virtual void cleanupListener()  /* override */;
-    virtual void setColumnText()  /* override */;
+    virtual void prepareListener() RT_OVERRIDE;
+    virtual void prepareConnections() RT_OVERRIDE;
+    virtual void cleanupListener()  RT_OVERRIDE;
+    virtual void setColumnText()  RT_OVERRIDE;
 
     CGuestProcess m_comGuestProcess;
 };

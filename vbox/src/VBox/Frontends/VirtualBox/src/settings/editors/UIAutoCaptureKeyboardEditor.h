@@ -1,4 +1,4 @@
-/* $Id: UIAutoCaptureKeyboardEditor.h 93936 2022-02-24 16:50:21Z vboxsync $ */
+/* $Id: UIAutoCaptureKeyboardEditor.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIAutoCaptureKeyboardEditor class declaration.
  */
@@ -46,7 +46,7 @@ public:
 protected:
 
     /** Handles translation event. */
-    virtual void retranslateUi() /* override */;
+    virtual void retranslateUi() RT_OVERRIDE;
 
 private:
 

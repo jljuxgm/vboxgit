@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIActionPoolManager.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class declaration.
  */
@@ -215,21 +215,21 @@ protected:
     UIActionPoolManager(bool fTemporary = false);
 
     /** Prepares pool. */
-    virtual void preparePool() /* override */;
+    virtual void preparePool() RT_OVERRIDE;
     /** Prepares connections. */
-    virtual void prepareConnections() /* override */;
+    virtual void prepareConnections() RT_OVERRIDE;
 
     /** Updates menu. */
-    virtual void updateMenu(int iIndex) /* override */;
+    virtual void updateMenu(int iIndex) RT_OVERRIDE;
     /** Updates menus. */
-    virtual void updateMenus() /* override */;
+    virtual void updateMenus() RT_OVERRIDE;
 
     /** Defines whether shortcuts of menu actions with specified @a iIndex should be visible. */
-    virtual void setShortcutsVisible(int iIndex, bool fVisible) /* override */;
+    virtual void setShortcutsVisible(int iIndex, bool fVisible) RT_OVERRIDE;
     /** Returns extra-data ID to save keyboard shortcuts under. */
-    virtual QString shortcutsExtraDataID() const /* override */;
+    virtual QString shortcutsExtraDataID() const RT_OVERRIDE;
     /** Updates shortcuts. */
-    virtual void updateShortcuts() /* override */;
+    virtual void updateShortcuts() RT_OVERRIDE;
 
 private:
 

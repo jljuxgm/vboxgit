@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerLogPanel.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIFileManagerLogPanel.cpp 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -44,7 +44,7 @@ public:
 
 protected:
 
-    virtual void contextMenuEvent(QContextMenuEvent * event) /* override */;
+    virtual void contextMenuEvent(QContextMenuEvent * event) RT_OVERRIDE;
 
 private slots:
 

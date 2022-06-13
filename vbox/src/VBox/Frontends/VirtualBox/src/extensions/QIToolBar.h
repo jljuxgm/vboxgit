@@ -1,4 +1,4 @@
-/* $Id: QIToolBar.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: QIToolBar.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIToolBar class declaration.
  */
@@ -68,11 +68,11 @@ public:
 protected:
 
     /** Handles resize @a pEvent. */
-    virtual void resizeEvent(QResizeEvent *pEvent) /* override */;
+    virtual void resizeEvent(QResizeEvent *pEvent) RT_OVERRIDE;
 
 #ifdef VBOX_WS_MAC
     /** Handles paint @a pEvent. */
-    virtual void paintEvent(QPaintEvent *pEvent) /* override */;
+    virtual void paintEvent(QPaintEvent *pEvent) RT_OVERRIDE;
 #endif
 
 private:

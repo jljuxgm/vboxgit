@@ -1,4 +1,4 @@
-/* $Id: UIHelpBrowserWidget.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIHelpBrowserWidget.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHelpBrowserWidget class declaration.
  */
@@ -77,7 +77,7 @@ public:
 protected:
 
     /** Returns whether the window should be maximized when geometry being restored. */
-    virtual bool shouldBeMaximized() const /* override */;
+    virtual bool shouldBeMaximized() const;
 
 private slots:
 
@@ -138,12 +138,12 @@ private:
     /** @name Event handling stuff.
      * @{ */
     /** Handles translation event. */
-       virtual void retranslateUi() /* override */;
+       virtual void retranslateUi() RT_OVERRIDE;
 
        /** Handles Qt show @a pEvent. */
-       virtual void showEvent(QShowEvent *pEvent) /* override */;
+       virtual void showEvent(QShowEvent *pEvent) RT_OVERRIDE;
        /** Handles Qt key-press @a pEvent. */
-       virtual void keyPressEvent(QKeyEvent *pEvent) /* override */;
+       virtual void keyPressEvent(QKeyEvent *pEvent) RT_OVERRIDE;
     /** @} */
     /* Looks for Url for the keyword using QHelpEngine API and shows it in a new tab whne successful. */
     void findAndShowUrlForKeyword(const QString &strKeyword);

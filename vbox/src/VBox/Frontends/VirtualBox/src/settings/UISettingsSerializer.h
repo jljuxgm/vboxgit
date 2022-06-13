@@ -1,4 +1,4 @@
-/* $Id: UISettingsSerializer.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UISettingsSerializer.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsSerializer class declaration.
  */
@@ -97,7 +97,7 @@ public:
                          const QVariant &data, const UISettingsPageList &pages);
 
     /** Destructs serializer. */
-    virtual ~UISettingsSerializer() /* override */;
+    virtual ~UISettingsSerializer() RT_OVERRIDE;
 
     /** Returns the load/save direction. */
     SerializationDirection direction() const { return m_enmDirection; }

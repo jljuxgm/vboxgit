@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 93983 2022-02-28 14:37:43Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -530,7 +530,7 @@ private:
     /** @name General
       * @{ */
         /** Returns whether the window should be maximized when geometry being restored. */
-        virtual bool shouldBeMaximized() const /* override */;
+        virtual bool shouldBeMaximized() const RT_OVERRIDE;
     /** @} */
 
     /** @name Prepare/Cleanup

@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSBFilterDetails.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIMachineSettingsUSBFilterDetails.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsUSBFilterDetails class declaration.
  */
@@ -42,7 +42,7 @@ public:
 protected:
 
     /** Handles translation event. */
-    virtual void retranslateUi() /* override */;
+    virtual void retranslateUi() RT_OVERRIDE;
 
 private:
 

@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewerTextEdit.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIVMLogViewerTextEdit.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -71,11 +71,11 @@ public:
 
 protected:
 
-    virtual void contextMenuEvent(QContextMenuEvent *pEvent) /* override */;
-    virtual void resizeEvent(QResizeEvent *pEvent) /* override */;
-    virtual void mouseMoveEvent(QMouseEvent *pEvent) /* override */;
-    virtual void leaveEvent(QEvent * pEvent) /* override */;
-    virtual void retranslateUi() /* override */;
+    virtual void contextMenuEvent(QContextMenuEvent *pEvent) RT_OVERRIDE;
+    virtual void resizeEvent(QResizeEvent *pEvent) RT_OVERRIDE;
+    virtual void mouseMoveEvent(QMouseEvent *pEvent) RT_OVERRIDE;
+    virtual void leaveEvent(QEvent * pEvent) RT_OVERRIDE;
+    virtual void retranslateUi() RT_OVERRIDE;
 
 private slots:
 

@@ -1,4 +1,4 @@
-/* $Id: UIVisoContentBrowser.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIVisoContentBrowser.cpp 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVisoContentBrowser class implementation.
  */
@@ -68,7 +68,7 @@ public:
 protected:
 
     /** Used to filter-out files and show only directories. */
-    virtual bool filterAcceptsRow(int source_row, const QModelIndex &source_parent) const /* override */;
+    virtual bool filterAcceptsRow(int source_row, const QModelIndex &source_parent) const RT_OVERRIDE;
 };
 
 

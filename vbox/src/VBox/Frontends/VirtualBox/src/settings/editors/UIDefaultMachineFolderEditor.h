@@ -1,4 +1,4 @@
-/* $Id: UIDefaultMachineFolderEditor.h 93935 2022-02-24 16:40:30Z vboxsync $ */
+/* $Id: UIDefaultMachineFolderEditor.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDefaultMachineFolderEditor class declaration.
  */
@@ -61,7 +61,7 @@ public:
 protected:
 
     /** Handles translation event. */
-    virtual void retranslateUi() /* override */;
+    virtual void retranslateUi() RT_OVERRIDE;
 
 private slots:
 

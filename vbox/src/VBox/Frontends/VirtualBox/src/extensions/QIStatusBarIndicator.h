@@ -1,4 +1,4 @@
-/* $Id: QIStatusBarIndicator.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: QIStatusBarIndicator.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIStatusBarIndicator interface declaration.
  */
@@ -61,13 +61,13 @@ protected:
 
 #ifdef VBOX_WS_MAC
     /** Handles mouse-press @a pEvent. */
-    virtual void mousePressEvent(QMouseEvent *pEvent) /* override */;
+    virtual void mousePressEvent(QMouseEvent *pEvent) RT_OVERRIDE;
 #endif /* VBOX_WS_MAC */
     /** Handles mouse-double-click @a pEvent. */
-    virtual void mouseDoubleClickEvent(QMouseEvent *pEvent) /* override */;
+    virtual void mouseDoubleClickEvent(QMouseEvent *pEvent) RT_OVERRIDE;
 
     /** Handles context-menu @a pEvent. */
-    virtual void contextMenuEvent(QContextMenuEvent *pEvent) /* override */;
+    virtual void contextMenuEvent(QContextMenuEvent *pEvent) RT_OVERRIDE;
 
     /** Holds currently cached size. */
     QSize m_size;
@@ -102,7 +102,7 @@ public slots:
 protected:
 
     /** Handles paint @a pEvent. */
-    virtual void paintEvent(QPaintEvent *pEvent) /* override */;
+    virtual void paintEvent(QPaintEvent *pEvent) RT_OVERRIDE;
 
     /** Draws contents using passed @a pPainter. */
     virtual void drawContents(QPainter *pPainter);

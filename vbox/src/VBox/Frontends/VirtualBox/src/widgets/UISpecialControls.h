@@ -1,4 +1,4 @@
-/* $Id: UISpecialControls.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UISpecialControls.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISpecialControls declarations.
  */
@@ -64,9 +64,9 @@ public:
 protected:
 
     /** Handles paint @a pEvent. */
-    virtual void paintEvent(QPaintEvent *pEvent) /* override */ { Q_UNUSED(pEvent); }
+    virtual void paintEvent(QPaintEvent *pEvent) RT_OVERRIDE { Q_UNUSED(pEvent); }
     /** Handles resize @a pEvent. */
-    virtual void resizeEvent(QResizeEvent *pEvent) /* override */;
+    virtual void resizeEvent(QResizeEvent *pEvent) RT_OVERRIDE;
 
 private:
 
@@ -94,7 +94,7 @@ public:
 protected:
 
     /** Handles paint @a pEvent. */
-    virtual void paintEvent(QPaintEvent *pEvent) /* override */ { Q_UNUSED(pEvent); }
+    virtual void paintEvent(QPaintEvent *pEvent) RT_OVERRIDE { Q_UNUSED(pEvent); }
 
 private:
 
@@ -117,7 +117,7 @@ public:
 protected:
 
     /** Handles translation event. */
-    virtual void retranslateUi() /* override */ {};
+    virtual void retranslateUi() RT_OVERRIDE {};
 };
 
 
@@ -152,14 +152,14 @@ protected:
     bool hitButton(const QPoint &position) const;
 
     /** Handles paint @a pEvent. */
-    virtual void paintEvent(QPaintEvent *pEvent) /* override */;
+    virtual void paintEvent(QPaintEvent *pEvent) RT_OVERRIDE;
 
     /** Handles mouse-press @a pEvent. */
-    virtual void mousePressEvent(QMouseEvent *pEvent) /* override */;
+    virtual void mousePressEvent(QMouseEvent *pEvent) RT_OVERRIDE;
     /** Handles mouse-release @a pEvent. */
-    virtual void mouseReleaseEvent(QMouseEvent *pEvent) /* override */;
+    virtual void mouseReleaseEvent(QMouseEvent *pEvent) RT_OVERRIDE;
     /** Handles mouse-leave @a pEvent. */
-    virtual void leaveEvent(QEvent *pEvent) /* override */;
+    virtual void leaveEvent(QEvent *pEvent) RT_OVERRIDE;
 
 private:
 

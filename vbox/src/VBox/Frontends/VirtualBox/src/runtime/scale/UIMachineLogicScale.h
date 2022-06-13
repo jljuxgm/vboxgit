@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicScale.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIMachineLogicScale.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicScale class declaration.
  */
@@ -48,7 +48,7 @@ private slots:
 #endif /* !RT_OS_DARWIN */
 
     /** Handles host-screen available-area change. */
-    virtual void sltHostScreenAvailableAreaChange() /* override */;
+    virtual void sltHostScreenAvailableAreaChange() RT_OVERRIDE;
 
 private:
 

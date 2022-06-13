@@ -1,4 +1,4 @@
-/* $Id: UIDownloader.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIDownloader.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDownloader class declaration.
  */
@@ -104,13 +104,13 @@ protected:
     virtual QString description() const;
 
     /** Handles network-reply progress for @a iReceived bytes of @a iTotal. */
-    virtual void processNetworkReplyProgress(qint64 iReceived, qint64 iTotal) /* override */;
+    virtual void processNetworkReplyProgress(qint64 iReceived, qint64 iTotal) RT_OVERRIDE;
     /** Handles network-reply failed with specified @a strError. */
-    virtual void processNetworkReplyFailed(const QString &strError) /* override */;
+    virtual void processNetworkReplyFailed(const QString &strError) RT_OVERRIDE;
     /** Handles network-reply cancel request for @a pReply. */
-    virtual void processNetworkReplyCanceled(UINetworkReply *pReply) /* override */;
+    virtual void processNetworkReplyCanceled(UINetworkReply *pReply) RT_OVERRIDE;
     /** Handles network-reply finish for @a pReply. */
-    virtual void processNetworkReplyFinished(UINetworkReply *pReply) /* override */;
+    virtual void processNetworkReplyFinished(UINetworkReply *pReply) RT_OVERRIDE;
 
     /** Asks user for downloading confirmation for passed @a pReply. */
     virtual bool askForDownloadingConfirmation(UINetworkReply *pReply) = 0;

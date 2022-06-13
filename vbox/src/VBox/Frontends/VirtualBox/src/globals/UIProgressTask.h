@@ -1,4 +1,4 @@
-/* $Id: UIProgressTask.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIProgressTask.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIProgressTask class declaration.
  */
@@ -56,7 +56,7 @@ public:
     /** Creates progress task passing @a pParent to the base-class. */
     UIProgressTask(QObject *pParent);
     /** Creates progress task passing @a pParent to the base-class. */
-    virtual ~UIProgressTask() /* override */;
+    virtual ~UIProgressTask() RT_OVERRIDE;
 
     /** Returns whether task is scheduled. */
     bool isScheduled() const;

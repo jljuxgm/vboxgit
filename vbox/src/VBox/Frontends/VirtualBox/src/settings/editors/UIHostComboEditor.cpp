@@ -1,4 +1,4 @@
-/* $Id: UIHostComboEditor.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIHostComboEditor.cpp 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHostComboEditor class implementation.
  */
@@ -84,7 +84,7 @@ public:
     {}
 
     /** Handles all native events. */
-    virtual bool nativeEventFilter(const QByteArray &eventType, void *pMessage, long *pResult) /* override */
+    virtual bool nativeEventFilter(const QByteArray &eventType, void *pMessage, long *pResult) RT_OVERRIDE
     {
         /* Redirect event to parent: */
         return m_pParent->nativeEvent(eventType, pMessage, pResult);

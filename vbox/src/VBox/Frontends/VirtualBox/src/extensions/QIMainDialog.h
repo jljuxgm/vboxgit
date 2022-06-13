@@ -1,4 +1,4 @@
-/* $Id: QIMainDialog.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: QIMainDialog.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIMainDialog class declaration.
  */
@@ -72,20 +72,20 @@ public slots:
 protected:
 
     /** Preprocesses any Qt @a pEvent for passed @a pObject. */
-    virtual bool eventFilter(QObject *pObject, QEvent *pEvent) /* override */;
+    virtual bool eventFilter(QObject *pObject, QEvent *pEvent) RT_OVERRIDE;
     /** Handles any Qt @a pEvent. */
-    virtual bool event(QEvent *pEvent) /* override */;
+    virtual bool event(QEvent *pEvent) RT_OVERRIDE;
 
     /** Handles show @a pEvent. */
-    virtual void showEvent(QShowEvent *pEvent) /* override */;
+    virtual void showEvent(QShowEvent *pEvent) RT_OVERRIDE;
     /** Handles first show @a pEvent. */
     virtual void polishEvent(QShowEvent *pEvent);
 
     /** Handles resize @a pEvent. */
-    virtual void resizeEvent(QResizeEvent *pEvent) /* override */;
+    virtual void resizeEvent(QResizeEvent *pEvent) RT_OVERRIDE;
 
     /** Handles key-press @a pEvent. */
-    virtual void keyPressEvent(QKeyEvent *pEvent) /* override */;
+    virtual void keyPressEvent(QKeyEvent *pEvent) RT_OVERRIDE;
 
     /** Searches for dialog's default button. */
     QPushButton *searchDefaultButton() const;

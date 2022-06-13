@@ -1,4 +1,4 @@
-/* $Id: UITaskCloudGetSettingsForm.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UITaskCloudGetSettingsForm.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UITaskCloudGetSettingsForm class declaration.
  */
@@ -55,7 +55,7 @@ public:
 protected:
 
     /** Contains the task body. */
-    virtual void run() /* override */;
+    virtual void run() RT_OVERRIDE;
 
 private:
 

@@ -1,4 +1,4 @@
-/* $Id: UIStarter.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIStarter.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIStarter class declaration.
  */
@@ -33,7 +33,7 @@ class UIStarter : public QObject
     /** Constructs UI starter. */
     UIStarter();
     /** Destructs UI starter. */
-    virtual ~UIStarter() /* override */;
+    virtual ~UIStarter();
 
 public:
 

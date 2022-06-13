@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIMainEventListener.cpp 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMainEventListener class implementation.
  */
@@ -89,12 +89,12 @@ public:
                                const CEventListener &comListener,
                                const QSet<KVBoxEventType> &escapeEventTypes);
     /** Destructs Main events listener thread. */
-    virtual ~UIMainEventListeningThread() /* override */;
+    virtual ~UIMainEventListeningThread() RT_OVERRIDE;
 
 protected:
 
     /** Contains the thread excution body. */
-    virtual void run() /* override */;
+    virtual void run() RT_OVERRIDE;
 
     /** Returns whether the thread asked to shutdown prematurely. */
     bool isShutdown() const;

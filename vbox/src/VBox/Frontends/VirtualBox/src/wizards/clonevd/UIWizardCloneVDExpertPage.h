@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDExpertPage.h 93673 2022-02-10 07:04:54Z vboxsync $ */
+/* $Id: UIWizardCloneVDExpertPage.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDExpertPage class declaration.
  */
@@ -60,16 +60,16 @@ private slots:
 private:
 
     /** Handles translation event. */
-    virtual void retranslateUi() /* override */;
+    virtual void retranslateUi() RT_OVERRIDE;
 
     /** Prepares the page. */
-    virtual void initializePage() /* override */;
+    virtual void initializePage() RT_OVERRIDE;
 
     /** Returns whether the page is complete. */
-    virtual bool isComplete() const /* override */;
+    virtual bool isComplete() const RT_OVERRIDE;
 
     /** Returns whether the page is valid. */
-    virtual bool validatePage() /* override */;
+    virtual bool validatePage() RT_OVERRIDE;
 
     void prepare(KDeviceType enmDeviceType, qulonglong uSourceDiskLogicaSize);
 

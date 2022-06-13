@@ -1,4 +1,4 @@
-/* $Id: UISlidingWidget.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UISlidingWidget.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISlidingWidget class declaration.
  */
@@ -23,6 +23,9 @@
 
 /* Qt includes: */
 #include <QWidget>
+
+/* Other VBox includes: */
+#include <iprt/cdefs.h>
 
 /* Forward declarations: */
 class QBoxLayout;
@@ -79,10 +82,10 @@ public:
 protected:
 
     /** Handles any Qt @a pEvent. */
-    virtual bool event(QEvent *pEvent) /* override */;
+    virtual bool event(QEvent *pEvent) RT_OVERRIDE;
 
     /** Handles resize @a pEvent. */
-    virtual void resizeEvent(QResizeEvent *pEvent) /* override */;
+    virtual void resizeEvent(QResizeEvent *pEvent) RT_OVERRIDE;
 
 private slots:
 

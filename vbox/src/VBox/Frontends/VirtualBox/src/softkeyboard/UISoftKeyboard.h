@@ -1,4 +1,4 @@
-/* $Id: UISoftKeyboard.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UISoftKeyboard.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISoftKeyboard class declaration.
  */
@@ -66,10 +66,10 @@ public:
 
 protected:
 
-    virtual void retranslateUi() /* override */;
-    virtual bool shouldBeMaximized() const /* override */;
-    virtual void closeEvent(QCloseEvent *event) /* override */;
-    bool event(QEvent *pEvent) /* override */;
+    virtual void retranslateUi() RT_OVERRIDE;
+    virtual bool shouldBeMaximized() const RT_OVERRIDE;
+    virtual void closeEvent(QCloseEvent *event) RT_OVERRIDE;
+    bool event(QEvent *pEvent) RT_OVERRIDE;
 
 private slots:
 

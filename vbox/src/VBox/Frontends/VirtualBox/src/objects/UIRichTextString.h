@@ -1,4 +1,4 @@
-/* $Id: UIRichTextString.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIRichTextString.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIRichTextString class declaration.
  */
@@ -53,7 +53,7 @@ public:
     UIRichTextString(const QString &strString, Type enmType = Type_None, const QString &strStringMeta = QString());
 
     /** Destructor rich text string. */
-    virtual ~UIRichTextString() /* override */;
+    virtual ~UIRichTextString();
 
     /** Returns the QString representation. */
     QString toString() const;

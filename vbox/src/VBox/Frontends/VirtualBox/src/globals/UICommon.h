@@ -1,4 +1,4 @@
-/* $Id: UICommon.h 93460 2022-01-27 16:50:15Z vboxsync $ */
+/* $Id: UICommon.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICommon class declaration.
  */
@@ -545,10 +545,10 @@ public slots:
 protected:
 
     /** Preprocesses any Qt @a pEvent for passed @a pObject. */
-    virtual bool eventFilter(QObject *pObject, QEvent *pEvent) /* override */;
+    virtual bool eventFilter(QObject *pObject, QEvent *pEvent) RT_OVERRIDE;
 
     /** Handles translation event. */
-    virtual void retranslateUi() /* override */;
+    virtual void retranslateUi();
 
 protected slots:
 

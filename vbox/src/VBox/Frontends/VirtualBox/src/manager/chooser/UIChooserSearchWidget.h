@@ -1,4 +1,4 @@
-/* $Id: UIChooserSearchWidget.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UIChooserSearchWidget.h 93990 2022-02-28 15:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIChooserSearchWidget class declaration.
  */
@@ -61,10 +61,10 @@ public:
 
 protected:
 
-    virtual void showEvent(QShowEvent *pEvent) /* override */;
-    virtual void hideEvent(QHideEvent *pEvent) /* override */;
-    virtual void retranslateUi() /* override */;
-    virtual bool eventFilter(QObject *pWatched, QEvent *pEvent) /* override */;
+    virtual void showEvent(QShowEvent *pEvent) RT_OVERRIDE;
+    virtual void hideEvent(QHideEvent *pEvent) RT_OVERRIDE;
+    virtual void retranslateUi() RT_OVERRIDE;
+    virtual bool eventFilter(QObject *pWatched, QEvent *pEvent) RT_OVERRIDE;
 
 public slots:
 
