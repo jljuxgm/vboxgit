@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedFoldersSvc.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: VBoxSharedFoldersSvc.cpp 90238 2021-07-19 13:48:09Z vboxsync $ */
 /** @file
  * Shared Folders - Host service entry points.
  */
@@ -1849,6 +1849,20 @@ extern "C" DECLCALLBACK(DECLEXPORT(int)) VBoxHGCMSvcLoad (VBOXHGCMSVCFNTABLE *pt
             g_pHelpers = ptable->pHelpers;
 
             ptable->cbClient = sizeof (SHFLCLIENTDATA);
+
+            /* Map legacy clients to the kernel category. */
+            ptable->idxLegacyClientCategory = HGCM_CLIENT_CATEGORY_KERNEL;
+
+            /* Only 64K pending calls per kernel client, root gets 16K and regular users 1K. */
+            ptable->acMaxCallsPerClient[HGCM_CLIENT_CATEGORY_KERNEL] = _64K;
+            ptable->acMaxCallsPerClient[HGCM_CLIENT_CATEGORY_ROOT]   = _16K;
+            ptable->acMaxCallsPerClient[HGCM_CLIENT_CATEGORY_USER]   = _1K;
+
+            /* Reduce the number of clients to SHFL_MAX_MAPPINGS + 2 in each category,
+               so the increased calls-per-client value causes less trouble.
+               ((64 + 2) * 3 * 65536 = 12 976 128) */
+            for (uintptr_t i = 0; i < RT_ELEMENTS(ptable->acMaxClients); i++)
+                ptable->acMaxClients[i] = SHFL_MAX_MAPPINGS + 2;
 
             ptable->pfnUnload     = svcUnload;
             ptable->pfnConnect    = svcConnect;

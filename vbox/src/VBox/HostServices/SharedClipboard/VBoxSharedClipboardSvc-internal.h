@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-internal.h 87566 2021-02-03 13:48:48Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-internal.h 90238 2021-07-19 13:48:09Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Internal header.
  */
@@ -305,8 +305,11 @@ void ShClSvcUnlock(void);
  */
 /**
  * Called on initialization.
+ *
+ * @param   pTable      The HGCM service call and parameter table.  Mainly for
+ *                      adjusting the limits.
  */
-int ShClBackendInit(void);
+int ShClBackendInit(VBOXHGCMSVCFNTABLE *pTable);
 
 /**
  * Called on destruction.

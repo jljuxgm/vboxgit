@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestControlSvc.cpp 87624 2021-02-05 12:55:26Z vboxsync $ */
+/* $Id: VBoxGuestControlSvc.cpp 90238 2021-07-19 13:48:09Z vboxsync $ */
 /** @file
  * Guest Control Service: Controlling the guest.
  */
@@ -2532,6 +2532,15 @@ extern "C" DECLCALLBACK(DECLEXPORT(int)) VBoxHGCMSvcLoad(VBOXHGCMSVCFNTABLE *pTa
                  * because we're a class which can have members for that :-).
                  */
                 pTable->cbClient = sizeof(ClientState);
+
+                /* Limit pending calls to 8 pending per connection (doubt we need more than
+                   one).  Map legacy clients to the root and limit kernel to 1 (zero would
+                   be default) and use defaults for root and user clients. */
+                for (uintptr_t i = 0; i < RT_ELEMENTS(pTable->acMaxClients); i++)
+                    pTable->acMaxCallsPerClient[i] = 8;
+
+                pTable->idxLegacyClientCategory = HGCM_CLIENT_CATEGORY_ROOT;
+                pTable->acMaxClients[HGCM_CLIENT_CATEGORY_KERNEL] = 1;
 
                 /* Register functions. */
                 pTable->pfnUnload               = GstCtrlService::svcUnload;

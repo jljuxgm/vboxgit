@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-win.cpp 90054 2021-07-06 10:55:23Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-win.cpp 90238 2021-07-19 13:48:09Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Win32 host.
  */
@@ -603,8 +603,9 @@ static int vboxClipboardSvcWinSyncInternal(PSHCLCONTEXT pCtx)
  * Public platform dependent functions.
  */
 
-int ShClBackendInit(void)
+int ShClBackendInit(VBOXHGCMSVCFNTABLE *pTable)
 {
+    RT_NOREF(pTable);
 #ifdef VBOX_WITH_SHARED_CLIPBOARD_TRANSFERS
     HRESULT hr = OleInitialize(NULL);
     if (FAILED(hr))

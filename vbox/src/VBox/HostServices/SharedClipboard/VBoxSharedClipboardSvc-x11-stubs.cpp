@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-x11-stubs.cpp 87566 2021-02-03 13:48:48Z vboxsync $*/
+/* $Id: VBoxSharedClipboardSvc-x11-stubs.cpp 90238 2021-07-19 13:48:09Z vboxsync $*/
 /** @file
  * Shared Clipboard Service - Linux host, a stub version with no functionality for use on headless hosts.
  */
@@ -40,8 +40,9 @@
 /*
  * Initialise the host side of the shared clipboard - called by the hgcm layer.
  */
-int ShClBackendInit(void)
+int ShClBackendInit(VBOXHGCMSVCFNTABLE *pTable)
 {
+    RT_NOREF(pTable);
     LogFlowFunc(("called, returning VINF_SUCCESS\n"));
     return VINF_SUCCESS;
 }

@@ -1,4 +1,4 @@
-/* $Id: tstClipboardServiceHost.cpp 86364 2020-09-30 20:53:36Z vboxsync $ */
+/* $Id: tstClipboardServiceHost.cpp 90238 2021-07-19 13:48:09Z vboxsync $ */
 /** @file
  * Shared Clipboard host service test case.
  */
@@ -309,7 +309,7 @@ int main(int argc, char *argv[])
     return RTTestSummaryAndDestroy(hTest);
 }
 
-int ShClBackendInit() { return VINF_SUCCESS; }
+int ShClBackendInit(VBOXHGCMSVCFNTABLE *) { return VINF_SUCCESS; }
 void ShClBackendDestroy() { }
 int ShClBackendDisconnect(PSHCLCLIENT) { return VINF_SUCCESS; }
 int ShClBackendConnect(PSHCLCLIENT, bool) { return VINF_SUCCESS; }

@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc-darwin.cpp 86889 2020-11-16 14:23:04Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc-darwin.cpp 90238 2021-07-19 13:48:09Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Mac OS X host.
  */
@@ -118,8 +118,9 @@ static DECLCALLBACK(int) vboxClipboardThread(RTTHREAD ThreadSelf, void *pvUser)
 }
 
 
-int ShClBackendInit(void)
+int ShClBackendInit(VBOXHGCMSVCFNTABLE *pTable)
 {
+    RT_NOREF(pTable);
     g_ctx.fTerminate = false;
 
     int rc = initPasteboard(&g_ctx.hPasteboard);

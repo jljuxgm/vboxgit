@@ -1,4 +1,4 @@
-/* $Id: tstClipboardServiceImpl.cpp 84142 2020-05-05 07:13:00Z vboxsync $ */
+/* $Id: tstClipboardServiceImpl.cpp 90238 2021-07-19 13:48:09Z vboxsync $ */
 /** @file
  * Shared Clipboard host service implementation (backend) test case.
  */
@@ -51,7 +51,7 @@ static int setupTable(VBOXHGCMSVCFNTABLE *pTable)
     return VBoxHGCMSvcLoad(pTable);
 }
 
-int ShClBackendInit(void) { return VINF_SUCCESS; }
+int ShClBackendInit(VBOXHGCMSVCFNTABLE *) { return VINF_SUCCESS; }
 void ShClBackendDestroy(void) { }
 int ShClBackendDisconnect(PSHCLCLIENT) { return VINF_SUCCESS; }
 int ShClBackendConnect(PSHCLCLIENT, bool) { return VINF_SUCCESS; }

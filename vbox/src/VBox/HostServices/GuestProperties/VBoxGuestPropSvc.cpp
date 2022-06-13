@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestPropSvc.cpp 85121 2020-07-08 19:33:26Z vboxsync $ */
+/* $Id: VBoxGuestPropSvc.cpp 90238 2021-07-19 13:48:09Z vboxsync $ */
 /** @file
  * Guest Property Service: Host service entry points.
  */
@@ -1863,6 +1863,14 @@ extern "C" DECLCALLBACK(DECLEXPORT(int)) VBoxHGCMSvcLoad(VBOXHGCMSVCFNTABLE *pta
             {
                 /* We do not maintain connections, so no client data is needed. */
                 ptable->cbClient = 0;
+
+                /* Legacy clients map to the kernel category. */
+                ptable->idxLegacyClientCategory = HGCM_CLIENT_CATEGORY_KERNEL;
+
+                /* Go with default client limits, but we won't ever need more than
+                   16 pending calls per client I would think (1 should be enough). */
+                for (uintptr_t i = 0; i < RT_ELEMENTS(ptable->acMaxClients); i++)
+                    ptable->acMaxCallsPerClient[i] = 16;
 
                 ptable->pfnUnload             = Service::svcUnload;
                 ptable->pfnConnect            = Service::svcConnect;
