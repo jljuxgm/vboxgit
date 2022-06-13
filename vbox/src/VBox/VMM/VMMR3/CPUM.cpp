@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 93931 2022-02-24 16:02:00Z vboxsync $ */
+/* $Id: CPUM.cpp 94901 2022-05-06 18:59:14Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -2021,9 +2021,9 @@ VMMR3DECL(int) CPUMR3Init(PVM pVM)
         LogRel(("The CPU doesn't support CPUID!\n"));
         return VERR_UNSUPPORTED_CPU;
     }
-#endif
 
     pVM->cpum.s.fHostMxCsrMask = CPUMR3DeterminHostMxCsrMask();
+#endif
 
     CPUMMSRS HostMsrs;
     RT_ZERO(HostMsrs);

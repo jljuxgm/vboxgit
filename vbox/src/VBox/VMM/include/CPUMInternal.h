@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: CPUMInternal.h 94901 2022-05-06 18:59:14Z vboxsync $ */
 /** @file
  * CPUM - Internal header file.
  */
@@ -365,8 +365,12 @@ typedef struct CPUM
      * to the guest.  This is 0 if no XSAVE/XRSTOR bits can be exposed. */
     uint64_t                fXStateHostMask;
 
+#if defined(RT_ARCH_X86) || defined(RT_ARCH_AMD64)
     /** The host MXCSR mask (determined at init). */
     uint32_t                fHostMxCsrMask;
+#else
+    uint32_t                u32UnusedOnNonX86;
+#endif
     /** Nested VMX: Whether to expose VMX-preemption timer to the guest. */
     bool                    fNestedVmxPreemptTimer;
     /** Nested VMX: Whether to expose EPT to the guest. If this is disabled make sure
