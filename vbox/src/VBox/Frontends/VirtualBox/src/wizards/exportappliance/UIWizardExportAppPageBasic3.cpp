@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic3.cpp 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic3.cpp 91259 2021-09-15 18:47:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic3 class implementation.
  */
@@ -200,6 +200,21 @@ void UIWizardExportAppPageBasic3::initializePage()
         refreshFormPropertiesTable();
     else
         refreshApplianceSettingsWidget();
+
+    /* Listen for custom button clicks: */
+    connect(wizard(), &UIWizard::customButtonClicked,
+            this, &UIWizardExportAppPageBasic3::sltHandleCustomButtonClicked,
+            Qt::UniqueConnection);
+}
+
+void UIWizardExportAppPageBasic3::cleanupPage()
+{
+    /* Call to base-class: */
+    UIWizardPage::cleanupPage();
+
+    /* Stop listen for custom button clicks: */
+    disconnect(wizard(), &UIWizard::customButtonClicked,
+               this, &UIWizardExportAppPageBasic3::sltHandleCustomButtonClicked);
 }
 
 bool UIWizardExportAppPageBasic3::validatePage()
@@ -262,5 +277,16 @@ void UIWizardExportAppPageBasic3::updatePageAppearance()
         m_pLabel->setText(UIWizardExportApp::tr("This is the descriptive information which will be added to the virtual "
                                                 "appliance.  You can change it by double clicking on individual lines."));
         m_pApplianceWidget->setFocus();
+    }
+}
+
+void UIWizardExportAppPageBasic3::sltHandleCustomButtonClicked(int iId)
+{
+    /* Handle 2nd button: */
+    if (iId == QWizard::CustomButton2)
+    {
+        /* Reset widget to default: */
+        AssertPtrReturnVoid(m_pApplianceWidget.data());
+        m_pApplianceWidget->restoreDefaults();
     }
 }

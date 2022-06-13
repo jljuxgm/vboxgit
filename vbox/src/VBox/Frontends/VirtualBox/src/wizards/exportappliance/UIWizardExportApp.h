@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportApp.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIWizardExportApp.h 91259 2021-09-15 18:47:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportApp class declaration.
  */
@@ -63,9 +63,6 @@ protected slots:
 
     /** Handles page change to @a iId. */
     virtual void sltCurrentIdChanged(int iId) /* override */;
-
-    /** Handles custom button @a iId click. */
-    virtual void sltCustomButtonClicked(int iId) /* override */;
 
 protected:
 

@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageExpert.h 86346 2020-09-30 13:02:39Z vboxsync $ */
+/* $Id: UIWizardExportAppPageExpert.h 91259 2021-09-15 18:47:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageExpert class declaration.
  */
@@ -94,6 +94,10 @@ private slots:
 
     /** Handles change in MAC address export policy combo-box. */
     void sltHandleMACAddressExportPolicyComboChange();
+
+    /** Handles custom button clicked.
+      * @param  iId  Brings clicked button id. */
+    void sltHandleCustomButtonClicked(int iId);
 
     /** Handles change in profile combo-box. */
     void sltHandleProfileComboChange();

@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportApp.cpp 90564 2021-08-07 11:12:13Z vboxsync $ */
+/* $Id: UIWizardExportApp.cpp 91259 2021-09-15 18:47:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportApp class implementation.
  */
@@ -186,22 +186,6 @@ void UIWizardExportApp::sltCurrentIdChanged(int iId)
     /* Enable 2nd button (Reset to Defaults) for 3rd and Expert pages only! */
     setOption(QWizard::HaveCustomButton2,    (mode() == WizardMode_Basic && iId == Page3)
                                           || (mode() == WizardMode_Expert && iId == PageExpert));
-}
-
-void UIWizardExportApp::sltCustomButtonClicked(int iId)
-{
-    /* Call to base-class: */
-    UIWizard::sltCustomButtonClicked(iId);
-
-    /* Handle 2nd button: */
-    if (iId == CustomButton2)
-    {
-        /* Get appliance widget and make sure it's valid: */
-        ExportAppliancePointer pApplianceWidget = field("applianceWidget").value<ExportAppliancePointer>();
-        AssertMsg(!pApplianceWidget.isNull(), ("Appliance Widget is not set!\n"));
-        /* Reset it to default: */
-        pApplianceWidget->restoreDefaults();
-    }
 }
 
 void UIWizardExportApp::retranslateUi()

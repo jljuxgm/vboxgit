@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic3.h 82968 2020-02-04 10:35:17Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic3.h 91259 2021-09-15 18:47:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic3 class declaration.
  */
@@ -91,12 +91,20 @@ protected:
 
     /** Performs page initialization. */
     virtual void initializePage() /* override */;
+    /** Performs page cleanup. */
+    virtual void cleanupPage() /* override */;
 
     /** Performs page validation. */
     virtual bool validatePage() /* override */;
 
     /** Updates page appearance. */
     virtual void updatePageAppearance() /* override */;
+
+private slots:
+
+    /** Handles custom button clicked.
+      * @param  iId  Brings clicked button id. */
+    void sltHandleCustomButtonClicked(int iId);
 
 private:
 
