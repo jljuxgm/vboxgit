@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVD.cpp 90401 2021-07-29 10:36:20Z vboxsync $ */
+/* $Id: UIWizardNewVD.cpp 90403 2021-07-29 12:10:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVD class implementation.
  */
@@ -153,7 +153,6 @@ bool UIWizardNewVD::createVirtualDisk()
         variants[i] = (KMediumVariant)temp;
     }
 
-    /* Copy medium: */
     UINotificationProgressMediumCreate *pNotification = new UINotificationProgressMediumCreate(comVirtualDisk,
                                                                                                m_uMediumSize,
                                                                                                variants);
