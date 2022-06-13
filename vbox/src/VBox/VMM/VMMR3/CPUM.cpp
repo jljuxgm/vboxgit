@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: CPUM.cpp 93223 2022-01-13 12:07:19Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -1441,7 +1441,7 @@ static void cpumR3InitVmxGuestMsrs(PVM pVM, PCVMXMSRS pHostVmxMsrs, PCCPUMFEATUR
     }
 
     /* CR0 Fixed-0. */
-    pGuestVmxMsrs->u64Cr0Fixed0 = pGuestFeatures->fVmxUnrestrictedGuest ? VMX_V_CR0_FIXED0_UX : VMX_V_CR0_FIXED0;
+    pGuestVmxMsrs->u64Cr0Fixed0 = VMX_V_CR0_FIXED0;
 
     /* CR0 Fixed-1. */
     {
