@@ -1,4 +1,4 @@
-/* $Id: vkatCmdSelfTest.cpp 91946 2021-10-21 13:30:54Z vboxsync $ */
+/* $Id: vkatCmdSelfTest.cpp 91947 2021-10-21 13:33:57Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) - Self test.
  *
@@ -114,7 +114,7 @@ static SELFTESTCTX g_Ctx;
 
 
 /*********************************************************************************************************************************
-*   Driver stack self-test implementation                                                                                                     *
+*   Driver stack self-test implementation                                                                                        *
 *********************************************************************************************************************************/
 
 /**
