@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.cpp 94089 2022-03-04 14:06:52Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.cpp 94168 2022-03-11 11:46:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class implementation.
  */
@@ -19,6 +19,7 @@
 #include <QActionGroup>
 #include <QClipboard>
 #include <QFile>
+#include <QFontDatabase>
 #include <QGuiApplication>
 #include <QMenuBar>
 #include <QProcess>
@@ -1520,18 +1521,20 @@ void UIVirtualBoxManager::sltPerformShowLog()
 void UIVirtualBoxManager::sltHandleConsoleLogRead(const QString &strName, const QString &strLog)
 {
     /* Prepare dialog: */
-    QDialog *pDialog = new QDialog(this);
-    if (pDialog)
+    QWidget *pWindow = new QWidget(this, Qt::Window);
+    if (pWindow)
     {
-        pDialog->setAttribute(Qt::WA_DeleteOnClose);
-        pDialog->setWindowTitle(QString("%1 - Console Log").arg(strName));
+        pWindow->setAttribute(Qt::WA_DeleteOnClose);
+        pWindow->setWindowTitle(QString("%1 - Console Log").arg(strName));
 
-        QVBoxLayout *pLayout = new QVBoxLayout(pDialog);
+        QVBoxLayout *pLayout = new QVBoxLayout(pWindow);
         if (pLayout)
         {
-            QTextEdit *pTextEdit = new QTextEdit(pDialog);
+            QTextEdit *pTextEdit = new QTextEdit(pWindow);
             if (pTextEdit)
             {
+                pTextEdit->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
+                pTextEdit->setReadOnly(true);
                 pTextEdit->setText(strLog);
                 pLayout->addWidget(pTextEdit);
             }
@@ -1539,7 +1542,7 @@ void UIVirtualBoxManager::sltHandleConsoleLogRead(const QString &strName, const 
     }
 
     /* Show dialog: */
-    pDialog->show();
+    pWindow->show();
 }
 
 void UIVirtualBoxManager::sltPerformDiscardMachineState()
