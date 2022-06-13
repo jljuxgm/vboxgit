@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolManager.cpp 94836 2022-05-05 08:54:30Z vboxsync $ */
+/* $Id: UIActionPoolManager.cpp 94991 2022-05-12 12:29:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolManager class implementation.
  */
@@ -2763,8 +2763,6 @@ public:
         : UIActionSimple(pParent)
     {
         setShortcutContext(Qt::WidgetWithChildrenShortcut);
-        setIcon(0, UIIconPool::iconSetFull(":/hd_clear_32px.png",          ":/hd_clear_16px.png",
-                                           ":/hd_clear_disabled_32px.png", ":/hd_clear_disabled_16px.png"));
         setIcon(1, UIIconPool::iconSetFull(":/cd_clear_32px.png",          ":/cd_clear_16px.png",
                                            ":/cd_clear_disabled_32px.png", ":/cd_clear_disabled_16px.png"));
         setIcon(2, UIIconPool::iconSetFull(":/fd_clear_32px.png",          ":/fd_clear_16px.png",
