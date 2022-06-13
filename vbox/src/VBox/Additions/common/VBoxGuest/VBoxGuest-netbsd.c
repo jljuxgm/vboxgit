@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-netbsd.c 91255 2021-09-15 15:20:26Z vboxsync $ */
+/* $Id: VBoxGuest-netbsd.c 92502 2021-11-18 17:35:10Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Driver for NetBSD.
  */
@@ -1028,8 +1028,19 @@ vboxguest_modcmd(modcmd_t cmd, void *opaque)
                                  &retval,
 #endif
                                  UIO_SYSSPACE);
-            if (error == EEXIST)
+            if (error == EEXIST) {
                 error = 0;
+
+                /*
+                 * Since NetBSD doesn't yet have a major reserved for
+                 * vboxguest, the (first free) major we get will
+                 * change when new devices are added, so an existing
+                 * /dev/vboxguest may now point to some other device,
+                 * creating confusion (tripped me up a few times).
+                 */
+                aprint_normal("vboxguest: major %d:"
+                              " check existing /dev/vboxguest\n", cmajor);
+            }
             break;
 
         case MODULE_CMD_FINI:
