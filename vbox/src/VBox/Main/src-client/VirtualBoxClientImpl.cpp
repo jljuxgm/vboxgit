@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxClientImpl.cpp 90848 2021-08-24 13:54:26Z vboxsync $ */
+/* $Id: VirtualBoxClientImpl.cpp 90849 2021-08-24 14:08:04Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -101,6 +101,8 @@ VBOX_LISTENER_DECLARE(VBoxEventListenerImpl)
 
 // constructor / destructor
 /////////////////////////////////////////////////////////////////////////////
+
+/** @relates VirtualBoxClient::FinalConstruct() */
 HRESULT VirtualBoxClient::FinalConstruct()
 {
     HRESULT rc = init();
