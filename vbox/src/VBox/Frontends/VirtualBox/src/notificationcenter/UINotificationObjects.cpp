@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 90689 2021-08-15 15:03:02Z vboxsync $ */
+/* $Id: UINotificationObjects.cpp 90690 2021-08-15 15:48:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -205,6 +205,7 @@ void UINotificationMessage::destroyMessage(const QString &strInternalName)
     gpNotificationCenter->revoke(m_messages.value(strInternalName));
     m_messages.remove(strInternalName);
 }
+
 
 /*********************************************************************************************************************************
 *   Class UINotificationProgressMediumCreate implementation.                                                                     *
