@@ -1,4 +1,4 @@
-/* $Id: thread-posix.cpp 89870 2021-06-23 20:51:30Z vboxsync $ */
+/* $Id: thread-posix.cpp 90392 2021-07-29 08:25:50Z vboxsync $ */
 /** @file
  * IPRT - Threads, POSIX.
  */
@@ -237,14 +237,25 @@ DECLHIDDEN(int) rtThreadNativeInit(void)
     return rc;
 }
 
-static void rtThreadPosixBlockSignals(void)
+static void rtThreadPosixBlockSignals(PRTTHREADINT pThread)
 {
+    /*
+     * Mask all signals, including the poke one, if requested.
+     */
+    if (   pThread
+        && (pThread->fFlags & RTTHREADFLAGS_NO_SIGNALS))
+    {
+        sigset_t SigSet;
+        sigfillset(&SigSet);
+        int rc = sigprocmask(SIG_BLOCK, &SigSet, NULL);
+        AssertMsg(rc == 0, ("rc=%Rrc errno=%d\n", RTErrConvertFromErrno(errno), errno)); RT_NOREF(rc);
+    }
     /*
      * Block SIGALRM - required for timer-posix.cpp.
      * This is done to limit harm done by OSes which doesn't do special SIGALRM scheduling.
      * It will not help much if someone creates threads directly using pthread_create. :/
      */
-    if (!RTR3InitIsUnobtrusive())
+    else if (!RTR3InitIsUnobtrusive())
     {
         sigset_t SigSet;
         sigemptyset(&SigSet);
@@ -254,7 +265,7 @@ static void rtThreadPosixBlockSignals(void)
 
 #ifdef RTTHREAD_POSIX_WITH_POKE
     /*
-     * bird 2020-10-28: Not entirely sure we do this, but it makes sure the signal works
+     * bird 2020-10-28: Not entirely sure why we do this, but it makes sure the signal works
      *                  on the new thread.  Probably some pre-NPTL linux reasons.
      */
     if (g_iSigPokeThread != -1)
@@ -285,7 +296,7 @@ DECLHIDDEN(void) rtThreadNativeReInitObtrusive(void)
     Assert(!RTR3InitIsUnobtrusive());
     rtThreadPosixSelectPokeSignal();
 #endif
-    rtThreadPosixBlockSignals();
+    rtThreadPosixBlockSignals(NULL);
 }
 
 
@@ -330,7 +341,7 @@ static void rtThreadPosixPokeSignal(int iSignal)
  */
 DECLHIDDEN(int) rtThreadNativeAdopt(PRTTHREADINT pThread)
 {
-    rtThreadPosixBlockSignals();
+    rtThreadPosixBlockSignals(pThread);
 
     int rc = pthread_setspecific(g_SelfKey, pThread);
     if (!rc)
@@ -366,7 +377,7 @@ static void *rtThreadNativeMain(void *pvArgs)
     ASMMemoryFence();
 #endif
 
-    rtThreadPosixBlockSignals();
+    rtThreadPosixBlockSignals(pThread);
 
     /*
      * Set the TLS entry and, if possible, the thread name.
