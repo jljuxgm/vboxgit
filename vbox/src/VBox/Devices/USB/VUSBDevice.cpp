@@ -1,4 +1,4 @@
-/* $Id: VUSBDevice.cpp 93939 2022-02-24 17:23:37Z vboxsync $ */
+/* $Id: VUSBDevice.cpp 93940 2022-02-24 18:31:49Z vboxsync $ */
 /** @file
  * Virtual USB - Device.
  */
@@ -1053,7 +1053,7 @@ void vusbDevSetAddress(PVUSBDEV pDev, uint8_t u8Address)
 
         pDev->pNextDefAddr = NULL;
     }
-    else
+    else if (pDev->u8Address != VUSB_INVALID_ADDRESS)
         pRh->apDevByAddr[pDev->u8Address] = NULL;
 
     if (u8Address == VUSB_DEFAULT_ADDRESS)
