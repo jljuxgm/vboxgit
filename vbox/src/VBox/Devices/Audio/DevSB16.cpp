@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 89822 2021-06-21 13:27:53Z vboxsync $ */
+/* $Id: DevSB16.cpp 90012 2021-07-04 21:08:37Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  */
@@ -1944,7 +1944,7 @@ static int sb16StreamDoDmaOutput(PSB16STATE pThis, PSB16STREAM pStream, int uDma
         if (RT_LIKELY(!pStream->Dbg.Runtime.fEnabled))
         { /* likely */ }
         else
-            AudioHlpFileWrite(pStream->Dbg.Runtime.pFileDMA, pv, cbRead, 0 /* fFlags */);
+            AudioHlpFileWrite(pStream->Dbg.Runtime.pFileDMA, pv, cbRead);
 
         RTCircBufReleaseWriteBlock(pStream->State.pCircBuf, cbRead);
 
@@ -2064,18 +2064,10 @@ static int sb16StreamCreate(PSB16STATE pThis, PSB16STREAM pStream, uint8_t uIdx)
     { /* likely */ }
     else
     {
-        char szFile[64];
-
-        if (sb16GetDirFromIndex(pStream->uIdx) == PDMAUDIODIR_IN)
-            RTStrPrintf(szFile, sizeof(szFile), "sb16StreamWriteSD%RU8", pStream->uIdx);
-        else
-            RTStrPrintf(szFile, sizeof(szFile), "sb16StreamReadSD%RU8", pStream->uIdx);
-
-        char szPath[RTPATH_MAX];
-        int rc2 = AudioHlpFileNameGet(szPath, sizeof(szPath), pThis->Dbg.pszOutPath, szFile,
-                                      0 /* uInst */, AUDIOHLPFILETYPE_WAV, AUDIOHLPFILENAME_FLAGS_NONE);
-        AssertRC(rc2);
-        rc2 = AudioHlpFileCreate(AUDIOHLPFILETYPE_WAV, szPath, AUDIOHLPFILE_FLAGS_NONE, &pStream->Dbg.Runtime.pFileDMA);
+        int rc2 = AudioHlpFileCreateF(&pStream->Dbg.Runtime.pFileDMA, AUDIOHLPFILE_FLAGS_NONE, AUDIOHLPFILETYPE_WAV,
+                                      pThis->Dbg.pszOutPath, AUDIOHLPFILENAME_FLAGS_NONE, 0 /*uInstance*/,
+                                      sb16GetDirFromIndex(pStream->uIdx) == PDMAUDIODIR_IN
+                                      ? "sb16StreamWriteSD%RU8" : "sb16StreamReadSD%RU8", pStream->uIdx);
         AssertRC(rc2);
 
         /* Delete stale debugging files from a former run. */

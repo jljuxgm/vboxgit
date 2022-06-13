@@ -1,4 +1,4 @@
-/* $Id: DrvHostAudioDebug.cpp 89510 2021-06-04 13:20:02Z vboxsync $ */
+/* $Id: DrvHostAudioDebug.cpp 90012 2021-07-04 21:08:37Z vboxsync $ */
 /** @file
  * Host audio driver - Debug - For dumping and injecting audio data from/to the device emulation.
  */
@@ -117,9 +117,9 @@ static DECLCALLBACK(int) drvHstAudDebugHA_StreamCreate(PPDMIHOSTAUDIO pInterface
         AudioTestToneInitRandom(&pStreamDbg->In, &pStreamDbg->Cfg.Props);
 
     int rc = AudioHlpFileCreateAndOpenEx(&pStreamDbg->pFile, AUDIOHLPFILETYPE_WAV, NULL /*use temp dir*/,
-                                         pCfgReq->enmDir == PDMAUDIODIR_IN ? "DebugAudioIn" : "DebugAudioOut",
                                          pThis->pDrvIns->iInstance, AUDIOHLPFILENAME_FLAGS_NONE, AUDIOHLPFILE_FLAGS_NONE,
-                                         &pCfgReq->Props, RTFILE_O_WRITE | RTFILE_O_DENY_WRITE | RTFILE_O_CREATE_REPLACE);
+                                         &pCfgReq->Props, RTFILE_O_WRITE | RTFILE_O_DENY_WRITE | RTFILE_O_CREATE_REPLACE,
+                                         pCfgReq->enmDir == PDMAUDIODIR_IN ? "DebugAudioIn" : "DebugAudioOut");
     if (RT_FAILURE(rc))
         LogRel(("DebugAudio: Failed to creating debug file for %s stream '%s' in the temp directory: %Rrc\n",
                 pCfgReq->enmDir == PDMAUDIODIR_IN ? "input" : "output", pCfgReq->szName, rc));
@@ -239,7 +239,7 @@ static DECLCALLBACK(int) drvHstAudDebugHA_StreamPlay(PPDMIHOSTAUDIO pInterface, 
     RT_NOREF(pInterface);
     PDRVHSTAUDDEBUGSTREAM pStreamDbg = (PDRVHSTAUDDEBUGSTREAM)pStream;
 
-    int rc = AudioHlpFileWrite(pStreamDbg->pFile, pvBuf, cbBuf, 0 /* fFlags */);
+    int rc = AudioHlpFileWrite(pStreamDbg->pFile, pvBuf, cbBuf);
     if (RT_SUCCESS(rc))
         *pcbWritten = cbBuf;
     else
@@ -277,7 +277,7 @@ static DECLCALLBACK(int) drvHstAudDebugHA_StreamCapture(PPDMIHOSTAUDIO pInterfac
         /*
          * Write it.
          */
-        rc = AudioHlpFileWrite(pStreamDbg->pFile, pvBuf, cbWritten, 0 /* fFlags */);
+        rc = AudioHlpFileWrite(pStreamDbg->pFile, pvBuf, cbWritten);
         if (RT_SUCCESS(rc))
             *pcbRead = cbWritten;
     }

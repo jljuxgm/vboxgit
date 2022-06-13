@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 90007 2021-07-02 20:47:28Z vboxsync $ */
+/* $Id: AudioMixer.cpp 90012 2021-07-04 21:08:37Z vboxsync $ */
 /** @file
  * Audio mixing routines for multiplexing audio sources in device emulations.
  */
@@ -2031,7 +2031,7 @@ uint64_t AudioMixerSinkTransferFromCircBuf(PAUDMIXSINK pSink, PRTCIRCBUF pCircBu
         if (!pDbgFile)
         { /* likely */ }
         else
-            AudioHlpFileWrite(pDbgFile, pvSrcBuf, cbSrcBuf, 0 /* fFlags */);
+            AudioHlpFileWrite(pDbgFile, pvSrcBuf, cbSrcBuf);
 
 
         RTCircBufReleaseReadBlock(pCircBuf, cbWritten);
@@ -2152,7 +2152,7 @@ uint64_t AudioMixerSinkTransferToCircBuf(PAUDMIXSINK pSink, PRTCIRCBUF pCircBuf,
         if (RT_LIKELY(!pDbgFile))
         { /* likely */ }
         else
-            AudioHlpFileWrite(pDbgFile, abBuf, cbRead, 0 /* fFlags */);
+            AudioHlpFileWrite(pDbgFile, abBuf, cbRead);
 
         /* Advance. */
         Assert(cbRead <= cbToTransfer);

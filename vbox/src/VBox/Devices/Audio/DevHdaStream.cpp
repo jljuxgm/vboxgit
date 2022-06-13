@@ -1,4 +1,4 @@
-/* $Id: DevHdaStream.cpp 89887 2021-06-24 12:30:53Z vboxsync $ */
+/* $Id: DevHdaStream.cpp 90013 2021-07-04 21:10:00Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation - Streams.
  */
@@ -85,11 +85,6 @@ int hdaR3StreamConstruct(PHDASTREAM pStreamShared, PHDASTREAMR3 pStreamR3, PHDAS
     AssertPtr(pStreamR3->pHDAStateR3);
     AssertPtr(pStreamR3->pHDAStateR3->pDevIns);
 
-# ifdef DEBUG
-    int rc = RTCritSectInit(&pStreamR3->Dbg.CritSect);
-    AssertRCReturn(rc, rc);
-# endif
-
     const bool fIsInput = hdaGetDirFromSD(uSD) == PDMAUDIODIR_IN;
 
     if (fIsInput)
@@ -107,46 +102,21 @@ int hdaR3StreamConstruct(PHDASTREAM pStreamShared, PHDASTREAMR3 pStreamR3, PHDAS
 
     if (pStreamR3->Dbg.Runtime.fEnabled)
     {
-        char szFile[64];
-        char szPath[RTPATH_MAX];
-
-        /* pFileStream */
-        if (fIsInput)
-            RTStrPrintf(szFile, sizeof(szFile), "hdaStreamWriteSD%RU8", uSD);
-        else
-            RTStrPrintf(szFile, sizeof(szFile), "hdaStreamReadSD%RU8", uSD);
-
-        int rc2 = AudioHlpFileNameGet(szPath, sizeof(szPath), pThisCC->Dbg.pszOutPath, szFile,
-                                      0 /* uInst */, AUDIOHLPFILETYPE_WAV, AUDIOHLPFILENAME_FLAGS_NONE);
-        AssertRC(rc2);
-
-        rc2 = AudioHlpFileCreate(AUDIOHLPFILETYPE_WAV, szPath, AUDIOHLPFILE_FLAGS_NONE, &pStreamR3->Dbg.Runtime.pFileStream);
+        int rc2 = AudioHlpFileCreateF(&pStreamR3->Dbg.Runtime.pFileStream, AUDIOHLPFILE_FLAGS_NONE, AUDIOHLPFILETYPE_WAV,
+                                      pThisCC->Dbg.pszOutPath, AUDIOHLPFILENAME_FLAGS_NONE, 0 /*uInstance*/,
+                                      fIsInput ? "hdaStreamWriteSD%RU8" : "hdaStreamReadSD%RU8", uSD);
         AssertRC(rc2);
 
         /* pFileDMARaw */
-        if (fIsInput)
-            RTStrPrintf(szFile, sizeof(szFile), "hdaDMARawWriteSD%RU8", uSD);
-        else
-            RTStrPrintf(szFile, sizeof(szFile), "hdaDMARawReadSD%RU8", uSD);
-
-        rc2 = AudioHlpFileNameGet(szPath, sizeof(szPath), pThisCC->Dbg.pszOutPath, szFile,
-                                  0 /* uInst */, AUDIOHLPFILETYPE_WAV, AUDIOHLPFILENAME_FLAGS_NONE);
-        AssertRC(rc2);
-
-        rc2 = AudioHlpFileCreate(AUDIOHLPFILETYPE_WAV, szPath, AUDIOHLPFILE_FLAGS_NONE, &pStreamR3->Dbg.Runtime.pFileDMARaw);
+        rc2 = AudioHlpFileCreateF(&pStreamR3->Dbg.Runtime.pFileDMARaw, AUDIOHLPFILE_FLAGS_NONE, AUDIOHLPFILETYPE_WAV,
+                                  pThisCC->Dbg.pszOutPath, AUDIOHLPFILENAME_FLAGS_NONE, 0 /*uInstance*/,
+                                  fIsInput ? "hdaDMARawWriteSD%RU8" : "hdaDMARawReadSD%RU8", uSD);
         AssertRC(rc2);
 
         /* pFileDMAMapped */
-        if (fIsInput)
-            RTStrPrintf(szFile, sizeof(szFile), "hdaDMAWriteMappedSD%RU8", uSD);
-        else
-            RTStrPrintf(szFile, sizeof(szFile), "hdaDMAReadMappedSD%RU8", uSD);
-
-        rc2 = AudioHlpFileNameGet(szPath, sizeof(szPath), pThisCC->Dbg.pszOutPath, szFile,
-                                  0 /* uInst */, AUDIOHLPFILETYPE_WAV, AUDIOHLPFILENAME_FLAGS_NONE);
-        AssertRC(rc2);
-
-        rc2 = AudioHlpFileCreate(AUDIOHLPFILETYPE_WAV, szPath, AUDIOHLPFILE_FLAGS_NONE, &pStreamR3->Dbg.Runtime.pFileDMAMapped);
+        rc2 = AudioHlpFileCreateF(&pStreamR3->Dbg.Runtime.pFileDMAMapped, AUDIOHLPFILE_FLAGS_NONE, AUDIOHLPFILETYPE_WAV,
+                                  pThisCC->Dbg.pszOutPath, AUDIOHLPFILENAME_FLAGS_NONE, 0 /*uInstance*/,
+                                  fIsInput ? "hdaDMAWriteMappedSD%RU8" : "hdaDMAReadMappedSD%RU8", uSD);
         AssertRC(rc2);
 
         /* Delete stale debugging files from a former run. */
@@ -182,14 +152,6 @@ void hdaR3StreamDestroy(PHDASTREAMR3 pStreamR3)
         pStreamR3->State.StatDmaBufSize = 0;
         pStreamR3->State.StatDmaBufUsed = 0;
     }
-
-# ifdef DEBUG
-    if (RTCritSectIsInitialized(&pStreamR3->Dbg.CritSect))
-    {
-        rc2 = RTCritSectDelete(&pStreamR3->Dbg.CritSect);
-        AssertRC(rc2);
-    }
-# endif
 
     if (pStreamR3->Dbg.Runtime.fEnabled)
     {
@@ -1036,17 +998,6 @@ void hdaR3StreamReset(PHDASTATE pThis, PHDASTATER3 pThisCC, PHDASTREAM pStreamSh
     pStreamShared->State.offWrite = 0;
     pStreamShared->State.offRead  = 0;
 
-# ifdef DEBUG
-    pStreamR3->Dbg.cReadsTotal      = 0;
-    pStreamR3->Dbg.cbReadTotal      = 0;
-    pStreamR3->Dbg.tsLastReadNs     = 0;
-    pStreamR3->Dbg.cWritesTotal     = 0;
-    pStreamR3->Dbg.cbWrittenTotal   = 0;
-    pStreamR3->Dbg.cWritesHz        = 0;
-    pStreamR3->Dbg.cbWrittenHz      = 0;
-    pStreamR3->Dbg.tsWriteSlotBegin = 0;
-# endif
-
     /* Report that we're done resetting this stream. */
     HDA_STREAM_REG(pThis, CTL,   uSD) = 0;
 
@@ -1618,7 +1569,7 @@ static void hdaR3StreamDoDmaInput(PPDMDEVINS pDevIns, PHDASTATE pThis, PHDASTREA
                 if (RT_LIKELY(!pStreamR3->Dbg.Runtime.fEnabled))
                 { /* likely */ }
                 else
-                    AudioHlpFileWrite(pStreamR3->Dbg.Runtime.pFileDMARaw, pvBufSrc, cbBufSrc, 0 /* fFlags */);
+                    AudioHlpFileWrite(pStreamR3->Dbg.Runtime.pFileDMARaw, pvBufSrc, cbBufSrc);
 
 # ifdef VBOX_WITH_DTRACE
                 VBOXDD_HDA_STREAM_DMA_IN((uint32_t)uSD, (uint32_t)cbBufSrc, pStreamShared->State.offRead);
@@ -1802,7 +1753,7 @@ static void hdaR3StreamDoDmaOutput(PPDMDEVINS pDevIns, PHDASTATE pThis, PHDASTRE
             if (RT_LIKELY(!pStreamR3->Dbg.Runtime.fEnabled))
             { /* likely */ }
             else
-                AudioHlpFileWrite(pStreamR3->Dbg.Runtime.pFileDMARaw, pvBufDst, cbBufDst, 0 /* fFlags */);
+                AudioHlpFileWrite(pStreamR3->Dbg.Runtime.pFileDMARaw, pvBufDst, cbBufDst);
 
 # ifdef VBOX_WITH_DTRACE
             VBOXDD_HDA_STREAM_DMA_OUT((uint32_t)uSD, (uint32_t)cbBufDst, pStreamShared->State.offWrite);
@@ -2225,7 +2176,7 @@ static void hdaR3StreamFlushDmaBounceBufferOutput(PHDASTREAM pStreamShared, PHDA
                 if (RT_LIKELY(!pStreamR3->Dbg.Runtime.fEnabled))
                 { /* likely */ }
                 else
-                    AudioHlpFileWrite(pStreamR3->Dbg.Runtime.pFileDMARaw, pvBufDst, cbBufDst, 0 /* fFlags */);
+                    AudioHlpFileWrite(pStreamR3->Dbg.Runtime.pFileDMARaw, pvBufDst, cbBufDst);
 
                 RTCircBufReleaseWriteBlock(pCircBuf, cbBufDst);
 

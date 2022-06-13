@@ -1,4 +1,4 @@
-/* $Id: AudioHlp.h 90010 2021-07-04 19:37:45Z vboxsync $ */
+/* $Id: AudioHlp.h 90012 2021-07-04 21:08:37Z vboxsync $ */
 /** @file
  * Audio helper routines.
  */
@@ -74,12 +74,6 @@ typedef enum AUDIOHLPFILETYPE
     AUDIOHLPFILETYPE_32BIT_HACK = 0x7fffffff
 } AUDIOHLPFILETYPE;
 
-/** @name Audio file (name) helper methods.
- * @{ */
-int     AudioHlpFileNameGet(char *pszFile, size_t cchFile, const char *pszPath, const char *pszName,
-                            uint32_t uInstance, AUDIOHLPFILETYPE enmType, uint32_t fFlags);
-/** @}  */
-
 /** @name AUDIOHLPFILENAME_FLAGS_XXX
  * @{ */
 /** No flags defined. */
@@ -99,15 +93,13 @@ typedef struct AUDIOHLPFILE
     AUDIOHLPFILETYPE    enmType;
     /** Audio file flags, AUDIOHLPFILE_FLAGS_XXX. */
     uint32_t            fFlags;
+    /** Amount of wave data written. */
+    uint64_t            cbWaveData;
     /** Actual file handle. */
     RTFILE              hFile;
-    /** Data needed for the specific audio file type implemented.
-     * Optional, can be NULL. */
-    void               *pvData;
-    /** Data size (in bytes). */
-    size_t              cbData;
     /** File name and path. */
-    char                szName[RTPATH_MAX];
+    RT_FLEXIBLE_ARRAY_EXTENSION
+    char                szName[RT_FLEXIBLE_ARRAY];
 } AUDIOHLPFILE;
 /** Pointer to an audio file handle. */
 typedef AUDIOHLPFILE *PAUDIOHLPFILE;
@@ -116,20 +108,19 @@ typedef AUDIOHLPFILE *PAUDIOHLPFILE;
  * @{ */
 int     AudioHlpFileCreateAndOpen(PAUDIOHLPFILE *ppFile, const char *pszDir, const char *pszName,
                                   uint32_t iInstance, PCPDMAUDIOPCMPROPS pProps);
-int     AudioHlpFileCreateAndOpenEx(PAUDIOHLPFILE *ppFile, AUDIOHLPFILETYPE enmType, const char *pszDir, const char *pszName,
+int     AudioHlpFileCreateAndOpenEx(PAUDIOHLPFILE *ppFile, AUDIOHLPFILETYPE enmType, const char *pszDir,
                                     uint32_t iInstance, uint32_t fFilename, uint32_t fCreate,
-                                    PCPDMAUDIOPCMPROPS pProps, uint64_t fOpen);
-int     AudioHlpFileCreate(AUDIOHLPFILETYPE enmType, const char *pszFile, uint32_t fFlags, PAUDIOHLPFILE *ppFile);
+                                    PCPDMAUDIOPCMPROPS pProps, uint64_t fOpen, const char *pszName, ...);
+int     AudioHlpFileCreateF(PAUDIOHLPFILE *ppFile, uint32_t fFlags, AUDIOHLPFILETYPE enmType,
+                            const char *pszPath, uint32_t fFilename, uint32_t uInstance, const char *pszFileFmt, ...);
+
 void    AudioHlpFileDestroy(PAUDIOHLPFILE pFile);
-int     AudioHlpFileOpen(PAUDIOHLPFILE pFile, uint32_t fOpen, PCPDMAUDIOPCMPROPS pProps);
+int     AudioHlpFileOpen(PAUDIOHLPFILE pFile, uint64_t fOpen, PCPDMAUDIOPCMPROPS pProps);
 int     AudioHlpFileClose(PAUDIOHLPFILE pFile);
 int     AudioHlpFileDelete(PAUDIOHLPFILE pFile);
-size_t  AudioHlpFileGetDataSize(PAUDIOHLPFILE pFile);
 bool    AudioHlpFileIsOpen(PAUDIOHLPFILE pFile);
-int     AudioHlpFileWrite(PAUDIOHLPFILE pFile, const void *pvBuf, size_t cbBuf, uint32_t fFlags);
+int     AudioHlpFileWrite(PAUDIOHLPFILE pFile, const void *pvBuf, size_t cbBuf);
 /** @}  */
-
-#define AUDIO_MAKE_FOURCC(c0, c1, c2, c3) RT_H2LE_U32_C(RT_MAKE_U32_FROM_U8(c0, c1, c2, c3))
 
 #endif /* !VBOX_INCLUDED_SRC_Audio_AudioHlp_h */
 
