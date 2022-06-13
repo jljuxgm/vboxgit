@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 92170 2021-11-01 22:06:25Z vboxsync $ */
+/* $Id: PGMPhys.cpp 92177 2021-11-02 13:48:55Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -4038,7 +4038,9 @@ VMMR3_INT_DECL(int) PGMR3PhysMmio2QueryAndResetDirtyBitmap(PVM pVM, PPDMDEVINS p
     int rc = PGM_LOCK(pVM);
     if (RT_SUCCESS(rc))
     {
+        STAM_PROFILE_START(&pVM->pgm.s.StatMmio2QueryAndResetDirtyBitmap, a);
         rc = pgmR3PhysMmio2QueryAndResetDirtyBitmapLocked(pVM, pDevIns, hMmio2, pvBitmap, cbBitmap);
+        STAM_PROFILE_STOP(&pVM->pgm.s.StatMmio2QueryAndResetDirtyBitmap, a);
         PGM_UNLOCK(pVM);
     }
     return rc;

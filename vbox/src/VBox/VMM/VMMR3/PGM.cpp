@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 92162 2021-10-31 23:34:31Z vboxsync $ */
+/* $Id: PGM.cpp 92177 2021-11-02 13:48:55Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -1186,6 +1186,7 @@ static int pgmR3InitStats(PVM pVM)
     STAM_REL_REG(pVM, &pPGM->StatLargePageRecheck,               STAMTYPE_COUNTER, "/PGM/LargePage/Recheck",             STAMUNIT_OCCURENCES, "The number of times we've rechecked a disabled large page.");
 
     STAM_REL_REG(pVM, &pPGM->StatShModCheck,                     STAMTYPE_PROFILE, "/PGM/ShMod/Check",                   STAMUNIT_TICKS_PER_CALL, "Profiles the shared module checking.");
+    STAM_REL_REG(pVM, &pPGM->StatMmio2QueryAndResetDirtyBitmap,  STAMTYPE_PROFILE, "/PGM/Mmio2QueryAndResetDirtyBitmap", STAMUNIT_TICKS_PER_CALL, "Profiles calls to PGMR3PhysMmio2QueryAndResetDirtyBitmap (sans locking).");
 
     /* Live save */
     STAM_REL_REG_USED(pVM, &pPGM->LiveSave.fActive,              STAMTYPE_U8,      "/PGM/LiveSave/fActive",              STAMUNIT_COUNT,     "Active or not.");

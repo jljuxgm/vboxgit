@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 92170 2021-11-01 22:06:25Z vboxsync $ */
+/* $Id: PGMInternal.h 92177 2021-11-02 13:48:55Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -3281,6 +3281,8 @@ typedef struct PGM
     STAMCOUNTER                     StatLargePageRecheck;   /**< The number of times we rechecked a disabled large page.*/
 
     STAMPROFILE                     StatShModCheck;         /**< Profiles shared module checks. */
+
+    STAMPROFILE                     StatMmio2QueryAndResetDirtyBitmap; /**< Profiling PGMR3PhysMmio2QueryAndResetDirtyBitmap. */
     /** @} */
 
 #ifdef VBOX_WITH_STATISTICS

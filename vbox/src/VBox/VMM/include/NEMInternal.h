@@ -1,4 +1,4 @@
-/* $Id: NEMInternal.h 92170 2021-11-01 22:06:25Z vboxsync $ */
+/* $Id: NEMInternal.h 92177 2021-11-02 13:48:55Z vboxsync $ */
 /** @file
  * NEM - Internal header file.
  */
@@ -219,7 +219,6 @@ typedef struct NEM
 #  ifdef VBOX_WITH_PGM_NEM_MODE
     STAMPROFILE                 StatProfMapGpaRange;
     STAMPROFILE                 StatProfUnmapGpaRange;
-    STAMPROFILE                 StatProfQueryGpaRangeDirtyBitmap;
 #  endif
 #  ifndef NEM_WIN_USE_HYPERCALLS_FOR_PAGES
     STAMPROFILE                 StatProfMapGpaRangePage;
