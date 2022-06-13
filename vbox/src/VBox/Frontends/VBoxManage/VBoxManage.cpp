@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 92829 2021-12-08 16:43:42Z vboxsync $ */
+/* $Id: VBoxManage.cpp 92830 2021-12-08 16:47:26Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -90,7 +90,7 @@ typedef VBMGCMD const *PCVBMGCMD;
 
 DECLARE_TRANSLATION_CONTEXT(VBoxManage);
 
-static void setBuiltInHelpLanguage(const char *pszLang);
+void setBuiltInHelpLanguage(const char *pszLang);
 
 #ifdef VBOX_WITH_VBOXMANAGE_NLS
 /* listener class for language updates */
