@@ -1,4 +1,4 @@
-/* $Id: UIWizardAddCloudVMPageSource.cpp 93998 2022-02-28 22:42:04Z vboxsync $ */
+/* $Id: UIWizardAddCloudVMPageSource.cpp 94166 2022-03-11 09:34:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardAddCloudVMPageSource class implementation.
  */
@@ -362,7 +362,7 @@ UIWizardAddCloudVMPageSource::UIWizardAddCloudVMPageSource()
             this, &UIWizardAddCloudVMPageSource::sltHandleProfileComboChange);
     connect(m_pProfileToolButton, &QIToolButton::clicked,
             this, &UIWizardAddCloudVMPageSource::sltHandleProfileButtonClick);
-    connect(m_pSourceInstanceList, &QListWidget::currentRowChanged,
+    connect(m_pSourceInstanceList, &QListWidget::itemSelectionChanged,
             this, &UIWizardAddCloudVMPageSource::sltHandleSourceInstanceChange);
 }
 
