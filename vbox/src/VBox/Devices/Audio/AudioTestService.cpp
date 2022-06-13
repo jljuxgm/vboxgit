@@ -1,4 +1,4 @@
-/* $Id: AudioTestService.cpp 91040 2021-08-31 17:40:36Z vboxsync $ */
+/* $Id: AudioTestService.cpp 91996 2021-10-22 07:13:14Z vboxsync $ */
 /** @file
  * AudioTestService - Audio test execution server.
  */
@@ -1173,7 +1173,7 @@ int AudioTestSvcStop(PATSSERVER pThis)
     ASMAtomicXchgBool(&pThis->fTerminate, true);
 
     if (pThis->pTransport)
-        pThis->pTransport->pfnTerm(pThis->pTransportInst);
+        pThis->pTransport->pfnStop(pThis->pTransportInst);
 
     size_t cbWritten;
     int rc = RTPipeWrite(pThis->hPipeW, "", 1, &cbWritten);

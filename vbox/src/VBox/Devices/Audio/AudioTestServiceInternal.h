@@ -1,4 +1,4 @@
-/* $Id: AudioTestServiceInternal.h 91024 2021-08-31 09:56:26Z vboxsync $ */
+/* $Id: AudioTestServiceInternal.h 91996 2021-10-22 07:13:14Z vboxsync $ */
 /** @file
  * AudioTestService - Audio test execution server, Internal Header.
  */
@@ -109,14 +109,14 @@ typedef struct ATSTRANSPORT
     DECLR3CALLBACKMEMBER(int, pfnStart, (PATSTRANSPORTINST pThis));
 
     /**
-     * Terminate a transport instance, closing and freeing resources.
+     * Stops a transport instance, closing and freeing resources.
      *
      * On errors, the transport layer shall call RTMsgError to display the error
      * details to the user.
      *
      * @param   pThis               The transport instance.
      */
-    DECLR3CALLBACKMEMBER(void, pfnTerm, (PATSTRANSPORTINST pThis));
+    DECLR3CALLBACKMEMBER(void, pfnStop, (PATSTRANSPORTINST pThis));
 
     /**
      * Waits for a new client to connect and returns the client specific data on
