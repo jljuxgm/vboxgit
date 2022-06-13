@@ -12,13 +12,14 @@
     VirtualBox OSE distribution. VirtualBox OSE is distributed in the
     hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  -->
-<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
-
-
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd"[
+<!ENTITY % all.entities SYSTEM "all-entities.ent">
+%all.entities;
+]>
 <refentry id="vboxmanage-cloudlist" lang="en">
-
   <refentryinfo>
-    <pubdate>$Date: 2020-04-06 22:41:33 +0800 (Mon, 06 Apr 2020) $</pubdate>
+    <pubdate>$Date: 2022-02-17 03:28:38 +0800 (Thu, 17 Feb 2022) $</pubdate>
     <title>VBoxManage cloud list</title>
   </refentryinfo>
 
