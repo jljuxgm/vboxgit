@@ -1,4 +1,4 @@
-/* $Id: AudioTestServiceClient.cpp 90984 2021-08-29 14:54:31Z vboxsync $ */
+/* $Id: AudioTestServiceClient.cpp 91024 2021-08-31 09:56:26Z vboxsync $ */
 /** @file
  * AudioTestServiceClient - Audio Test Service (ATS), Client helpers.
  *
@@ -330,7 +330,7 @@ int AudioTestSvcClientConnectEx(PATSCLIENT pClient, RTMSINTERVAL msTimeout)
     if (RT_SUCCESS(rc))
     {
         rc = pClient->pTransport->pfnWaitForConnect(pClient->pTransportInst,
-                                                    msTimeout, &pClient->pTransportClient);
+                                                    msTimeout, NULL /* pfFromServer */, &pClient->pTransportClient);
         if (RT_SUCCESS(rc))
         {
             rc = audioTestSvcClientDoGreet(pClient);
