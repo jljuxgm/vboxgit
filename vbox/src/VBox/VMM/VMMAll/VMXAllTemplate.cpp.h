@@ -1,4 +1,4 @@
-/* $Id: VMXAllTemplate.cpp.h 94882 2022-05-06 06:33:54Z vboxsync $ */
+/* $Id: VMXAllTemplate.cpp.h 94883 2022-05-06 06:40:20Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Code template for our own hypervisor and the NEM darwin backend using Apple's Hypervisor.framework.
  */
@@ -6852,10 +6852,10 @@ static VBOXSTRICTRC vmxHCExitXcptDE(PVMCPUCC pVCpu, PVMXTRANSIENT pVmxTransient)
     if (pVCpu->hm.s.fGCMTrapXcptDE)
     {
         uint8_t cbInstr = 0;
-        rc = GCMXcptDE(pVCpu, &pVCpu->cpum.GstCtx, NULL /* pDis */, &cbInstr);
-        if (rc == VINF_SUCCESS)
+        VBOXSTRICTRC rc2 = GCMXcptDE(pVCpu, &pVCpu->cpum.GstCtx, NULL /* pDis */, &cbInstr);
+        if (rc2 == VINF_SUCCESS)
             rcStrict = VINF_SUCCESS;    /* Restart instruction with modified guest register context. */
-        else if (rc == VINF_EM_RAW_GUEST_TRAP)
+        else if (rc2 == VINF_EM_RAW_GUEST_TRAP)
             rcStrict = VERR_NOT_FOUND;  /* Deliver the exception. */
         else
             Assert(RT_FAILURE(VBOXSTRICTRC_VAL(rcStrict)));
