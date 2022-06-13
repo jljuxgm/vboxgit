@@ -1,4 +1,4 @@
-/* $Id: vkat.cpp 89992 2021-07-02 08:56:55Z vboxsync $ */
+/* $Id: vkat.cpp 90044 2021-07-06 08:59:11Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) utility for testing and validating the audio stack.
  */
@@ -925,6 +925,14 @@ static int audioVerifyOne(const char *pszPathSetA, const char *pszPathSetB)
             else
                 RTTestFailed(g_hTest, "Verification failed with %Rrc", rc);
 
+#ifdef DEBUG
+            if (g_fDrvAudioDebug)
+                RTTestPrintf(g_hTest, RTTESTLVL_ALWAYS,
+                             "\n"
+                             "Use the following command line to re-run verification in the debugger:\n"
+                             "gdb --args ./VBoxAudioTest -vvvv --debug-audio verify \"%s\" \"%s\"\n",
+                             SetA.szPathAbs, SetB.szPathAbs);
+#endif
             if (!g_fDrvAudioDebug) /* Don't wipe stuff when debugging. Can be useful for introspecting data. */
                 AudioTestSetWipe(&SetB);
             AudioTestSetClose(&SetB);
