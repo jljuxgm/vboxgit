@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageExpert.cpp 94182 2022-03-11 17:25:06Z vboxsync $ */
+/* $Id: UIWizardImportAppPageExpert.cpp 94435 2022-04-01 11:13:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageExpert class implementation.
  */
@@ -491,15 +491,10 @@ bool UIWizardImportAppPageExpert::validatePage()
 
 void UIWizardImportAppPageExpert::sltAsyncInit()
 {
-    /* If we have file name passed,
-     * check if specified file contains valid appliance: */
+    /* If we have file name passed for local OVA file: */
     if (   !m_fImportFromOCIByDefault
-        && !m_strFileName.isEmpty()
-        && !wizard()->setFile(m_strFileName))
-    {
-        wizard()->reject();
-        return;
-    }
+        && !m_strFileName.isEmpty())
+        m_pFileSelector->setPath(m_strFileName);
 
     /* Refresh page widgets: */
     sltHandleSourceComboChange();
