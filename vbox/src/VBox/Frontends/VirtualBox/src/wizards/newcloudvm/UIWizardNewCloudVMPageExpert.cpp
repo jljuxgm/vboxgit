@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewCloudVMPageExpert.cpp 90375 2021-07-28 15:41:48Z vboxsync $ */
+/* $Id: UIWizardNewCloudVMPageExpert.cpp 90729 2021-08-18 16:26:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewCloudVMPageExpert class implementation.
  */
@@ -182,6 +182,13 @@ UIWizardNewCloudVMPageExpert::UIWizardNewCloudVMPageExpert(bool fFullWizard)
                                              : fm.height();
                     const int iTotalHeight = 8 * iSectionHeight;
                     m_pFormEditor->setMinimumSize(QSize(iTotalWidth, iTotalHeight));
+                    /* Setup connections: */
+                    connect(m_pFormEditor, &UIFormEditorWidget::sigProgressStarted,
+                            this, &UIWizardNewCloudVMPageExpert::sigProgressStarted);
+                    connect(m_pFormEditor, &UIFormEditorWidget::sigProgressChange,
+                            this, &UIWizardNewCloudVMPageExpert::sigProgressChange);
+                    connect(m_pFormEditor, &UIFormEditorWidget::sigProgressFinished,
+                            this, &UIWizardNewCloudVMPageExpert::sigProgressFinished);
 
                     /* Add into layout: */
                     pSettingsLayout->addWidget(m_pFormEditor);
