@@ -1,4 +1,4 @@
-/* $Id: UnattendedScript.cpp 93816 2022-02-16 22:37:58Z vboxsync $ */
+/* $Id: UnattendedScript.cpp 93839 2022-02-18 12:53:34Z vboxsync $ */
 /** @file
  * Classes for reading/parsing/saving scripts for unattended installation.
  */
@@ -826,6 +826,8 @@ HRESULT UnattendedScriptTemplate::getConditional(const char *pachPlaceholder, si
                 if ( res >= 0 && chComp == '>' )
                         *pfOutputting = true;
                 else if ( res < 0 && chComp == '<' )
+                        *pfOutputting = true;
+                else if ( res == 0 && chComp == '=' )
                         *pfOutputting = true;
                 else
                     *pfOutputting = false;
