@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 90627 2021-08-11 12:56:28Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 90728 2021-08-18 16:24:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -2200,39 +2200,11 @@ bool UIMessageCenter::confirmCloudProfilesImport(QWidget *pParent /* = 0 */) con
                           false /* ok button by default? */);
 }
 
-void UIMessageCenter::cannotAssignFormValue(const CBooleanFormValue &comValue, QWidget *pParent /* = 0 */) const
+void UIMessageCenter::cannotAssignFormValue(const QString &strError, QWidget *pParent /* = 0 */) const
 {
     error(pParent, MessageType_Error,
           tr("Failed to assign form value."),
-          UIErrorString::formatErrorInfo(comValue));
-}
-
-void UIMessageCenter::cannotAssignFormValue(const CStringFormValue &comValue, QWidget *pParent /* = 0 */) const
-{
-    error(pParent, MessageType_Error,
-          tr("Failed to assign form value."),
-          UIErrorString::formatErrorInfo(comValue));
-}
-
-void UIMessageCenter::cannotAssignFormValue(const CChoiceFormValue &comValue, QWidget *pParent /* = 0 */) const
-{
-    error(pParent, MessageType_Error,
-          tr("Failed to assign form value."),
-          UIErrorString::formatErrorInfo(comValue));
-}
-
-void UIMessageCenter::cannotAssignFormValue(const CRangedIntegerFormValue &comValue, QWidget *pParent /* = 0 */) const
-{
-    error(pParent, MessageType_Error,
-          tr("Failed to assign form value."),
-          UIErrorString::formatErrorInfo(comValue));
-}
-
-void UIMessageCenter::cannotAssignFormValue(const CProgress &comProgress, QWidget *pParent /* = 0 */) const
-{
-    error(pParent, MessageType_Error,
-          tr("Failed to assign form value."),
-          UIErrorString::formatErrorInfo(comProgress));
+          strError);
 }
 
 int UIMessageCenter::confirmCloudProfileManagerClosing(QWidget *pParent /* = 0 */) const
