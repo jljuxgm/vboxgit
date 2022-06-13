@@ -1,4 +1,4 @@
-/* $Id: UIFileManagerHostTable.cpp 92765 2021-12-06 14:23:24Z vboxsync $ */
+/* $Id: UIFileManagerHostTable.cpp 92860 2021-12-10 12:39:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFileManagerHostTable class implementation.
  */
@@ -530,11 +530,6 @@ void UIFileManagerHostTable::prepareActionConnections()
             this, &UIFileManagerTable::sltShowProperties);
     connect(m_pActionPool->action(UIActionIndex_M_FileManager_S_Host_CreateNewDirectory), &QAction::triggered,
             this, &UIFileManagerTable::sltCreateNewDirectory);
-}
-
-bool UIFileManagerHostTable::isSessionPossible()
-{
-    return true;
 }
 
 #include "UIFileManagerHostTable.moc"
