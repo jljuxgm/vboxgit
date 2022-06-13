@@ -1,4 +1,4 @@
-# $Id: Config.kmk 94574 2022-04-12 17:13:39Z vboxsync $
+# $Id: Config.kmk 94585 2022-04-13 10:35:01Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -6700,17 +6700,8 @@ TEMPLATE_VBOXR3AUTOTST_INST        = $(INST_TESTCASE)
 # This is the VBOXR3EXE template only with a different install dir.
 #
 TEMPLATE_VBOXR3TSTEXE  = VBox Ring 3 Testcase Exe
-if defined(VBOX_ONLY_VALIDATIONKIT) && defined(VBOX_WITH_VALIDATIONKIT_UNITTESTS_PACKING)
- #
- # Needs for running the ring-3 testcases on older guests (like NT4 / XP).
- # Those testcases then run as part of the Validation Kit and are included on the Validation Kit .ISO.
- # See @bugref:10195.
- #
- TEMPLATE_VBOXR3TSTEXE_EXTENDS = VBoxGuestR3Exe
-else
- TEMPLATE_VBOXR3TSTEXE_EXTENDS = VBOXR3EXE
- TEMPLATE_VBOXR3TSTEXE_LIBS    = $(LIB_RUNTIME) $(TEMPLATE_VBOXR3EXE_LIBS)
-endif
+TEMPLATE_VBOXR3TSTEXE_EXTENDS = VBOXR3EXE
+TEMPLATE_VBOXR3TSTEXE_LIBS    = $(LIB_RUNTIME) $(TEMPLATE_VBOXR3EXE_LIBS)
 TEMPLATE_VBOXR3TSTEXE_INST    = $(INST_TESTCASE)
 ifdef VBOX_WITH_RUNPATH
  TEMPLATE_VBOXR3TSTEXE_LDFLAGS = '$(VBOX_GCC_RPATH_OPT)$(VBOX_WITH_RUNPATH)' $(TEMPLATE_VBOXR3EXE_LDFLAGS)
@@ -6727,6 +6718,32 @@ if defined(VBOX_WITH_MORE_NT4_COMPAT_BINARIES) && "$(KBUILD_TARGET).$(KBUILD_TAR
  	$(PATH_STAGE_LIB)/RuntimeR3VccTricks2$(VBOX_SUFF_LIB) \
  	$(PATH_TOOL_$(TEMPLATE_VBOXR3EXE_TOOL.win.x86)_LIB)/oldnames.lib
 endif
+
+#
+# Ring-3 testcase for the Validation Kit .ISO.
+#
+# Needed for running the ring-3 testcases on older guests (like NT4 / XP).
+# Those testcases then run as part of the Validation Kit and are included on the Validation Kit .ISO.
+# See @bugref:10195.
+#
+TEMPLATE_VBOXR3TSTEXE_VALKIT = VBox Ring 3 Testcase Exe for Validation Kit .ISO
+TEMPLATE_VBOXR3TSTEXE_VALKIT_EXTENDS = VBoxR3Static
+TEMPLATE_VBOXR3TSTEXE_VALKIT_INST    =  $(INST_VALIDATIONKIT)/testcase/
+ifn1of ($(KBUILD_TARGET), darwin solaris win)
+ TEMPLATE_VBOXR3TSTEXE_VALKIT_CFLAGS          = $(filter-out -static, $(TEMPLATE_VBoxR3Static_CFLAGS))
+ TEMPLATE_VBOXR3TSTEXE_VALKIT_CXXFLAGS        = $(filter-out -static, $(TEMPLATE_VBoxR3Static_CXXFLAGS))
+ TEMPLATE_VBOXR3TSTEXE_VALKIT_OBJCFLAGS       = $(filter-out -static, $(TEMPLATE_VBoxR3Static_OBJCFLAGS))
+ TEMPLATE_VBOXR3TSTEXE_VALKIT_LDFLAGS         = $(filter-out -static, $(TEMPLATE_VBoxR3Static_LDFLAGS))
+endif
+TEMPLATE_VBOXR3TSTEXE_VALKIT_DEFS = $(filter-out VBOX_WITH_DTRACE,$(TEMPLATE_VBoxR3Static_DEFS))
+TEMPLATE_VBOXR3TSTEXE_VALKIT_LIBS = $(TEMPLATE_VBoxR3Static_LIBS)
+if1of ($(KBUILD_TARGET), linux)
+ if $(VBOX_GCC_VERSION_CXX) < 40800
+  TEMPLATE_VBOXR3TSTEXE_VALKIT_LIBS += supc++
+  TEMPLATE_VBOXR3TSTEXE_VALKIT_LDTOOL = $(subst GXX,GCC,$(TEMPLATE_VBoxR3Static_TOOL))
+ endif
+endif
+TEMPLATE_VBOXR3TSTEXE_VALKIT_LDFLAGS.darwin = $(TEMPLATE_VBoxR3Static_LDFLAGS.darwin) -framework IOKit
 
 #
 # Ring-3 testcase (no -pedantic)
@@ -8973,7 +8990,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 94574 $  )
+ VBOX_SVN_REV_CONFIG_FALLBACK := $(patsubst %:,,  $Rev: 94585 $  )
  VBOX_SVN_REV_FALLBACK := $(if-expr $(VBOX_SVN_REV_CONFIG_FALLBACK) > $(VBOX_SVN_REV_VERSION_FALLBACK),$(VBOX_SVN_REV_CONFIG_FALLBACK),$(VBOX_SVN_REV_VERSION_FALLBACK))
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
