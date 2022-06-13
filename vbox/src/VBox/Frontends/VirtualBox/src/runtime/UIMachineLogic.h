@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 89744 2021-06-16 14:09:12Z vboxsync $ */
+/* $Id: UIMachineLogic.h 89745 2021-06-16 14:35:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -399,7 +399,8 @@ private:
     void takeScreenshot(const QString &strFile, const QString &strFormat /* = "png" */) const;
 
     /** Reactivates the screen saver. This is possbily called during vm window close and enables host screen
-      * if there are no other vms running at the moment. */
+      * if there are no other vms running at the moment. Note that this seems to be not needed on Linux since
+      * closing vm windows re-activates screen saver automatically. On Windows explicit re-activation is needed. */
     void activateScreenSaver();
 
     /* Private variables: */
