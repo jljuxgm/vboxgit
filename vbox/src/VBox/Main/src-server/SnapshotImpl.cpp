@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.cpp 85304 2020-07-13 10:14:38Z vboxsync $ */
+/* $Id: SnapshotImpl.cpp 90790 2021-08-23 10:28:01Z vboxsync $ */
 /** @file
  * COM class implementation for Snapshot and SnapshotMachine in VBoxSVC.
  */
@@ -3627,7 +3627,7 @@ HRESULT SessionMachine::i_prepareDeleteSnapshotMedium(const ComObjPtr<Medium> &a
                                                       ComPtr<IToken> &aHDLockToken)
 {
     Assert(!mParent->i_getMediaTreeLockHandle().isWriteLockOnCurrentThread());
-    Assert(!fOnlineMergePossible || VALID_PTR(aVMMALockList));
+    Assert(!fOnlineMergePossible || RT_VALID_PTR(aVMMALockList));
 
     AutoWriteLock alock(aHD COMMA_LOCKVAL_SRC_POS);
 

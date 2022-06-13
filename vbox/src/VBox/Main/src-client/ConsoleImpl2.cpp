@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 90337 2021-07-26 13:55:53Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 90790 2021-08-23 10:28:01Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -4509,7 +4509,7 @@ int Console::i_removeMediumDriverFromVm(PCFGMNODE pCtlInst,
 
     /* First check if the LUN already exists. */
     PCFGMNODE pLunL0 = CFGMR3GetChildF(pCtlInst, "LUN#%u", uLUN);
-    AssertReturn(!VALID_PTR(pLunL0) || fAttachDetach, VERR_INTERNAL_ERROR);
+    AssertReturn(!RT_VALID_PTR(pLunL0) || fAttachDetach, VERR_INTERNAL_ERROR);
 
     if (pLunL0)
     {

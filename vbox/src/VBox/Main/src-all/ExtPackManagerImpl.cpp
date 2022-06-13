@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.cpp 86058 2020-09-07 23:33:30Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.cpp 90790 2021-08-23 10:28:01Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -1432,7 +1432,7 @@ void ExtPack::i_probeAndLoad(void)
         vrc = pfnRegistration(&m->Hlp, &m->pReg, &ErrInfo.Core);
         if (   RT_SUCCESS(vrc)
             && !RTErrInfoIsSet(&ErrInfo.Core)
-            && VALID_PTR(m->pReg))
+            && RT_VALID_PTR(m->pReg))
         {
             if (   VBOXEXTPACK_IS_MAJOR_VER_EQUAL(m->pReg->u32Version, uVersion)
                 && m->pReg->u32EndMarker == m->pReg->u32Version)

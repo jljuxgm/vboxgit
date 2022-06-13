@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 88253 2021-03-22 18:14:09Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 90790 2021-08-23 10:28:01Z vboxsync $ */
 /** @file
  * VBox Console VRDP helper class.
  */
@@ -2988,8 +2988,8 @@ void ConsoleVRDPServer::MousePointerHide(void)
 
 void ConsoleVRDPServer::Stop(void)
 {
-    Assert(VALID_PTR(this)); /** @todo r=bird: there are(/was) some odd cases where this buster was invalid on
-                              * linux. Just remove this when it's 100% sure that problem has been fixed. */
+    AssertPtr(this); /** @todo r=bird: there are(/was) some odd cases where this buster was invalid on
+                      * linux. Just remove this when it's 100% sure that problem has been fixed. */
 
 #ifdef VBOX_WITH_USB
     remoteUSBThreadStop();
