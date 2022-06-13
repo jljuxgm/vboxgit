@@ -1,4 +1,4 @@
-/* $Id: HMAll.cpp 91037 2021-08-31 16:42:14Z vboxsync $ */
+/* $Id: HMAll.cpp 91271 2021-09-16 07:42:37Z vboxsync $ */
 /** @file
  * HM - All contexts.
  */
@@ -728,18 +728,6 @@ VMM_INT_DECL(bool) HMHasPendingIrq(PVMCC pVM)
 {
     PVMCPUCC pVCpu = VMMGetCpu(pVM);
     return !!pVCpu->hm.s.Event.fPending;
-}
-
-
-/**
- * Return the PAE PDPE entries.
- *
- * @returns Pointer to the PAE PDPE array.
- * @param   pVCpu       The cross context virtual CPU structure.
- */
-VMM_INT_DECL(PX86PDPE) HMGetPaePdpes(PVMCPU pVCpu)
-{
-    return &pVCpu->hm.s.aPdpes[0];
 }
 
 

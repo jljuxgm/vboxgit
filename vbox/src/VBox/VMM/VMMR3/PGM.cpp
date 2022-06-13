@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 91249 2021-09-15 12:37:46Z vboxsync $ */
+/* $Id: PGM.cpp 91271 2021-09-16 07:42:37Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -800,7 +800,6 @@ VMMR3DECL(int) PGMR3Init(PVM pVM)
             pPGM->apGstPaePDsR3[i]             = NULL;
             pPGM->apGstPaePDsR0[i]             = NIL_RTR0PTR;
             pPGM->aGCPhysGstPaePDs[i]          = NIL_RTGCPHYS;
-            pPGM->aGstPaePdpeRegs[i].u         = UINT64_MAX;
             pPGM->aGCPhysGstPaePDsMonitored[i] = NIL_RTGCPHYS;
         }
 

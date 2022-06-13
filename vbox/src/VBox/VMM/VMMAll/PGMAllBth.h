@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 91250 2021-09-15 12:43:24Z vboxsync $ */
+/* $Id: PGMAllBth.h 91271 2021-09-16 07:42:37Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -4342,14 +4342,16 @@ PGM_BTH_DECL(int, MapCR3)(PVMCPUCC pVCpu, RTGCPHYS GCPhysCR3)
         /*
          * Map the 4 PDs too.
          */
-        PX86PDPT pGuestPDPT = pgmGstGetPaePDPTPtr(pVCpu);
+        X86PDPE aGstPaePdpes[X86_PG_PAE_PDPE_ENTRIES];
+        memcpy(&aGstPaePdpes, HCPtrGuestCR3, sizeof(aGstPaePdpes));
+        CPUMSetGuestPaePdpes(pVCpu, &aGstPaePdpes[0]);
         for (unsigned i = 0; i < X86_PG_PAE_PDPE_ENTRIES; i++)
         {
-            pVCpu->pgm.s.aGstPaePdpeRegs[i].u = pGuestPDPT->a[i].u;
-            if (pGuestPDPT->a[i].u & X86_PDPE_P)
+            X86PDPE PaePdpe = aGstPaePdpes[i];
+            if (PaePdpe.u & X86_PDPE_P)
             {
                 RTHCPTR     HCPtr;
-                RTGCPHYS    GCPhys = PGM_A20_APPLY(pVCpu, pGuestPDPT->a[i].u & X86_PDPE_PG_MASK);
+                RTGCPHYS    GCPhys = PGM_A20_APPLY(pVCpu, PaePdpe.u & X86_PDPE_PG_MASK);
                 PGM_LOCK_VOID(pVM);
                 PPGMPAGE    pPage  = pgmPhysGetPage(pVM, GCPhys);
                 AssertReturn(pPage, VERR_PGM_INVALID_PDPE_ADDR);

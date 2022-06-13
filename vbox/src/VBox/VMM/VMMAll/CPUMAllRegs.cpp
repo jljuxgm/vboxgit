@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 91266 2021-09-15 22:26:50Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 91271 2021-09-16 07:42:37Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -2330,6 +2330,21 @@ VMM_INT_DECL(uint64_t) CPUMGetGuestCR4ValidMask(PVM pVM)
     if (pGuestFeatures->fFsGsBase)
         fMask |= X86_CR4_FSGSBASE;
     return fMask;
+}
+
+
+/**
+ * Sets the PAE PDPTEs for the guest.
+ *
+ * @param   pVCpu       The cross context virtual CPU structure of the calling thread.
+ * @param   pPaePdes    The PAE PDPTEs to set.
+ */
+VMM_INT_DECL(void) CPUMSetGuestPaePdpes(PVMCPU pVCpu, PCX86PDPE paPaePdpes)
+{
+    Assert(paPaePdpes);
+    for (unsigned i = 0; i < RT_ELEMENTS(pVCpu->cpum.s.Guest.aPaePdpes); i++)
+        pVCpu->cpum.s.Guest.aPaePdpes[i].u = paPaePdpes[i].u;
+    pVCpu->cpum.s.Guest.fExtrn &= ~CPUMCTX_EXTRN_CR3;
 }
 
 

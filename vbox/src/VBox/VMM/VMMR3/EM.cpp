@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 91264 2021-09-15 19:35:24Z vboxsync $ */
+/* $Id: EM.cpp 91271 2021-09-16 07:42:37Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -1455,22 +1455,6 @@ VBOXSTRICTRC emR3HighPriorityPostForcedActions(PVM pVM, PVMCPU pVCpu, VBOXSTRICT
         if (RT_FAILURE(rc2))
             return rc2;
         Assert(!VMCPU_FF_IS_SET(pVCpu, VMCPU_FF_HM_UPDATE_CR3));
-    }
-
-    /* Update PAE PDPEs. This must be done *after* PGMUpdateCR3() and used only by the Nested Paging case for HM. */
-    if (VMCPU_FF_IS_SET(pVCpu, VMCPU_FF_HM_UPDATE_PAE_PDPES))
-    {
-        CPUM_IMPORT_EXTRN_RCSTRICT(pVCpu, CPUMCTX_EXTRN_CR0 | CPUMCTX_EXTRN_CR3 | CPUMCTX_EXTRN_CR4 | CPUMCTX_EXTRN_EFER, rc);
-        if (CPUMIsGuestInPAEMode(pVCpu))
-        {
-            PX86PDPE pPdpes = HMGetPaePdpes(pVCpu);
-            AssertPtr(pPdpes);
-
-            PGMGstUpdatePaePdpes(pVCpu, pPdpes);
-            Assert(!VMCPU_FF_IS_SET(pVCpu, VMCPU_FF_HM_UPDATE_PAE_PDPES));
-        }
-        else
-            VMCPU_FF_CLEAR(pVCpu, VMCPU_FF_HM_UPDATE_PAE_PDPES);
     }
 
     /* IEM has pending work (typically memory write after INS instruction). */

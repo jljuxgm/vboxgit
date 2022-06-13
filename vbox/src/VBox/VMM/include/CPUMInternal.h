@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal.h 91266 2021-09-15 22:26:50Z vboxsync $ */
+/* $Id: CPUMInternal.h 91271 2021-09-16 07:42:37Z vboxsync $ */
 /** @file
  * CPUM - Internal header file.
  */
@@ -114,7 +114,9 @@ typedef uint64_t STAMCOUNTER;
 /** @name CPUM Saved State Version.
  * @{ */
 /** The current saved state version. */
-#define CPUM_SAVED_STATE_VERSION                CPUM_SAVED_STATE_VERSION_HWVIRT_VMX_2
+#define CPUM_SAVED_STATE_VERSION                CPUM_SAVED_STATE_VERSION_PAE_PDPES
+/** The saved state version with PAE PDPEs added. */
+#define CPUM_SAVED_STATE_VERSION_PAE_PDPES      21
 /** The saved state version with more virtual VMCS fields and CPUMCTX VMX fields. */
 #define CPUM_SAVED_STATE_VERSION_HWVIRT_VMX_2   20
 /** The saved state version including VMX hardware virtualization state. */

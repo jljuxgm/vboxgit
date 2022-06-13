@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 91246 2021-09-15 11:29:42Z vboxsync $ */
+/* $Id: VMM.cpp 91271 2021-09-16 07:42:37Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -2647,7 +2647,6 @@ static DECLCALLBACK(void) vmmR3InfoFF(PVM pVM, PCDBGFINFOHLP pHlp, const char *p
         PRINT_FLAG(VMCPU_FF_,DBGF);
         PRINT_FLAG(VMCPU_FF_,REQUEST);
         PRINT_FLAG(VMCPU_FF_,HM_UPDATE_CR3);
-        PRINT_FLAG(VMCPU_FF_,HM_UPDATE_PAE_PDPES);
         PRINT_FLAG(VMCPU_FF_,PGM_SYNC_CR3);
         PRINT_FLAG(VMCPU_FF_,PGM_SYNC_CR3_NON_GLOBAL);
         PRINT_FLAG(VMCPU_FF_,TLB_FLUSH);
