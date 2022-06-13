@@ -1,4 +1,4 @@
-/* $Id: UISettingsDefs.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: UISettingsDefs.h 94436 2022-04-01 12:07:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Header with definitions and functions related to settings configuration.
  */
@@ -63,6 +63,8 @@ namespace UISettingsDefs
     SHARED_LIBRARY_STUFF ConfigurationAccessLevel configurationAccessLevel(KSessionState enmSessionState,
                                                                            KMachineState enmMachineState);
 }
+
+Q_DECLARE_METATYPE(UISettingsDefs::RecordingMode);
 
 
 /** Template organizing settings object cache: */

@@ -1,4 +1,4 @@
-/* $Id: UIFilePathSelector.h 94028 2022-03-01 11:04:48Z vboxsync $ */
+/* $Id: UIFilePathSelector.h 94436 2022-04-01 12:07:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFilePathSelector class declaration.
  */
@@ -110,6 +110,8 @@ public:
 
     /** Returns the path. */
     QString path() const { return m_strPath; }
+    /** Returns the path which we pass to QFileDialog as initial path. */
+    QString initialPath() const { return m_strInitialPath; }
 
     /** Returns true if the selected path points to an existing/readable file. */
     bool isValid() const;
