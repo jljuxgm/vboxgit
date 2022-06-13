@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 93616 2022-02-06 08:03:47Z vboxsync $ */
+/* $Id: SUPDrv.cpp 94500 2022-04-06 17:04:44Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -1751,7 +1751,15 @@ static int supdrvIOCtlInnerUnrestricted(uintptr_t uIOCtl, PSUPDRVDEVEXT pDevExt,
 
             /* execute */
             pReq->u.Out.cFunctions = RT_ELEMENTS(g_aFunctions);
+
+            /* In 5.18.0, memcpy became a wrapper which does fortify checks
+             * before triggering __underlying_memcpy() call. We do not pass these checks here,
+             * so bypass them for now.  */
+#if RTLNX_VER_MIN(5,18,0)
+            __underlying_memcpy(&pReq->u.Out.aFunctions[0], g_aFunctions, sizeof(g_aFunctions));
+#else
             memcpy(&pReq->u.Out.aFunctions[0], g_aFunctions, sizeof(g_aFunctions));
+#endif
             pReq->Hdr.rc = VINF_SUCCESS;
             return 0;
         }
