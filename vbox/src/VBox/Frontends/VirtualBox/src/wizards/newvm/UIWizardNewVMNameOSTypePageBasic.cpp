@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMNameOSTypePageBasic.cpp 90223 2021-07-16 08:49:52Z vboxsync $ */
+/* $Id: UIWizardNewVMNameOSTypePageBasic.cpp 90225 2021-07-16 10:56:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasicNameOSStype class implementation.
  */
@@ -446,13 +446,13 @@ bool UIWizardNewVMNameOSTypePageBasic::validatePage()
 void UIWizardNewVMNameOSTypePageBasic::sltISOPathChanged(const QString &strPath)
 {
     UIWizardNewVM *pWizard = qobject_cast<UIWizardNewVM*>(this->wizard());
+    AssertReturnVoid(pWizard);
     UIWizardNewVMNameOSTypePage::determineOSType(strPath, pWizard);
-    if (pWizard)
-    {
-        if (!pWizard->detectedOSTypeId().isEmpty() && !m_userModifiedParameters.contains("GuestOSType"))
+
+    if (!pWizard->detectedOSTypeId().isEmpty() && !m_userModifiedParameters.contains("GuestOSType"))
             UIWizardNewVMNameOSTypePage::guessOSTypeFromName(m_pNameAndSystemEditor, pWizard->detectedOSTypeId());
-        pWizard->setISOFilePath(strPath);
-    }
+    pWizard->setISOFilePath(strPath);
+
     /* Update the global recent ISO path: */
     QFileInfo fileInfo(strPath);
     if (fileInfo.exists() && fileInfo.isReadable())
