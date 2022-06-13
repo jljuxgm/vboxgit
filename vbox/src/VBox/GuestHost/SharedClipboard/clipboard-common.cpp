@@ -1,4 +1,4 @@
-/* $Id: clipboard-common.cpp 92735 2021-12-03 16:03:24Z vboxsync $ */
+/* $Id: clipboard-common.cpp 92772 2021-12-06 19:09:30Z vboxsync $ */
 /** @file
  * Shared Clipboard: Some helper function for converting between the various eol.
  */
@@ -239,6 +239,7 @@ int ShClEventSourceGenerateAndRegisterEvent(PSHCLEVENTSOURCE pSource, PSHCLEVENT
 
                     LogFlowFunc(("uSource=%RU16: New event: %#x\n", pSource->uID, idEvent));
 
+                    ShClEventRetain(pEvent);
                     *ppEvent = pEvent;
 
                     return VINF_SUCCESS;

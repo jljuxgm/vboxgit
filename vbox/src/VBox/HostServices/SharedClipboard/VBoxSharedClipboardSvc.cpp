@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc.cpp 92735 2021-12-03 16:03:24Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc.cpp 92772 2021-12-06 19:09:30Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Host service entry points.
  */
@@ -1292,15 +1292,21 @@ int ShClSvcGuestDataRequest(PSHCLCLIENT pClient, SHCLFORMATS fFormats, PSHCLEVEN
 
                     shClSvcMsgAdd(pClient, pMsg, true /* fAppend */);
 
-                    /* Retain the last event generated (in case there were multiple clipboard formats)
-                     * if we need to return the event to the caller. */
+                    /* Return event handle to the caller if requested. */
                     if (ppEvent)
                     {
-                        ShClEventRetain(pEvent);
                         *ppEvent = pEvent;
                     }
 
                     shClSvcClientWakeup(pClient);
+                }
+
+                /* Remove event from list if caller did not request event handle or in case
+                 * of failure (in this case caller should not release event). */
+                if (   RT_FAILURE(rc)
+                    || !ppEvent)
+                {
+                    ShClEventRelease(pEvent);
                 }
             }
             else
