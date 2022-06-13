@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 93367 2022-01-20 17:18:22Z vboxsync $ */
+/* $Id: UIMachineView.cpp 93382 2022-01-20 19:18:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -1701,7 +1701,7 @@ void UIMachineView::paintEvent(QPaintEvent *pPaintEvent)
         /* Avoid painting more than necessary: */
         painter.setClipRect(pPaintEvent->rect());
         /* Can be NULL when the event arrive during COM cleanup: */
-        UIFrameBuffer *pFramebuffer = frameBuffer(); 
+        UIFrameBuffer *pFramebuffer = frameBuffer();
         /* Take the scale-factor into account: */
         if (  pFramebuffer
             ? pFramebuffer->scaleFactor() == 1.0 && !pFramebuffer->scaledSize().isValid()
