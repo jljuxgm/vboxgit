@@ -1,4 +1,4 @@
-/* $Id: DevHdaStream.h 89844 2021-06-23 08:23:40Z vboxsync $ */
+/* $Id: DevHdaStream.h 89853 2021-06-23 13:19:38Z vboxsync $ */
 /** @file
  * Intel HD Audio Controller Emulation - Streams.
  */
@@ -289,6 +289,8 @@ typedef struct HDASTREAMR3
         STAMCOUNTER             StatDmaFlowErrors;
         /** Number of bytes involved in unresolved flow errors. */
         STAMCOUNTER             StatDmaFlowErrorBytes;
+        /** DMA skipped because buffer interrupt pending. */
+        STAMCOUNTER             StatDmaSkippedPendingBcis;
 
         STAMPROFILE             StatStart;
         STAMPROFILE             StatReset;
@@ -297,7 +299,7 @@ typedef struct HDASTREAMR3
     } State;
     /** Debug bits. */
     HDASTREAMDEBUG              Dbg;
-    uint64_t                    au64Alignment[2+4];
+    uint64_t                    au64Alignment[1+4];
 } HDASTREAMR3;
 AssertCompileSizeAlignment(HDASTREAMR3, 64);
 /** Pointer to an HDA stream (SDI / SDO).  */
