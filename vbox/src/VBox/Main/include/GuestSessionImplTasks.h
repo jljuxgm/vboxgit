@@ -1,10 +1,10 @@
-/* $Id: GuestSessionImplTasks.h 92822 2021-12-08 14:55:45Z vboxsync $ */
+/* $Id: GuestSessionImplTasks.h 92897 2021-12-14 13:53:27Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session tasks header.
  */
 
 /*
- * Copyright (C) 2018-2020 Oracle Corporation
+ * Copyright (C) 2018-2021 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -161,7 +161,13 @@ public:
 
 public:
 
+    /**
+     * Function which implements the actual task to perform.
+     *
+     * @returns VBox status code.
+     */
     virtual int Run(void) = 0;
+
     void handler()
     {
         int vrc = Run();
@@ -185,8 +191,10 @@ public:
         return S_OK;
     }
 
+    /** Returns the task's progress object. */
     const ComObjPtr<Progress>& GetProgressObject(void) const { return mProgress; }
 
+    /** Returns the task's guest session object. */
     const ComObjPtr<GuestSession>& GetSession(void) const { return mSession; }
 
 protected:

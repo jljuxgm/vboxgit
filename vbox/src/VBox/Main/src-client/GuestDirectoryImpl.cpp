@@ -1,10 +1,10 @@
-/* $Id: GuestDirectoryImpl.cpp 91518 2021-10-01 14:31:06Z vboxsync $ */
+/* $Id: GuestDirectoryImpl.cpp 92897 2021-12-14 13:53:27Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest directory handling.
  */
 
 /*
- * Copyright (C) 2012-2020 Oracle Corporation
+ * Copyright (C) 2012-2021 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -180,6 +180,13 @@ HRESULT GuestDirectory::getFilter(com::Utf8Str &aFilter)
 // private methods
 /////////////////////////////////////////////////////////////////////////////
 
+/**
+ * Entry point for guest side directory callbacks.
+ *
+ * @returns VBox status code.
+ * @param   pCbCtx              Host callback context.
+ * @param   pSvcCb              Host callback data.
+ */
 int GuestDirectory::i_callbackDispatcher(PVBOXGUESTCTRLHOSTCBCTX pCbCtx, PVBOXGUESTCTRLHOSTCALLBACK pSvcCb)
 {
     AssertPtrReturn(pCbCtx, VERR_INVALID_POINTER);
