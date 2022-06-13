@@ -1,4 +1,4 @@
-/* $Id: DevPS2K.cpp 89938 2021-06-29 06:57:51Z vboxsync $ */
+/* $Id: DevPS2K.cpp 89982 2021-06-30 23:03:43Z vboxsync $ */
 /** @file
  * PS2K - PS/2 keyboard emulation.
  */
@@ -1183,7 +1183,8 @@ static int ps2kR3PutEventWorker(PPDMDEVINS pDevIns, PPS2K pThis, uint32_t idUsag
     u32HidCode = idUsage & 0xFFFFFF;
 
     iKeyCode = ps2kR3HidToInternalCode(u32HidCode, NULL);
-    AssertReturn(iKeyCode > 0 && iKeyCode <= VBOX_USB_MAX_USAGE_CODE, VERR_INTERNAL_ERROR);
+    AssertMsgReturn(iKeyCode > 0 && iKeyCode <= VBOX_USB_MAX_USAGE_CODE, ("iKeyCode=%#x idUsage=%#x\n", iKeyCode, idUsage),
+                    VERR_INTERNAL_ERROR);
 
     if (fKeyDown)
     {
