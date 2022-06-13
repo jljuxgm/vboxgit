@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-dx.cpp 95015 2022-05-15 13:47:07Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-dx.cpp 95016 2022-05-15 18:18:16Z vboxsync $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - Common code for DX backend interface.
  */
@@ -2029,25 +2029,21 @@ static int dxBindShader(DXShaderInfo *pShaderInfo, PVMSVGAMOB pMob, SVGACOTableD
                 uint32_t const cbSignature = cSignature * sizeof(SVGA3dDXSignatureEntry);
                 ASSERT_GUEST_RETURN(cbSignaturesAvail >= cbSignature, VERR_INVALID_PARAMETER);
 
-                /* Keep the generated signatures if the guest did not provide any. */
-                if (cSignature != 0)
-                {
-                    /* Copy to DXShaderInfo. */
-                    uint8_t const *pu8Signatures = (uint8_t *)&pSignatureHeader[1];
-                    pShaderInfo->cInputSignature = pSignatureHeader->numInputSignatures;
-                    memcpy(pShaderInfo->aInputSignature, pu8Signatures, pSignatureHeader->numInputSignatures * sizeof(SVGA3dDXSignatureEntry));
+                /* The shader does not need guesswork. */
+                pShaderInfo->fGuestSignatures = true;
 
-                    pu8Signatures += pSignatureHeader->numInputSignatures * sizeof(SVGA3dDXSignatureEntry);
-                    pShaderInfo->cOutputSignature = pSignatureHeader->numOutputSignatures;
-                    memcpy(pShaderInfo->aOutputSignature, pu8Signatures, pSignatureHeader->numOutputSignatures * sizeof(SVGA3dDXSignatureEntry));
+                /* Copy to DXShaderInfo. */
+                uint8_t const *pu8Signatures = (uint8_t *)&pSignatureHeader[1];
+                pShaderInfo->cInputSignature = pSignatureHeader->numInputSignatures;
+                memcpy(pShaderInfo->aInputSignature, pu8Signatures, pSignatureHeader->numInputSignatures * sizeof(SVGA3dDXSignatureEntry));
 
-                    pu8Signatures += pSignatureHeader->numOutputSignatures * sizeof(SVGA3dDXSignatureEntry);
-                    pShaderInfo->cPatchConstantSignature = pSignatureHeader->numPatchConstantSignatures;
-                    memcpy(pShaderInfo->aPatchConstantSignature, pu8Signatures, pSignatureHeader->numPatchConstantSignatures * sizeof(SVGA3dDXSignatureEntry));
+                pu8Signatures += pSignatureHeader->numInputSignatures * sizeof(SVGA3dDXSignatureEntry);
+                pShaderInfo->cOutputSignature = pSignatureHeader->numOutputSignatures;
+                memcpy(pShaderInfo->aOutputSignature, pu8Signatures, pSignatureHeader->numOutputSignatures * sizeof(SVGA3dDXSignatureEntry));
 
-                    /* The shader does not need guesswork. */
-                    pShaderInfo->fGuestSignatures = true;
-                }
+                pu8Signatures += pSignatureHeader->numOutputSignatures * sizeof(SVGA3dDXSignatureEntry);
+                pShaderInfo->cPatchConstantSignature = pSignatureHeader->numPatchConstantSignatures;
+                memcpy(pShaderInfo->aPatchConstantSignature, pu8Signatures, pSignatureHeader->numPatchConstantSignatures * sizeof(SVGA3dDXSignatureEntry));
             }
         }
     }

@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA-cmd.cpp 95012 2022-05-14 09:30:07Z vboxsync $ */
+/* $Id: DevVGA-SVGA-cmd.cpp 95016 2022-05-15 18:18:16Z vboxsync $ */
 /** @file
  * VMware SVGA device - implementation of VMSVGA commands.
  */
@@ -3764,7 +3764,7 @@ static int vmsvga3dCmdDXDefineUAView(PVGASTATECC pThisCC, uint32_t idDXContext, 
 static int vmsvga3dCmdDXDestroyUAView(PVGASTATECC pThisCC, uint32_t idDXContext, SVGA3dCmdDXDestroyUAView const *pCmd, uint32_t cbCmd)
 {
 #ifdef VMSVGA3D_DX
-    DEBUG_BREAKPOINT_TEST();
+    //DEBUG_BREAKPOINT_TEST();
     RT_NOREF(cbCmd);
     return vmsvga3dDXDestroyUAView(pThisCC, idDXContext, pCmd);
 #else
