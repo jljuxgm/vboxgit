@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.h 90405 2021-07-29 13:02:54Z vboxsync $ */
+/* $Id: UINotificationObjects.h 90406 2021-07-29 13:12:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects declarations.
  */
@@ -272,6 +272,41 @@ public:
     /** Constructs machine save-state notification-progress.
       * @param  comMachine  Brings the machine being saved. */
     UINotificationProgressMachineSaveState(const QUuid &uId);
+
+protected:
+
+    /** Returns object name. */
+    virtual QString name() const /* override final */;
+    /** Returns object details. */
+    virtual QString details() const /* override final */;
+    /** Creates and returns started progress-wrapper. */
+    virtual CProgress createProgress(COMResult &comResult) /* override final */;
+
+private slots:
+
+    /** Handles signal about progress being finished. */
+    void sltHandleProgressFinished();
+
+private:
+
+    /** Holds the machine id. */
+    QUuid     m_uId;
+    /** Holds the session being opened. */
+    CSession  m_comSession;
+    /** Holds the machine name. */
+    QString   m_strName;
+};
+
+/** UINotificationProgress extension for machine power-down functionality. */
+class SHARED_LIBRARY_STUFF UINotificationProgressMachinePowerDown : public UINotificationProgress
+{
+    Q_OBJECT;
+
+public:
+
+    /** Constructs machine power-down notification-progress.
+      * @param  comMachine  Brings the machine being powered-down. */
+    UINotificationProgressMachinePowerDown(const QUuid &uId);
 
 protected:
 

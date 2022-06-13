@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 90405 2021-07-29 13:02:54Z vboxsync $ */
+/* $Id: UINotificationObjects.cpp 90406 2021-07-29 13:12:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -389,6 +389,76 @@ CProgress UINotificationProgressMachineSaveState::createProgress(COMResult &comR
 }
 
 void UINotificationProgressMachineSaveState::sltHandleProgressFinished()
+{
+    /* Unlock session finally: */
+    m_comSession.UnlockMachine();
+}
+
+
+/*********************************************************************************************************************************
+*   Class UINotificationProgressMachinePowerDown implementation.                                                                 *
+*********************************************************************************************************************************/
+
+UINotificationProgressMachinePowerDown::UINotificationProgressMachinePowerDown(const QUuid &uId)
+    : m_uId(uId)
+{
+    connect(this, &UINotificationProgress::sigProgressFinished,
+            this, &UINotificationProgressMachinePowerDown::sltHandleProgressFinished);
+}
+
+QString UINotificationProgressMachinePowerDown::name() const
+{
+    return UINotificationProgress::tr("Powering VM down ...");
+}
+
+QString UINotificationProgressMachinePowerDown::details() const
+{
+    return UINotificationProgress::tr("<b>VM Name:</b> %1").arg(m_strName);
+}
+
+CProgress UINotificationProgressMachinePowerDown::createProgress(COMResult &comResult)
+{
+    /* Open a session thru which we will modify the machine: */
+    m_comSession = uiCommon().openExistingSession(m_uId);
+    if (m_comSession.isNull())
+        return CProgress();
+
+    /* Get session machine: */
+    CMachine comMachine = m_comSession.GetMachine();
+    if (!m_comSession.isOk())
+    {
+        comResult = m_comSession;
+        m_comSession.UnlockMachine();
+        return CProgress();
+    }
+
+    /* Acquire VM name: */
+    m_strName = comMachine.GetName();
+    if (!comMachine.isOk())
+    {
+        comResult = comMachine;
+        m_comSession.UnlockMachine();
+        return CProgress();
+    }
+
+    /* Get session console: */
+    CConsole comConsole = m_comSession.GetConsole();
+    if (!m_comSession.isOk())
+    {
+        comResult = m_comSession;
+        m_comSession.UnlockMachine();
+        return CProgress();
+    }
+
+    /* Initialize progress-wrapper: */
+    CProgress comProgress = comConsole.PowerDown();
+    /* Store COM result: */
+    comResult = comConsole;
+    /* Return progress-wrapper: */
+    return comProgress;
+}
+
+void UINotificationProgressMachinePowerDown::sltHandleProgressFinished()
 {
     /* Unlock session finally: */
     m_comSession.UnlockMachine();
