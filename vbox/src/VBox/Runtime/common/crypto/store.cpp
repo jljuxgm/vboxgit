@@ -1,4 +1,4 @@
-/* $Id: store.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: store.cpp 94157 2022-03-10 15:11:22Z vboxsync $ */
 /** @file
  * IPRT - Cryptographic (Certificate) Store.
  */
@@ -512,7 +512,9 @@ RTDECL(int) RTCrStoreConvertToOpenSslCertStack(RTCRSTORE hStore, uint32_t fFlags
                 return VINF_SUCCESS;
             }
         }
+#include "internal/openssl-pre.h"  /* Need to disable C5039 warning here. */
         sk_X509_pop_free(pOsslStack, X509_free);
+#include "internal/openssl-post.h"
     }
     else
         rc = VERR_NO_MEMORY;

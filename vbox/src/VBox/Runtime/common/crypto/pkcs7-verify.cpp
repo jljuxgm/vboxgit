@@ -1,4 +1,4 @@
-/* $Id: pkcs7-verify.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: pkcs7-verify.cpp 94157 2022-03-10 15:11:22Z vboxsync $ */
 /** @file
  * IPRT - Crypto - PKCS \#7, Verification
  */
@@ -117,8 +117,10 @@ static int rtCrPkcs7VerifySignedDataUsingOpenSsl(PCRTCRPKCS7CONTENTINFO pContent
             }
             else
                 rcOssl = RTErrInfoSet(pErrInfo, rcOssl, "RTCrStoreConvertToOpenSslCertStack failed");
+#include "internal/openssl-pre.h" /* Need to disable C5039 warning here. */
             if (pAddCerts)
                 sk_X509_pop_free(pAddCerts, X509_free);
+#include "internal/openssl-post.h"
         }
         else
             rcOssl = RTErrInfoSet(pErrInfo, rcOssl, "RTCrStoreConvertToOpenSslCertStack failed");
