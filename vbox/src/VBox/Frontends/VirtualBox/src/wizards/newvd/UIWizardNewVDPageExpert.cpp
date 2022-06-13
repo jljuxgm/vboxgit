@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageExpert.cpp 90763 2021-08-20 15:34:22Z vboxsync $ */
+/* $Id: UIWizardNewVDPageExpert.cpp 90885 2021-08-25 14:28:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageExpert class implementation.
  */
@@ -67,9 +67,9 @@ void UIWizardNewVDPageExpert::prepare()
     m_pFormatGroup = new UIDiskFormatsGroupBox(true /* fExpertMode */, KDeviceType_HardDisk, 0);
     m_pVariantGroup = new UIDiskVariantGroupBox(true /* fExpertMode */, 0);
 
-    pMainLayout->addWidget(m_pSizeAndPathGroup, 0, 0, 2, 2);
-    pMainLayout->addWidget(m_pFormatGroup, 2, 0, 6, 1);
-    pMainLayout->addWidget(m_pVariantGroup, 2, 1, 6, 1);
+    pMainLayout->addWidget(m_pSizeAndPathGroup, 0, 0, 4, 2);
+    pMainLayout->addWidget(m_pFormatGroup, 4, 0, 7, 1);
+    pMainLayout->addWidget(m_pVariantGroup, 4, 1, 3, 1);
 
     connect(m_pFormatGroup, &UIDiskFormatsGroupBox::sigMediumFormatChanged,
             this, &UIWizardNewVDPageExpert::sltMediumFormatChanged);

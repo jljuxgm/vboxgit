@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageExpert.cpp 90854 2021-08-24 17:34:35Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageExpert.cpp 90885 2021-08-25 14:28:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDPageExpert class implementation.
  */
@@ -46,7 +46,7 @@ void UIWizardCloneVDPageExpert::prepare(KDeviceType enmDeviceType, qulonglong uS
 
     if (m_pMediumSizePathGroupBox)
     {
-        pMainLayout->addWidget(m_pMediumSizePathGroupBox, 0, 0, 2, 2);
+        pMainLayout->addWidget(m_pMediumSizePathGroupBox, 0, 0, 4, 2);
         connect(m_pMediumSizePathGroupBox, &UIMediumSizeAndPathGroupBox::sigMediumLocationButtonClicked,
                 this, &UIWizardCloneVDPageExpert::sltSelectLocationButtonClicked);
         connect(m_pMediumSizePathGroupBox, &UIMediumSizeAndPathGroupBox::sigMediumPathChanged,
@@ -58,7 +58,7 @@ void UIWizardCloneVDPageExpert::prepare(KDeviceType enmDeviceType, qulonglong uS
     m_pFormatGroupBox = new UIDiskFormatsGroupBox(true /* expert mode */, enmDeviceType, 0);
     if (m_pFormatGroupBox)
     {
-        pMainLayout-> addWidget(m_pFormatGroupBox, 2, 0, 6, 1);
+        pMainLayout-> addWidget(m_pFormatGroupBox, 4, 0, 7, 1);
         connect(m_pFormatGroupBox, &UIDiskFormatsGroupBox::sigMediumFormatChanged,
                 this, &UIWizardCloneVDPageExpert::sltMediumFormatChanged);
     }
@@ -66,7 +66,7 @@ void UIWizardCloneVDPageExpert::prepare(KDeviceType enmDeviceType, qulonglong uS
     m_pVariantGroupBox = new UIDiskVariantGroupBox(true /* expert mode */, 0);
     if (m_pVariantGroupBox)
     {
-        pMainLayout-> addWidget(m_pVariantGroupBox, 2, 1, 6, 1);
+        pMainLayout-> addWidget(m_pVariantGroupBox, 4, 1, 3, 1);
         connect(m_pVariantGroupBox, &UIDiskVariantGroupBox::sigMediumVariantChanged,
                 this, &UIWizardCloneVDPageExpert::sltMediumVariantChanged);
     }
