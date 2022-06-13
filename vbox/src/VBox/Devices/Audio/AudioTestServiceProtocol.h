@@ -1,4 +1,4 @@
-/* $Id: AudioTestServiceProtocol.h 89614 2021-06-11 06:34:13Z vboxsync $ */
+/* $Id: AudioTestServiceProtocol.h 91040 2021-08-31 17:40:36Z vboxsync $ */
 /** @file
  * AudioTestServiceProtocol - Audio test execution server, Protocol Header.
  */
@@ -186,6 +186,21 @@ AssertCompileSizeAlignment(ATSPKTREQTONEREC, ATSPKT_ALIGNMENT);
 typedef ATSPKTREQTONEREC *PATSPKTREQTONEREC;
 
 /* No additional structure for the reply (just standard STATUS packet). */
+
+/**
+ * The failure reply structure.
+ */
+typedef struct ATSPKTREPFAIL
+{
+    /** Embedded packet header. */
+    ATSPKTHDR   Hdr;
+    /** Error code (IPRT-style). */
+    int         rc;
+    /** Error description. */
+    char        ach[256];
+} ATSPKTREPFAIL;
+/** Pointer to a ATSPKTREPFAIL structure. */
+typedef ATSPKTREPFAIL *PATSPKTREPFAIL;
 
 /**
  * Checks if the two opcodes match.
