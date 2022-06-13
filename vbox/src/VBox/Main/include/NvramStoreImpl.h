@@ -1,4 +1,4 @@
-/* $Id: NvramStoreImpl.h 91326 2021-09-22 15:10:38Z vboxsync $ */
+/* $Id: NvramStoreImpl.h 91346 2021-09-23 10:14:10Z vboxsync $ */
 /** @file
  * VirtualBox COM NVRAM store class implementation
  */
@@ -90,6 +90,7 @@ private:
                                                     void *pvBuf, size_t cbRead);
     static DECLCALLBACK(int)    i_nvramStoreWriteAll(PPDMIVFSCONNECTOR pInterface, const char *pszNamespace, const char *pszPath,
                                                      const void *pvBuf, size_t cbWrite);
+    static DECLCALLBACK(int)    i_nvramStoreDelete(PPDMIVFSCONNECTOR pInterface, const char *pszNamespace, const char *pszPath);
     static DECLCALLBACK(void *) i_drvQueryInterface(PPDMIBASE pInterface, const char *pszIID);
     static DECLCALLBACK(int)    i_drvConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uint32_t fFlags);
     static DECLCALLBACK(void)   i_drvDestruct(PPDMDRVINS pDrvIns);
