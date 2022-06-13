@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.h 92111 2021-10-27 16:47:58Z vboxsync $ */
+/* $Id: UINotificationObjects.h 92132 2021-10-28 10:30:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects declarations.
  */
@@ -55,6 +55,7 @@ class CNetworkAdapter;
 class CVirtualBox;
 class CVirtualBoxErrorInfo;
 class CVRDEServer;
+class CUnattended;
 
 /** UINotificationObject extension for message functionality. */
 class SHARED_LIBRARY_STUFF UINotificationMessage : public UINotificationSimple
@@ -477,6 +478,10 @@ public:
           * @param  strSnapshotName  Brings snapshot name.
           * @param  strMachineName   Brings machine name. */
         static void cannotChangeSnapshot(const CSnapshot &comSnapshot, const QString &strSnapshotName, const QString &strMachineName);
+
+        /** Notifies about inability to run unattended guest install.
+          * @param  comUnattended  Brings the unattended being running guest install. */
+        static void cannotRunUnattendedGuestInstall(const CUnattended &comUnattended);
     /** @} */
 
     /** @name COM Runtime UI warnings.

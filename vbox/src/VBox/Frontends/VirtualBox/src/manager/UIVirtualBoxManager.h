@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxManager.h 92106 2021-10-27 14:01:36Z vboxsync $ */
+/* $Id: UIVirtualBoxManager.h 92132 2021-10-28 10:30:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxManager class declaration.
  */
@@ -354,8 +354,9 @@ private:
         /** Returns whether at least one cloud profile currently being updated. */
         bool isCloudProfileUpdateInProgress() const;
 
-        /* Checks if @p comUnattendedInstaller has any errors. If so shows an error message and return false, else returns true. */
-        bool checkUnattendedInstallError(CUnattended &comUnattendedInstaller) const;
+        /** Checks if @a comUnattended has any errors.
+          * If so shows an error notification and returns false, else returns true. */
+        bool checkUnattendedInstallError(const CUnattended &comUnattended) const;
     /** @} */
 
     /** @name Various VM helpers.

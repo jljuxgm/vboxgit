@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 92130 2021-10-28 10:01:50Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 92132 2021-10-28 10:30:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -2025,14 +2025,6 @@ bool UIMessageCenter::confirmExportMachinesInSaveState(const QStringList &machin
                              .arg(machineNames.join(", ")),
                           0 /* auto-confirm id */,
                           tr("Continue"));
-}
-
-void UIMessageCenter::cannotRunUnattendedGuestInstall(const CUnattended &comUnattendedInstall, QWidget *pParent /* = 0 */)
-{
-    COMErrorInfo comErrorInfo =  comUnattendedInstall.errorInfo();    \
-    error(pParent, MessageType_Error,
-          tr("An error has occured during unattended guest install setup."),
-          UIErrorString::formatErrorInfo(comErrorInfo));
 }
 
 bool UIMessageCenter::confirmOverridingFile(const QString &strPath, QWidget *pParent /* = 0*/) const

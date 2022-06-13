@@ -1,4 +1,4 @@
-/* $Id: UINotificationObjects.cpp 92111 2021-10-27 16:47:58Z vboxsync $ */
+/* $Id: UINotificationObjects.cpp 92132 2021-10-28 10:30:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various UINotificationObjects implementations.
  */
@@ -48,6 +48,7 @@
 #include "CMediumAttachment.h"
 #include "CNATNetwork.h"
 #include "CNetworkAdapter.h"
+#include "CUnattended.h"
 #include "CVRDEServer.h"
 
 /* Other VBox stuff: */
@@ -1240,6 +1241,15 @@ void UINotificationMessage::cannotChangeSnapshot(const CSnapshot &comSnapshot,
         QApplication::translate("UIMessageCenter", "Failed to change the snapshot <b>%1</b> of the virtual machine <b>%2</b>.")
                                                    .arg(strSnapshotName, strMachineName) +
         UIErrorString::formatErrorInfo(comSnapshot));
+}
+
+/* static */
+void UINotificationMessage::cannotRunUnattendedGuestInstall(const CUnattended &comUnattended)
+{
+    createMessage(
+        QApplication::translate("UIMessageCenter", "Can't run guest install ..."),
+        QApplication::translate("UIMessageCenter", "Failed to run unattended guest installation.") +
+        UIErrorString::formatErrorInfo(comUnattended));
 }
 
 /* static */

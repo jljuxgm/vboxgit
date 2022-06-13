@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 92130 2021-10-28 10:01:50Z vboxsync $ */
+/* $Id: UIMessageCenter.h 92132 2021-10-28 10:30:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -456,7 +456,6 @@ public:
         void cannotCreateAppliance(const CVirtualBox &comVBox, QWidget *pParent = 0) const;
         void cannotCreateVirtualSystemDescription(const CAppliance &comAppliance, QWidget *pParent = 0) const;
         bool confirmExportMachinesInSaveState(const QStringList &machineNames, QWidget *pParent = 0) const;
-        void cannotRunUnattendedGuestInstall(const CUnattended &comUnattendedInstall, QWidget *pParent = 0);
         bool confirmOverridingFile(const QString &strPath, QWidget *pParent = 0) const;
         bool confirmOverridingFiles(const QVector<QString> &strPaths, QWidget *pParent = 0) const;
     /** @} */
