@@ -1,5 +1,5 @@
 # !kmk_ash
-# $Id: gen-slickedit-workspace.sh 93115 2022-01-01 11:31:46Z vboxsync $
+# $Id: gen-slickedit-workspace.sh 94559 2022-04-11 13:56:37Z vboxsync $
 ## @file
 # Script for generating a SlickEdit workspace.
 #
@@ -1224,6 +1224,8 @@ lib=$(my_get_newest_ver src/libs/openssl)
 my_generate_project "openssl"       "${lib}"                                --begin-incs "include" "${lib}/crypto"                          --end-includes "${lib}"
 lib=$(my_get_newest_ver src/libs/curl)
 my_generate_project "curl"          "${lib}"                                --begin-incs "include" "${lib}/include"                         --end-includes "${lib}"
+lib=$(my_get_newest_ver src/libs/softfloat)
+my_generate_project "softfloat"     "${lib}"                                --begin-incs "include" "${lib}/source/include"                  --end-includes "${lib}"
 
 # webtools
 my_generate_project "webtools"      "webtools"                              --begin-incs "include" "webtools/tinderbox/server/Tinderbox3"   --end-includes "webtools"
