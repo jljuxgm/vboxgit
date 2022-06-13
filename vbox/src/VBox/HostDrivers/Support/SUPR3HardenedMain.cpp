@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain.cpp 93172 2022-01-11 01:00:27Z vboxsync $ */
+/* $Id: SUPR3HardenedMain.cpp 93389 2022-01-20 22:52:34Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main().
  */
@@ -1734,7 +1734,7 @@ DECL_NO_RETURN(DECLHIDDEN(void)) supR3HardenedFatalMsgV(const char *pszWhere, SU
                 /* We'll fork before we make the call because that way the session management
                    in main will see us exiting immediately (if it's involved with us) and possibly
                    get an error back to the API / user. */
-#if !defined(RT_OS_WINDOWS) && !defined(RT_OS_OS2)
+#if !defined(RT_OS_WINDOWS) && !defined(RT_OS_OS2) && /* @bugref{10170}: */ !defined(RT_OS_DARWIN)
                 int pid = fork();
                 if (pid <= 0)
 #endif
