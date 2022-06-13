@@ -1,4 +1,4 @@
-/* $Id: AudioTest.cpp 92197 2021-11-03 17:38:50Z vboxsync $ */
+/* $Id: AudioTest.cpp 92198 2021-11-03 17:46:36Z vboxsync $ */
 /** @file
  * Audio testing routines.
  *
@@ -2359,8 +2359,8 @@ DECLINLINE(uint8_t) AudioTestBeaconByteFromType(AUDIOTESTTONEBEACONTYPE enmType)
         default:                                break;
     }
 
-    AssertFailedReturn(0);
-    return 0; /* Never reached. */
+    AssertFailed();
+    return 0;
 }
 
 /**
