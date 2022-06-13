@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 93190 2022-01-11 23:22:13Z vboxsync $
+# $Id: Makefile.kmk 93404 2022-01-22 23:30:11Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox API testcases.
 #
@@ -292,7 +292,7 @@ tstUnattendedScript_LIBS     = \
 	$(PATH_STAGE_LIB)/VBoxAPIWrap$(VBOX_SUFF_LIB)
 
 INSTALLS += tstUnattendedScriptFiles
-tstUnattendedScriptFiles_TEMPLATE = VBOXMAINCLIENTTSTEXE
+tstUnattendedScriptFiles_TEMPLATE = VBOXMAINTSTEXE
 tstUnattendedScriptFiles_SOURCES = \
 	tstUnattendedScript-1.template \
 	tstUnattendedScript-1.expected
