@@ -1,4 +1,4 @@
-/* $Id: tstTime-2.cpp 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: tstTime-2.cpp 93435 2022-01-24 22:30:58Z vboxsync $ */
 /** @file
  * IPRT Testcase - Simple RTTime test.
  */
@@ -34,6 +34,12 @@
 #include <iprt/thread.h>
 #include <VBox/sup.h>
 
+
+/* HACK ALERT! */
+#if defined(RT_OS_DARWIN) && defined(RT_ARCH_ARM64)
+# undef  RTTimeNanoTSWorkerName
+# define RTTimeNanoTSWorkerName() "system"
+#endif
 
 
 int main()
