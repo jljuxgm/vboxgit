@@ -1,4 +1,4 @@
-/* $Id: PGMInline.h 91848 2021-10-19 23:18:13Z vboxsync $ */
+/* $Id: PGMInline.h 91854 2021-10-20 00:50:11Z vboxsync $ */
 /** @file
  * PGM - Inlined functions.
  */
@@ -1074,43 +1074,6 @@ DECLINLINE(bool) pgmPoolIsDirtyPage(PVMCC pVM, RTGCPHYS GCPhys)
     return pgmPoolIsDirtyPageSlow(pVM, GCPhys);
 }
 
-
-/**
- * Tells if mappings are to be put into the shadow page table or not.
- *
- * @returns boolean result
- * @param   pVM         The cross context VM structure.
- */
-DECL_FORCE_INLINE(bool) pgmMapAreMappingsEnabled(PVMCC pVM)
-{
-#ifdef PGM_WITHOUT_MAPPINGS
-    /* Only raw-mode has mappings. */
-    Assert(!VM_IS_RAW_MODE_ENABLED(pVM)); NOREF(pVM);
-    return false;
-#else
-    Assert(pVM->cCpus == 1 || !VM_IS_RAW_MODE_ENABLED(pVM));
-    return VM_IS_RAW_MODE_ENABLED(pVM);
-#endif
-}
-
-
-/**
- * Checks if the mappings are floating and enabled.
- *
- * @returns true / false.
- * @param   pVM         The cross context VM structure.
- */
-DECL_FORCE_INLINE(bool) pgmMapAreMappingsFloating(PVMCC pVM)
-{
-#ifdef PGM_WITHOUT_MAPPINGS
-    /* Only raw-mode has mappings. */
-    Assert(!VM_IS_RAW_MODE_ENABLED(pVM)); NOREF(pVM);
-    return false;
-#else
-    return !pVM->pgm.s.fMappingsFixed
-        && pgmMapAreMappingsEnabled(pVM);
-#endif
-}
 
 /** @} */
 

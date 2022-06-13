@@ -1,4 +1,4 @@
-/* $Id: PDMLdr.cpp 86510 2020-10-09 22:38:04Z vboxsync $ */
+/* $Id: PDMLdr.cpp 91854 2021-10-20 00:50:11Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager, module loader.
  */
@@ -564,11 +564,10 @@ VMMR3DECL(int) PDMR3LdrLoadRC(PVM pVM, const char *pszFilename, const char *pszN
                 if (RT_SUCCESS(rc))
                 {
                     RTGCPTR GCPtr;
-                    rc = MMR3HyperMapPages(pVM, pModule->pvBits, NIL_RTR0PTR,
-                                           cPages, paPages, pModule->szName, &GCPtr);
+                    rc = VERR_NOT_IMPLEMENTED; //MMR3HyperMapPages(pVM, pModule->pvBits, NIL_RTR0PTR, cPages, paPages, pModule->szName, &GCPtr);
                     if (RT_SUCCESS(rc))
                     {
-                        MMR3HyperReserveFence(pVM);
+                        //MMR3HyperReserveFence(pVM);
 
                         /*
                          * Get relocated image bits.

@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 90347 2021-07-26 20:36:28Z vboxsync $ */
+/* $Id: TM.cpp 91854 2021-10-20 00:50:11Z vboxsync $ */
 /** @file
  * TM - Time Manager.
  */
@@ -259,25 +259,6 @@ VMM_INT_DECL(int) TMR3Init(PVM pVM)
     RTHCPHYS HCPhysGIP;
     rc = SUPR3GipGetPhys(&HCPhysGIP);
     AssertMsgRCReturn(rc, ("Failed to get GIP physical address!\n"), rc);
-
-#ifndef PGM_WITHOUT_MAPPINGS
-    RTGCPTR GCPtr;
-# ifdef SUP_WITH_LOTS_OF_CPUS
-    rc = MMR3HyperMapHCPhys(pVM, pVM->tm.s.pvGIPR3, NIL_RTR0PTR, HCPhysGIP, (size_t)pGip->cPages * PAGE_SIZE,
-                            "GIP", &GCPtr);
-# else
-    rc = MMR3HyperMapHCPhys(pVM, pVM->tm.s.pvGIPR3, NIL_RTR0PTR, HCPhysGIP, PAGE_SIZE, "GIP", &GCPtr);
-# endif
-    if (RT_FAILURE(rc))
-    {
-        AssertMsgFailed(("Failed to map GIP into GC, rc=%Rrc!\n", rc));
-        return rc;
-    }
-    pVM->tm.s.pvGIPRC = GCPtr;
-    LogFlow(("TMR3Init: HCPhysGIP=%RHp at %RRv\n", HCPhysGIP, pVM->tm.s.pvGIPRC));
-    MMR3HyperReserveFence(pVM);
-#endif
-
 
     /* Check assumptions made in TMAllVirtual.cpp about the GIP update interval. */
     if (    pGip->u32Magic == SUPGLOBALINFOPAGE_MAGIC
