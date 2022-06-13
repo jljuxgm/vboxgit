@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxBase.h 90828 2021-08-24 09:44:46Z vboxsync $ */
+/* $Id: VirtualBoxBase.h 90841 2021-08-24 11:40:08Z vboxsync $ */
 /** @file
  * VirtualBox COM base classes definition
  */
@@ -576,7 +576,7 @@ public:
     /**
      * Returns translated text.
      *
-     * @param aContext      Translation context e.g. class name
+     * @param aComponent    Translation context e.g. class name
      * @param aSourceText   String to translate.
      * @param aComment      Comment to the string to resolve possible ambiguities
      *                      (NULL means no comment). Used by translation tool only.

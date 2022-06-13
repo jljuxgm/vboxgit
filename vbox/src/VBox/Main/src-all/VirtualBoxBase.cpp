@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxBase.cpp 90828 2021-08-24 09:44:46Z vboxsync $ */
+/* $Id: VirtualBoxBase.cpp 90841 2021-08-24 11:40:08Z vboxsync $ */
 /** @file
  * VirtualBox COM base classes implementation
  */
@@ -267,14 +267,6 @@ HRESULT VirtualBoxBase::handleUnexpectedExceptions(VirtualBoxBase *const aThis, 
  *  indicates the error severity is reset to zero to make sure the receiver will
  *  recognize that the created error info object represents a warning rather
  *  than an error.
- *
- *  @param aResultCode
- *  @param aIID
- *  @param aComponent
- *  @param aWarning
- *  @param aLogIt
- *  @param aResultDetail
- *  @param aText
  */
 /* static */
 HRESULT VirtualBoxBase::setErrorInternalF(HRESULT aResultCode,
@@ -300,15 +292,6 @@ HRESULT VirtualBoxBase::setErrorInternalF(HRESULT aResultCode,
  *  indicates the error severity is reset to zero to make sure the receiver will
  *  recognize that the created error info object represents a warning rather
  *  than an error.
- *
- *  @param  aResultCode
- *  @param  aIID
- *  @param  pcszComponent
- *  @param  aText
- *  @param  va
- *  @param  aWarning
- *  @param  aLogIt
- *  @param  aResultDetail
  */
 /* static */
 HRESULT VirtualBoxBase::setErrorInternalV(HRESULT aResultCode,
