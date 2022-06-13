@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: vboxconfig.sh 92636 2021-11-29 18:14:56Z vboxsync $
+# $Id: vboxconfig.sh 92650 2021-11-30 12:43:37Z vboxsync $
 ## @file
 # VirtualBox Configuration Script, Solaris host.
 #
@@ -681,7 +681,7 @@ install_drivers()
     if [ -f "$PKG_INSTALL_ROOT/etc/dev/reserved_devnames" ]; then
         # Solaris 11 SRU6 and later use group root (check a file which isn't
         # tainted by VirtualBox install scripts and allow no other group)
-        refgroup=$(LC_ALL=C /usr/bin/ls -lL "$PKG_INSTALL_ROOT/etc/dev/reserved_devnames" | awk '{ print $4 }' 2>/dev/null)
+        refgroup=`LC_ALL=C /usr/bin/ls -lL "$PKG_INSTALL_ROOT/etc/dev/reserved_devnames" | awk '{ print $4 }' 2>/dev/null`
         if [ $? -eq 0 -a "x$refgroup" = "xroot" ]; then
             group=root
         fi
@@ -809,7 +809,7 @@ remove_drivers()
     if [ -f "$PKG_INSTALL_ROOT/etc/dev/reserved_devnames" ]; then
         # Solaris 11 SRU6 and later use group root (check a file which isn't
         # tainted by VirtualBox install scripts and allow no other group)
-        refgroup=$(LC_ALL=C /usr/bin/ls -lL "$PKG_INSTALL_ROOT/etc/dev/reserved_devnames" | awk '{ print $4 }' 2>/dev/null)
+        refgroup=`LC_ALL=C /usr/bin/ls -lL "$PKG_INSTALL_ROOT/etc/dev/reserved_devnames" | awk '{ print $4 }' 2>/dev/null`
         if [ $? -eq 0 -a "x$refgroup" = "xroot" ]; then
             group=root
         fi
