@@ -1,4 +1,4 @@
-/* $Id: IEMR0.cpp 93655 2022-02-08 13:56:01Z vboxsync $ */
+/* $Id: IEMR0.cpp 93922 2022-02-24 15:14:31Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - Ring-0.
  */
@@ -43,7 +43,7 @@ VMMR0_INT_DECL(int) IEMR0InitVM(PGVM pGVM)
     if (pGVM->cpum.ro.GuestFeatures.fVmx)
     {
         int rc = PGMR0HandlerPhysicalTypeSetUpContext(pGVM, PGMPHYSHANDLERKIND_ALL, 0 /*fFlags*/,
-                                                      iemVmxApicAccessPageHandler, NULL /*pfnzPfHandlerR0*/,
+                                                      iemVmxApicAccessPageHandler, iemVmxApicAccessPagePfHandler,
                                                       "VMX APIC-access page", pGVM->iem.s.hVmxApicAccessPage);
         AssertLogRelRCReturn(rc, rc);
     }

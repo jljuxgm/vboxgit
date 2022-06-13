@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 93725 2022-02-14 13:46:16Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 93922 2022-02-24 15:14:31Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -3058,5 +3058,18 @@ VMM_INT_DECL(bool) CPUMIsGuestVmxEptPaePagingEnabled(PCVMCPUCC pVCpu)
 {
     return    CPUMIsGuestVmxEptPagingEnabledEx(&pVCpu->cpum.s.Guest)
            && CPUMIsGuestInPAEModeEx(&pVCpu->cpum.s.Guest);
+}
+
+
+/**
+ * Returns the guest-physical address of the APIC-access page when executing a
+ * nested-guest.
+ *
+ * @returns The APIC-access page guest-physical address.
+ * @param   pVCpu   The cross context virtual CPU structure.
+ */
+VMM_INT_DECL(uint64_t) CPUMGetGuestVmxApicAccessPageAddr(PCVMCPUCC pVCpu)
+{
+    return CPUMGetGuestVmxApicAccessPageAddrEx(&pVCpu->cpum.s.Guest);
 }
 

@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 93847 2022-02-18 15:13:28Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 93922 2022-02-24 15:14:31Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -7559,7 +7559,7 @@ IEM_CIMPL_DEF_1(iemCImpl_monitor, uint8_t, iEffSeg)
          *
          * See Intel spec. 29.4.4 "Instruction-Specific Considerations".
          */
-        rcStrict = iemVmxVirtApicAccessUnused(pVCpu, &GCPhysMem);
+        rcStrict = iemVmxVirtApicAccessUnused(pVCpu, &GCPhysMem, IEM_ACCESS_TYPE_READ | IEM_ACCESS_WHAT_DATA);
         if (   rcStrict != VINF_VMX_INTERCEPT_NOT_ACTIVE
             && rcStrict != VINF_VMX_MODIFIES_BEHAVIOR)
                 return rcStrict;
@@ -8217,7 +8217,7 @@ IEM_CIMPL_DEF_2(iemCImpl_clflush_clflushopt, uint8_t, iEffSeg, RTGCPTR, GCPtrEff
                  *
                  * See Intel spec. 29.4.4 "Instruction-Specific Considerations".
                  */
-                rcStrict = iemVmxVirtApicAccessUnused(pVCpu, &GCPhysMem);
+                rcStrict = iemVmxVirtApicAccessUnused(pVCpu, &GCPhysMem, IEM_ACCESS_TYPE_READ | IEM_ACCESS_WHAT_DATA);
                 if (   rcStrict != VINF_VMX_INTERCEPT_NOT_ACTIVE
                     && rcStrict != VINF_VMX_MODIFIES_BEHAVIOR)
                         return rcStrict;

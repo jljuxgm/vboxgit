@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 93905 2022-02-24 09:13:26Z vboxsync $ */
+/* $Id: PGMInternal.h 93922 2022-02-24 15:14:31Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -2744,6 +2744,9 @@ typedef struct PGMMODEDATABTH
     DECLCALLBACKMEMBER(int, pfnEnter,(PVMCPUCC pVCpu, RTGCPHYS GCPhysCR3));
 #ifndef IN_RING3
     DECLCALLBACKMEMBER(int, pfnTrap0eHandler,(PVMCPUCC pVCpu, RTGCUINT uErr, PCPUMCTXCORE pRegFrame, RTGCPTR pvFault, bool *pfLockTaken));
+    DECLCALLBACKMEMBER(int, pfnNestedTrap0eHandler,(PVMCPUCC pVCpu, RTGCUINT uErr, PCPUMCTXCORE pRegFrame, RTGCPHYS GCPhysNested,
+                                                    bool fIsLinearAddrValid, RTGCPTR GCPtrNested, PPGMPTWALK pWalk,
+                                                    bool *pfLockTaken));
 #endif
 #ifdef VBOX_STRICT
     DECLCALLBACKMEMBER(unsigned, pfnAssertCR3,(PVMCPUCC pVCpu, uint64_t cr3, uint64_t cr4, RTGCPTR GCPtr, RTGCPTR cb));

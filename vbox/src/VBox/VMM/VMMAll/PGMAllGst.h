@@ -1,4 +1,4 @@
-/* $Id: PGMAllGst.h 93572 2022-02-03 11:17:37Z vboxsync $ */
+/* $Id: PGMAllGst.h 93922 2022-02-24 15:14:31Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Guest Paging Template - All context code.
  */
@@ -375,7 +375,7 @@ PGM_GST_DECL(int, GetPage)(PVMCPUCC pVCpu, RTGCPTR GCPtr, PPGMPTWALK pWalk)
         {
             pWalk->fSucceeded = true;
             pWalk->GCPtr      = GCPtr;
-            pWalk->GCPhys     = SlatWalk.GCPhys & PAGE_BASE_GC_MASK;
+            pWalk->GCPhys     = SlatWalk.GCPhys & ~(RTGCPHYS)GUEST_PAGE_OFFSET_MASK;
             pWalk->fEffective = X86_PTE_P | X86_PTE_RW | X86_PTE_US;
         }
         else
