@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 94882 2022-05-06 06:33:54Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 94944 2022-05-09 09:45:33Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -4289,7 +4289,7 @@ static void hmR0SvmPreRunGuestCommitted(PVMCPUCC pVCpu, PSVMTRANSIENT pSvmTransi
      *
      * This should be done -after- any RDTSCPs for obtaining the host timestamp (TM, STAM etc).
      */
-    if (   pVM->cpum.ro.HostFeatures.fRdTscP
+    if (   g_CpumHostFeatures.s.fRdTscP
         && !(pVmcb->ctrl.u64InterceptCtrl & SVM_CTRL_INTERCEPT_RDTSCP))
     {
         uint64_t const uGuestTscAux = CPUMGetGuestTscAux(pVCpu);
