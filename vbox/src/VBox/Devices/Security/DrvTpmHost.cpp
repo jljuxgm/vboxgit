@@ -1,4 +1,4 @@
-/* $Id: DrvTpmHost.cpp 91005 2021-08-30 16:32:25Z vboxsync $ */
+/* $Id: DrvTpmHost.cpp 91049 2021-09-01 08:11:43Z vboxsync $ */
 /** @file
  * TPM host access driver.
  */
@@ -358,7 +358,8 @@ static DECLCALLBACK(int) drvTpmHostConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg,
     rc = drvTpmHostQueryBufferSize(pThis);
     if (RT_FAILURE(rc))
         return PDMDrvHlpVMSetError(pDrvIns, rc, RT_SRC_POS,
-                                   N_("DrvTpmHost%d: Querying input buffer size of TPM with id %u failed with %Rrc"), idTpm, rc);
+                                   N_("DrvTpmHost%d: Querying input buffer size of TPM with id %u failed with %Rrc"),
+                                   pDrvIns->iInstance, idTpm, rc);
 
     LogRel(("DrvTpmHost#%d: Connected to TPM %u.\n", pDrvIns->iInstance, idTpm));
     return VINF_SUCCESS;
