@@ -1,4 +1,4 @@
-/* $Id: NvramStoreImpl.h 93115 2022-01-01 11:31:46Z vboxsync $ */
+/* $Id: NvramStoreImpl.h 94514 2022-04-07 13:49:30Z vboxsync $ */
 /** @file
  * VirtualBox COM NVRAM store class implementation
  */
@@ -94,6 +94,9 @@ private:
     int i_saveStoreAsTar(const char *pszPath);
 
 #ifdef VBOX_COM_INPROC
+    static DECLCALLBACK(int)    i_SsmSaveExec(PPDMDRVINS pDrvIns, PSSMHANDLE pSSM);
+    static DECLCALLBACK(int)    i_SsmLoadExec(PPDMDRVINS pDrvIns, PSSMHANDLE pSSM, uint32_t uVersion, uint32_t uPass);
+
     static DECLCALLBACK(int)    i_nvramStoreQuerySize(PPDMIVFSCONNECTOR pInterface, const char *pszNamespace, const char *pszPath,
                                                       uint64_t *pcb);
     static DECLCALLBACK(int)    i_nvramStoreReadAll(PPDMIVFSCONNECTOR pInterface, const char *pszNamespace, const char *pszPath,
