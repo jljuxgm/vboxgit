@@ -1,4 +1,4 @@
-/* $Id: vkatCommon.cpp 90723 2021-08-18 15:41:36Z vboxsync $ */
+/* $Id: vkatCommon.cpp 90724 2021-08-18 15:47:45Z vboxsync $ */
 /** @file
  * Validation Kit Audio Test (VKAT) - Self test code.
  */
@@ -262,6 +262,7 @@ int audioTestPlayTone(PAUDIOTESTENV pTstEnv, PAUDIOTESTSTREAM pStream, PAUDIOTES
 
     /** @todo Use .WAV here? */
     AUDIOTESTOBJ Obj;
+    RT_ZERO(Obj); /* Shut up MSVC. */
     if (pTstEnv)
     {
         rc = AudioTestSetObjCreateAndRegister(&pTstEnv->Set, "guest-tone-play.pcm", &Obj);
