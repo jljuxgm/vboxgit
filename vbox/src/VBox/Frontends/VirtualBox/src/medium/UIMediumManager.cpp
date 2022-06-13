@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 94824 2022-05-04 15:15:42Z vboxsync $ */
+/* $Id: UIMediumManager.cpp 94988 2022-05-12 10:53:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -1558,6 +1558,12 @@ void UIMediumManagerWidget::enableClearAction()
     if (!m_pActionPool || !m_pActionPool->action(UIActionIndexMN_M_Medium_S_Clear))
         return;
 
+    if (currentMediumType() == UIMediumDeviceType_HardDisk)
+    {
+        m_pActionPool->action(UIActionIndexMN_M_Medium_S_Clear)->setVisible(false);
+        return;
+    }
+    m_pActionPool->action(UIActionIndexMN_M_Medium_S_Clear)->setVisible(true);
     bool fEnable = ((currentMediumType() == UIMediumDeviceType_DVD) && m_fInaccessibleCD) ||
         ((currentMediumType() == UIMediumDeviceType_Floppy) && m_fInaccessibleFD);
     m_pActionPool->action(UIActionIndexMN_M_Medium_S_Clear)->setEnabled(fEnable);
