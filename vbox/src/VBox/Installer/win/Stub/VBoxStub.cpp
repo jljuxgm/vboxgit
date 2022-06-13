@@ -1,4 +1,4 @@
-/* $Id: VBoxStub.cpp 95026 2022-05-16 18:15:31Z vboxsync $ */
+/* $Id: VBoxStub.cpp 95030 2022-05-17 09:55:12Z vboxsync $ */
 /** @file
  * VBoxStub - VirtualBox's Windows installer stub.
  */
@@ -674,7 +674,7 @@ static RTEXITCODE ProcessMsiPackage(const char *pszMsi, const char *pszMsiArgs, 
     if (RT_FAILURE(rc))
     {
         RTUtf16Free(pwszMsi);
-        return ShowError("RTStrToUtf16 failed on '%s': %Rrc", pszMsi, rc);
+        return ShowError("RTStrToUtf16 failed on '%s': %Rrc", pszMsiArgs, rc);
     }
 
     UINT uStatus = MsiInstallProductW(pwszMsi, pwszMsiArgs);
