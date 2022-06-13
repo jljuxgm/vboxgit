@@ -1,4 +1,4 @@
-/* $Id: UIFilePathSelector.h 87608 2021-02-04 14:54:27Z vboxsync $ */
+/* $Id: UIFilePathSelector.h 91436 2021-09-28 13:31:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFilePathSelector class declaration.
  */
@@ -64,7 +64,8 @@ public:
     {
         PathId = 0,
         SelectId,
-        ResetId
+        ResetId,
+        RecentListSeparator
     };
 
     /** Constructs file-path selector passing @a pParent to QIComboBox base-class. */
@@ -119,6 +120,8 @@ public:
 
     void setDefaultPath(const QString &strDefaultPath);
     const QString& defaultPath() const;
+
+    void setRecentPathList(const QStringList &recentPathList);
 
 public slots:
 

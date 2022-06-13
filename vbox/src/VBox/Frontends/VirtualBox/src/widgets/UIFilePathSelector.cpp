@@ -1,4 +1,4 @@
-/* $Id: UIFilePathSelector.cpp 91125 2021-09-06 14:32:23Z vboxsync $ */
+/* $Id: UIFilePathSelector.cpp 91436 2021-09-28 13:31:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFilePathSelector class implementation.
  */
@@ -193,6 +193,18 @@ const QString& UIFilePathSelector::defaultPath() const
     return m_strDefaultPath;
 }
 
+void UIFilePathSelector::setRecentPathList(const QStringList &recentPathList)
+{
+    while (count() >= static_cast<int>(RecentListSeparator))
+    {
+        removeItem(count() - 1);
+    }
+    insertSeparator(RecentListSeparator);
+
+    foreach (const QString strPath, recentPathList)
+        addItem(strPath);
+}
+
 void UIFilePathSelector::setPath(const QString &strPath, bool fRefreshText /* = true */)
 {
     m_strPath = strPath.isEmpty() ? QString() :
@@ -345,7 +357,14 @@ void UIFilePathSelector::onActivated(int iIndex)
             break;
         }
         default:
+        {
+            if (iIndex >= RecentListSeparator)
+            {
+                changePath(itemText(iIndex));
+                update();
+            }
             break;
+        }
     }
     setCurrentIndex(PathId);
     setFocus();
@@ -527,7 +546,7 @@ void UIFilePathSelector::refreshText()
         /* In editable mode there should be no any icon
          * and text have be corresponding real stored path
          * which can be absolute or relative. */
-        if (lineEdit()->text() != m_strPath)
+        //if (lineEdit()->text() != m_strPath)
             setItemText(PathId, m_strPath);
         setItemIcon(PathId, QIcon());
 

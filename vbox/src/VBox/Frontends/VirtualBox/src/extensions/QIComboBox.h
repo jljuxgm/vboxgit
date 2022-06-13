@@ -1,4 +1,4 @@
-/* $Id: QIComboBox.h 87737 2021-02-12 15:59:58Z vboxsync $ */
+/* $Id: QIComboBox.h 91436 2021-09-28 13:31:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIComboBox class declaration.
  */
@@ -120,6 +120,8 @@ public:
     void setSizeAdjustPolicy(QComboBox::SizeAdjustPolicy enmPolicy);
     /** Marks the line edit of the combobox. Refer to QILineEdit::mark(..). */
     void mark(bool fError, const QString &strErrorMessage = QString());
+
+    void insertSeparator(int iIndex);
 
 public slots:
 

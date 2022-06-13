@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedClipboardSvc.cpp 90805 2021-08-23 19:09:17Z vboxsync $ */
+/* $Id: VBoxSharedClipboardSvc.cpp 91435 2021-09-28 13:10:21Z vboxsync $ */
 /** @file
  * Shared Clipboard Service - Host service entry points.
  */
@@ -1406,6 +1406,19 @@ int ShClSvcGuestDataSignal(PSHCLCLIENT pClient, PSHCLCLIENTCMDCTX pCmdCtx,
  */
 int ShClSvcHostReportFormats(PSHCLCLIENT pClient, SHCLFORMATS fFormats)
 {
+    /*
+     * Check if the service mode allows this operation and whether the guest is
+     * supposed to be reading from the host. Otherwise, silently ignore reporting
+     * formats and return VINF_SUCCESS in order to do not trigger client
+     * termination in svcConnect().
+     */
+    uint32_t uMode = ShClSvcGetMode();
+    if (   uMode == VBOX_SHCL_MODE_BIDIRECTIONAL
+        || uMode == VBOX_SHCL_MODE_HOST_TO_GUEST)
+    { /* likely */ }
+    else
+        return VINF_SUCCESS;
+
     AssertPtrReturn(pClient, VERR_INVALID_POINTER);
 
     LogFlowFunc(("fFormats=%#x\n", fFormats));

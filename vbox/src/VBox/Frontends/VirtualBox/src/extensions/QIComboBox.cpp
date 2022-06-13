@@ -1,4 +1,4 @@
-/* $Id: QIComboBox.cpp 91192 2021-09-10 09:23:29Z vboxsync $ */
+/* $Id: QIComboBox.cpp 91436 2021-09-28 13:31:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIComboBox class implementation.
  */
@@ -301,6 +301,12 @@ void QIComboBox::mark(bool fError, const QString &strErrorMessage /* = QString()
     QILineEdit *pLineEdit = isEditable() ? qobject_cast<QILineEdit*>(m_pComboBox->lineEdit()) : 0;
     if (pLineEdit)
         pLineEdit->mark(fError, strErrorMessage);
+}
+
+void QIComboBox::insertSeparator(int iIndex)
+{
+    AssertPtrReturnVoid(m_pComboBox);
+    m_pComboBox->insertSeparator(iIndex);
 }
 
 void QIComboBox::clear()
