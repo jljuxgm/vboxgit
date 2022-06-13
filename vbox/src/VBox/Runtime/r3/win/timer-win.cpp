@@ -1,4 +1,4 @@
-/* $Id: timer-win.cpp 89827 2021-06-22 09:01:04Z vboxsync $ */
+/* $Id: timer-win.cpp 89828 2021-06-22 09:04:09Z vboxsync $ */
 /** @file
  * IPRT - Timer.
  */
@@ -321,7 +321,7 @@ RTDECL(int) RTTimerCreateEx(PRTTIMER *ppTimer, uint64_t u64NanoInterval, uint32_
                                                              CREATE_WAITABLE_TIMER_MANUAL_RESET | CREATE_WAITABLE_TIMER_HIGH_RESOLUTION,
                                                              TIMER_ALL_ACCESS);
             if (!pTimer->hTimer)
-            {            
+            {
                 rc = rtTimerNtSetTimerResolution(u64NanoInterval);
                 if (RT_SUCCESS(rc))
                     pTimer->hTimer = CreateWaitableTimer(NULL, TRUE, NULL);
