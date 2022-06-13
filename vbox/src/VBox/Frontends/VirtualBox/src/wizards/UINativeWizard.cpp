@@ -1,4 +1,4 @@
-/* $Id: UINativeWizard.cpp 89987 2021-07-01 09:30:56Z vboxsync $ */
+/* $Id: UINativeWizard.cpp 89995 2021-07-02 10:21:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINativeWizard class implementation.
  */
@@ -44,6 +44,9 @@ UIFrame::UIFrame(QWidget *pParent)
 
 void UIFrame::paintEvent(QPaintEvent *pEvent)
 {
+    /* Sanity check: */
+    AssertPtrReturnVoid(pEvent);
+
     /* Prepare painter: */
     QPainter painter(this);
 
@@ -113,6 +116,10 @@ void UINativeWizard::setPixmapName(const QString &strName)
 
 int UINativeWizard::addPage(UINativeWizardPage *pPage)
 {
+    /* Sanity check: */
+    AssertPtrReturn(pPage, -1);
+    AssertPtrReturn(pPage->layout(), -1);
+
     /* Adjust page layout: */
     const int iL = m_enmMode == WizardMode_Expert
                  ? qApp->style()->pixelMetric(QStyle::PM_LayoutLeftMargin)
